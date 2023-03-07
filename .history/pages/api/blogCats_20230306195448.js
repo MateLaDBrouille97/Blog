@@ -1,4 +1,4 @@
-import blogData from "../../public/blogDataName"
+import blogData from "../../blogDataName"
 
 export default function handler (req,res){
  const {categoriesName}=blogData;

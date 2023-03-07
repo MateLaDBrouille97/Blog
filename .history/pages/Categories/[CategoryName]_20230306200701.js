@@ -17,7 +17,7 @@ import { gsap } from "gsap";
 export default function CategoryName() {
   const router = useRouter();
   const categoryName = router?.query?.CategoryName;
-  // const { categoriesName } = blogData;
+  const { categoriesName } = blogData;
   const { blogUFH, blogP, blogN, data } = useBlogContext();
   const [cat, setCat] = useState("");
   const [posts, setPosts] = useState([]);

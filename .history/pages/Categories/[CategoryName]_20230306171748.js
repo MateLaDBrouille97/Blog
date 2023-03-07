@@ -3,7 +3,7 @@ import Related from "@/components/_child/Related";
 import Format from "@/layout/Format";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import {blogData,categoriesName} from "../../public/blogDataName";
+import blogData from "../api/blogDataName";
 import { useRouter } from "next/router";
 import { useBlogContext } from "@/contexts/BlogContext";
 import Link from "next/link";
@@ -17,7 +17,7 @@ import { gsap } from "gsap";
 export default function CategoryName() {
   const router = useRouter();
   const categoryName = router?.query?.CategoryName;
-  // const { categoriesName } = blogData;
+  const { categoriesName } = blogData;
   const { blogUFH, blogP, blogN, data } = useBlogContext();
   const [cat, setCat] = useState("");
   const [posts, setPosts] = useState([]);
