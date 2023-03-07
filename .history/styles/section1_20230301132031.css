@@ -1,0 +1,16 @@
+.slide__description{
+     text-align: justify;
+}
+
+
+.section1__posts{
+    border-bottom: solid 3px rgb(213, 211, 211);
+    position:relative
+}
+
+.section1__posts-title{
+     position:absolute;
+     bottom: -5px;
+     
+
+}

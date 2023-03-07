@@ -1,0 +1,118 @@
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  image: String
+}
+
+enum BlogCategory {
+  USEFULHACKS
+  PROJECTS
+  NEWS
+}
+
+type BlogPost @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  subtitle: String
+  description: String
+  image: String
+  userID: ID! @index(name: "byUser")
+  category: BlogCategory
+  slug: String
+}
+
+type Link @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  href: String
+  image: String
+  userID: ID! @index(name: "byUser")
+}
+
+type Service @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstName: String
+  lastName: String
+  description: String
+  userID: ID! @index(name: "byUser")
+  serviceData: [String]
+}
+
+enum SkillType {
+  BACKEND
+  FRONTEND
+  DATABASE
+}
+
+enum QualificationType {
+  EDUCATION
+  EXPERIENCE
+}
+
+type Qualification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  calendarBegin: String
+  calendarEnd: String
+  institut: String
+  type: QualificationType
+  userID: ID! @index(name: "byUser")
+  name: String
+}
+
+enum LevelSkill {
+  BASIC
+  INTERMEDIATE
+  ADVANCED
+}
+
+type Skill @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  level: LevelSkill
+  name: String
+  userID: ID! @index(name: "byUser")
+  type: SkillType
+}
+
+enum PortfolioType {
+  WEB
+  APP
+  SCIENCE
+}
+
+type PortfolioPost @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  description: String
+  image: String
+  type: PortfolioType
+  userID: ID! @index(name: "byUser")
+  technologies: [String]
+  addressPost: String
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstName: String
+  lastName: String
+  email: AWSEmail
+  phone: AWSPhone
+  instagram: String
+  description: String
+  image: String
+  github: String
+  title: [String]
+  experience: Int
+  projectNumber: Int
+  Qualifications: [Qualification] @hasMany(indexName: "byUser", fields: ["id"])
+  Skills: [Skill] @hasMany(indexName: "byUser", fields: ["id"])
+  Portfolios: [PortfolioPost] @hasMany(indexName: "byUser", fields: ["id"])
+  Services: [Service] @hasMany(indexName: "byUser", fields: ["id"])
+  sub: String
+  support: String
+  descriptionLong: String
+  CV: String
+  Links: [Link] @hasMany(indexName: "byUser", fields: ["id"])
+  avatar: String
+  BlogPosts: [BlogPost] @hasMany(indexName: "byUser", fields: ["id"])
+}
+ 

@@ -1,0 +1,9 @@
+.article__img{
+    width: 950px;
+    height: 700px;
+    object-fit: cover;
+}
+
+.article__desc{
+
+}

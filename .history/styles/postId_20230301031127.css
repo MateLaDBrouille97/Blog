@@ -1,0 +1,56 @@
+.article__img{
+    margin-bottom: 40px;
+    object-fit: cover;
+}
+
+.article__title{
+
+}
+
+.article__subtitle{
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.article__desc{
+ text-align: justify;
+ margin-bottom: 20px;
+ 
+}
+
+
+.article__text{
+    border-top: solid 2px rgb(2, 83, 83);
+    /* border-bottom: solid 2px teal; */
+}
+
+
+
+
+/*=============== BREAKPOINTS ===============*/
+
+@media screen and (max-width: 768px) {
+    .article__img{
+        width: 550px;
+        height: 500px;
+        margin-bottom: -140px;
+        object-fit: cover;
+    }
+
+    .article__text{
+       max-width: 600px;
+        /* border-bottom: solid 2px teal; */
+    }
+
+
+}
+
+
+@media screen and (max-width: 350px) {
+    .article__img{
+        width: 250px;
+        height: 200px;
+        margin-bottom: -140px;
+        object-fit: cover;
+    }
+}

@@ -1,0 +1,24 @@
+.article__img{
+    margin-bottom: 40px;
+    object-fit: cover;
+}
+
+.article__title{
+
+}
+
+.article__subtitle{
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.article__desc{
+ text-align: justify;
+ margin-bottom: 20px;
+ 
+}
+
+
+.article__text{
+    border-top: solid 2px rgb(0, 0, 0);
+}
