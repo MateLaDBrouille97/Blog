@@ -109,7 +109,7 @@ export default function Section2() {
           className="cover-strip h-screen w-3/12 bg-slate-300 fixed top-0 left-3/4 cover"
         ></div>
       </div>
-      <section className="section mx-auto md:px-20 py-20 w-3/4">
+      <section className="section mx-auto md:px-20 py-20 w-2/3">
         <div className="container">
           <div className="flex justify-center pb-8 mt-10 mb-20 section1__posts">
             <h1 className="font-bold text-4xl py-8 text-center section1__posts-title">

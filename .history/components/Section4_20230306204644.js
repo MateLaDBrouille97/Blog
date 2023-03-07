@@ -101,7 +101,7 @@ export default function Section4() {
 
   return (
     <>
-      <section className="section section4 mx-auto md:px-20 py-16 w-4/5">
+      <section className="section section4 mx-auto md:px-20 py-16 w-2/3">
         <div className="container">
           <div className="grid lg:grid-cols-2 ">
             <div className="item container">
