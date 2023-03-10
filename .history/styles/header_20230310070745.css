@@ -65,18 +65,12 @@
     font-size:var(--normal-font-size);
 }
 
-
 .nav__logo-container{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
-}
-
-.nav__logo{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .nav__lg-img{

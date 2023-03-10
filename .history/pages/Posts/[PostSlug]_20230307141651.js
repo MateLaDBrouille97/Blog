@@ -210,32 +210,32 @@ function Article({ image, post, post2 }) {
           <p className="article__text-social">
             <ul className="icons-share">
               <FacebookShareButton
-                url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
+                url={`https://blog-mateladbrouille97.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <FacebookIcon size={30} round={true} />
               </FacebookShareButton>
 
               <LinkedinShareButton
-                 url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
+                 url={`https://blog-mateladbrouille97.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <LinkedinIcon size={30} round={true} />
               </LinkedinShareButton>
               <TwitterShareButton
-                 url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
+                 url={`https://blog-mateladbrouille97.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <TwitterIcon size={30} round={true} />
               </TwitterShareButton>
               <WhatsappShareButton
-                url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
+                url={`https://blog-mateladbrouille97.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <WhatsappIcon size={30} round={true} />
               </WhatsappShareButton>
               <TelegramShareButton
-                 url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
+                 url={`https://blog-mateladbrouille97.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <TelegramIcon size={30} round={true} />

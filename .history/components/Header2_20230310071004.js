@@ -67,7 +67,7 @@ const Header = () => {
       <nav className="nav container">
         <div className="nav__logo-container">
           <div className="nav__logo">
-            {/* {image && (
+            {image && (
               <Image
                 src={image}
                 alt=""
@@ -75,7 +75,7 @@ const Header = () => {
                 width={80}
                 height={80}
               />
-            )} */}
+            )}
             <LinkShare/>
           </div>
           {/* <a

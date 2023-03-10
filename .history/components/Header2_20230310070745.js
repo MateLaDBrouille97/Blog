@@ -67,15 +67,15 @@ const Header = () => {
       <nav className="nav container">
         <div className="nav__logo-container">
           <div className="nav__logo">
-            {/* {image && (
+            {image && (
               <Image
                 src={image}
                 alt=""
                 className="nav__lg-img"
-                width={80}
-                height={80}
+                width={60}
+                height={60}
               />
-            )} */}
+            )}
             <LinkShare/>
           </div>
           {/* <a
