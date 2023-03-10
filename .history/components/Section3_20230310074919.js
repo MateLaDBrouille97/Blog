@@ -111,50 +111,46 @@ export default function Section3() {
         ></div>
       </div>
       <section className="container mx-auto md:px-20 py-16">
-      <div className="flex justify-center pb-8 mt-10 mb-20 section3__posts">
-            <h1 className="font-bold text-4xl py-8 text-center section3__posts-title">
-              Useful Hacks
-            </h1>
-      
-          </div>
-       <div className="section3__container">
-          
-          <div className=" swiper-containergrid md:grid-cols-1 lg:grid-cols-2 gap-14">
-            <Swiper
-              className="postLine__container"
-              spaceBetween={10}
-              autoplay={{
-                delay: 6000,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              breakpoints={{
-                576: {
-                  slidesPerView: 1,
-                },
-                768: {
-                  slidesPerView: 2,
-                },
-              }}
-              modules={[Pagination]}
-            >
-              {dataSort &&
-                dataSort.slice(0, 6).map((post, index) => (
-                  <SwiperSlide key={index}>
-                    <PostLine post={post} key={post.id} />
-                  </SwiperSlide>
-                ))}
-            </Swiper>
-          </div>
-          <div className="section3__view">
-            <Link href={`/Categories/USEFULHACKS`} legacyBehavior>
-              <a className="font-bold text-xl py-8 text-center section3__view-title">
-                {" "}
-                View More
-              </a>
-            </Link>
-          </div>
+        <div className="flex justify-center pb-8 mt-10 mb-20 section1__posts">
+          <h1 className="font-bold text-4xl py-8 text-center section1__posts-title">
+            Useful Hacks
+          </h1>
+        </div>
+
+        <Swiper
+        className="postLine__container"
+        spaceBetween={10}
+          autoplay={{
+            delay: 6000,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            576: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+          }}
+          modules={[Pagination]}
+        >
+          {dataSort &&
+            dataSort.slice(0, 5).map((post, index) => (
+              <SwiperSlide className="grid md:grid-cols-1 lg:grid-cols-2 gap-14" key={index}>
+                <PostLine    post={post} key={post.id} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+        
+        <div className="section3__view">
+          <Link href={`/Categories/USEFULHACKS`} legacyBehavior>
+            <a className="font-bold text-xl py-8 text-center section3__view-title">
+              {" "}
+              View More
+            </a>
+          </Link>
         </div>
       </section>
     </>

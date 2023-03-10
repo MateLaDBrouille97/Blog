@@ -68,31 +68,6 @@
 .swiper-container {
   margin: 0 auto;
 }
-
-.section3__container{
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.section3__posts{
- 
-  border-bottom: solid 3px rgb(213, 211, 211);
-  position:relative;   
-}
-
-.section3__posts-title{
-  
-   position:absolute;
-   bottom: -30px;
-   z-index: 10;
-   background-color: #ffffffdc;
-   padding:10px;
-   display:flex;
-   justify-content: center;
-   align-items: center;
-}
  
 
 @media screen and (max-width: 992px) {
@@ -102,7 +77,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 890px;
+    max-width: 900px;
     min-width: 325px;
   }
 
@@ -127,7 +102,6 @@
     max-width: 690px;
     min-width: 325px;
   }
-
 }
 
 @media screen and (max-width: 568px) {
@@ -139,8 +113,6 @@
     max-width: 520px;
     min-width: 325px;
   }
-
-
 }
 
 /* For small devices */

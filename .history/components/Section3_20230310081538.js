@@ -111,14 +111,12 @@ export default function Section3() {
         ></div>
       </div>
       <section className="container mx-auto md:px-20 py-16">
-      <div className="flex justify-center pb-8 mt-10 mb-20 section3__posts">
-            <h1 className="font-bold text-4xl py-8 text-center section3__posts-title">
+        <div className="section3__container">
+          <div className="flex justify-center pb-8 mt-10 mb-20 section1__posts">
+            <h1 className="font-bold text-4xl py-8 text-center section1__posts-title">
               Useful Hacks
             </h1>
-      
           </div>
-       <div className="section3__container">
-          
           <div className=" swiper-containergrid md:grid-cols-1 lg:grid-cols-2 gap-14">
             <Swiper
               className="postLine__container"
