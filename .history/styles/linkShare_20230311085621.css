@@ -119,6 +119,16 @@
 @media screen and (max-width: 640px) {
 
   /*============  Show Menu  ===========*/
+/* 
+  .link{
+    position:relative;
+    left:1rem;
+    bottom: 0.30rem;
+    font-size:1.25rem;
+    cursor:pointer;
+    z-index: 100;
+} */
+
 
 
 }

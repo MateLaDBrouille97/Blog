@@ -96,14 +96,9 @@
 }
 
 .nav_toggle{
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
-.nav__toggle-share{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /*=============== BREAKPOINTS ===============*/
 
@@ -191,15 +186,6 @@
 
     .noshow{
         visibility: hidden;
-    }
-
-    .share{
-        position: absolute;
-        left:1.3rem;
-        bottom: .5rem;
-        font-size:1.25rem;
-        cursor:pointer;
-        visibility:visible
     }
 }
 

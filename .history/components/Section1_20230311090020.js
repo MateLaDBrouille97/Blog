@@ -79,7 +79,7 @@ export default function Section1() {
 
 
   const bg = {
-    background: "url('/images/Squiggles - Colorful (5).png')no-repeat",
+    background: "url('/images/FancyPlants.png')no-repeat",
     backgroundPosition: "left bottom",
   };
   return (

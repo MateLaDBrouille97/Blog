@@ -169,7 +169,7 @@ const Header = () => {
           >
             <Icon icon="uil:apps" className="uil uil-apps"></Icon>
           </div>
-          <LinkShare className="share"/>
+          <LinkShare />
         </div>
       </nav>
     </header>

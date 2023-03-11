@@ -37,7 +37,8 @@
 
 .nav__list {
     display: flex;
-
+    justify-content: center;
+    align-items: center;
     column-gap: 2rem;
 }
 
@@ -82,10 +83,9 @@
 
 .nav__lg-img{
     /* width: 60px; */
-    border-radius: 2rem; 
-
+    /* border-radius: 2rem;  */
     margin: var(--mb-0-5);
-    
+         
 }
 
 
@@ -95,15 +95,7 @@
     box-shadow: 0 -1px 4px rgba(0,0,0,0.15);
 }
 
-.nav_toggle{
-    visibility: hidden;
-}
 
-.nav__toggle-share{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /*=============== BREAKPOINTS ===============*/
 
@@ -186,20 +178,10 @@
         bottom: .5rem;
         font-size:1.25rem;
         cursor:pointer;
-        visibility:visible
     }
 
     .noshow{
         visibility: hidden;
-    }
-
-    .share{
-        position: absolute;
-        left:1.3rem;
-        bottom: .5rem;
-        font-size:1.25rem;
-        cursor:pointer;
-        visibility:visible
     }
 }
 

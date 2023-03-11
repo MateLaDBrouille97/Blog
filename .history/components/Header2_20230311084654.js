@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import LinkShare from "./LinkShare";
 import { useRouter } from "next/router";
-import image from "../public/images/otomat logo-black-on-white.png";
+import image from "../public/images/otomat logo-black-on-white.png"
 
 // import Head from "next/head";
 
@@ -67,17 +67,19 @@ const Header = () => {
       <nav className="nav container">
         <div className="nav__logo-container">
           <div className="nav__logo">
-            <Link href={`/`} legacyBehavior>
-              {image && (
-                <Image
-                  src={image}
-                  alt=""
-                  className="nav__lg-img"
-                  width={100}
-                  height={20}
-                />
-              )}
-            </Link>
+          <Link href={`/`} legacyBehavior>
+             {image && (
+              <Image
+                src={image}
+                alt=""
+                className="nav__lg-img"
+                width={100}
+                height={20}
+              />
+            )}
+          </Link>
+           
+            
           </div>
           {/* <a
             href="#home"
@@ -93,68 +95,65 @@ const Header = () => {
         <div className={!toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className="nav__list grid">
             <li className="nav__item">
-              <Link href={`/`} legacyBehavior>
-                <a
-                  href="#home"
-                  onClick={() => setActiveNav("#home")}
-                  className={
-                    activeNav === "#home"
-                      ? "nav__link active-link"
-                      : "nav__link"
-                  }
-                >
-                  <i className="uil uil-estate nav__icon"></i> Home
-                </a>
+            <Link href={`/`} legacyBehavior>
+              <a
+                href="#home"
+                onClick={() => setActiveNav("#home")}
+                className={
+                  activeNav === "#home" ? "nav__link active-link" : "nav__link"
+                }
+              >
+                <i className="uil uil-estate nav__icon"></i> Home
+              </a>
+            </Link>
+            </li>
+
+            <li className="nav__item">
+            <Link href={`/Categories/USEFULHACKS`} legacyBehavior>
+              <a
+                href="#usefulHacks"
+                onClick={() => setActiveNav("#usefulHacks")}
+                className={
+                  activeNav === "#usefulHacks" ? "nav__link active-link" : "nav__link"
+                }
+              >
+                <i className="uil uil-user nav__icon"></i> UseFul Hacks
+              </a>
               </Link>
             </li>
 
             <li className="nav__item">
-              <Link href={`/Categories/USEFULHACKS`} legacyBehavior>
-                <a
-                  href="#usefulHacks"
-                  onClick={() => setActiveNav("#usefulHacks")}
-                  className={
-                    activeNav === "#usefulHacks"
-                      ? "nav__link active-link"
-                      : "nav__link"
-                  }
-                >
-                  <i className="uil uil-user nav__icon"></i> UseFul Hacks
-                </a>
+            <Link href={`/Categories/PROJECTS`} legacyBehavior>
+              <a
+                href="#projects"
+                onClick={() => setActiveNav("#projects")}
+                className={
+                  activeNav === "#projects"
+                    ? "nav__link active-link"
+                    : "nav__link"
+                }
+              >
+                <i className="uil uil-scenery nav__icon"></i> Projects
+              </a>
               </Link>
             </li>
 
             <li className="nav__item">
-              <Link href={`/Categories/PROJECTS`} legacyBehavior>
-                <a
-                  href="#projects"
-                  onClick={() => setActiveNav("#projects")}
-                  className={
-                    activeNav === "#projects"
-                      ? "nav__link active-link"
-                      : "nav__link"
-                  }
-                >
-                  <i className="uil uil-scenery nav__icon"></i> Projects
-                </a>
+            <Link href={`/Categories/NEWS`} legacyBehavior>
+              <a
+                href="#news"
+                onClick={() => setActiveNav("#news")}
+                className={
+                  activeNav === "#news"
+                    ? "nav__link active-link"
+                    : "nav__link"
+                }
+              >
+                <i className="uil uil-scenery nav__icon"></i>IT News
+              </a>
               </Link>
             </li>
-
-            <li className="nav__item">
-              <Link href={`/Categories/NEWS`} legacyBehavior>
-                <a
-                  href="#news"
-                  onClick={() => setActiveNav("#news")}
-                  className={
-                    activeNav === "#news"
-                      ? "nav__link active-link"
-                      : "nav__link"
-                  }
-                >
-                  <i className="uil uil-scenery nav__icon"></i>IT News
-                </a>
-              </Link>
-            </li>
+            
           </ul>
           <Icon
             icon="uil:times"
@@ -162,15 +161,11 @@ const Header = () => {
             onClick={() => showMenu(!toggle)}
           ></Icon>
         </div>
-        <div className="nav__toggle-share">
-          <div
-            className={toggle == true ? "nav_toggle" : "noshow"}
-            onClick={() => showMenu(!toggle)}
-          >
-            <Icon icon="uil:apps" className="uil uil-apps"></Icon>
-          </div>
-          <LinkShare className="share"/>
+        
+        <div className={toggle==true?"nav_toggle":"noshow"} onClick={() => showMenu(!toggle)}>
+          <Icon icon="uil:apps" className="uil uil-apps"></Icon>
         </div>
+        <LinkShare/>
       </nav>
     </header>
   );
