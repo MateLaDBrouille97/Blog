@@ -7,7 +7,7 @@ import { Icon } from "@iconify/react";
 import LinkShare from "./LinkShare";
 import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
-
+import BlogTitle from "./_child/BlogTitle";
 
 // import Head from "next/head";
 

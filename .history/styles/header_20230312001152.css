@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .nav{
@@ -73,13 +74,6 @@
 
 }
 
-.nav__logo-container2{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* margin-top:50px; */
-}
-
 .nav__logo{
     display: flex;
     justify-content: space-between;
@@ -90,15 +84,7 @@
     /* width: 60px; */
     border-radius: 2rem; 
     cursor: pointer;
-    margin: var(--mb-0-5);
-    
-}
 
-
-.nav__lg-img2{
-    /* width: 60px; */
-    /* border-radius: 2rem;  */
-    cursor: pointer;
     margin: var(--mb-0-5);
     
 }

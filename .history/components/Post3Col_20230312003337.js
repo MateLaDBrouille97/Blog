@@ -80,9 +80,9 @@ export default function Post3col({ post }) {
           </Link>
         </div>
         <div className="info flex justify-center flex-col py-4">
-          <div className="cat flex gap-6 pt-2 pb-2">
+          <div className="cat flex gap-6">
             <Link href={`/Categories/${post?.category}`} legacyBehavior>
-              <a className="text-orange-600 hover:text-orange-800">
+              <a className="text-orange-600 hover:text-orange-800 pt-4 pb-4">
                 {post?.category || "UnKnown"}
               </a>
             </Link>
@@ -94,7 +94,7 @@ export default function Post3col({ post }) {
           </div>
           <div className="title">
             <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-              <a className="text-3xl font-bold text-gray-800 hover:text-gray-600">
+              <a className="text-xl font-bold text-gray-800 hover:text-gray-600">
                 {post?.title}
               </a>
             </Link>

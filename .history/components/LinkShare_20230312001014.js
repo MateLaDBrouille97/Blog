@@ -30,8 +30,8 @@ const LinkShare = () => {
     event.preventDefault();
     router.push(`/Categories/${query}`);
     setQuery("");
-    const modal = document.querySelector(".active-modal");
-    modal.style.display = "none";
+    // const modal = document.querySelector(".active-modal");
+    // modal.style.display = "none";
   }
 
   return (

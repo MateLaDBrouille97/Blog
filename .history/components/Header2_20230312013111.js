@@ -7,7 +7,7 @@ import { Icon } from "@iconify/react";
 import LinkShare from "./LinkShare";
 import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
-
+import BlogTitle from "./_child/BlogTitle";
 
 // import Head from "next/head";
 
@@ -66,6 +66,7 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="nav container">
+        
         <div className="nav__logo-container">
           <div className="nav__logo">
             <Link href={`/`} legacyBehavior>

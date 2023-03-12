@@ -78,7 +78,7 @@ export default function PostLine({ post }) {
       <div className="info flex justify-center flex-col py-4 ">
         <div className="cat flex gap-6 pb-5">
           <Link href={`/Categories/${post?.category}`} legacyBehavior>
-            <a className="text-orange-600 hover:text-orange-800">
+            <a className="pl-3 text-orange-600 hover:text-orange-800">
               {post?.category || "UnKnown"}
             </a>
           </Link>

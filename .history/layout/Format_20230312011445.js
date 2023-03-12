@@ -4,14 +4,15 @@ import Header2 from "@/components/Header2";
 import Footer from "@/components/Footer";
 import Footer2 from "@/components/Footer2";
 import Head from "next/head";
-
+import BlogTitle from "@/components/_child/BlogTitle";
 
 
 export default function Format({ children }) {
   return (
     
-        <>
+        <><BlogTitle/>
           <Head>Blog</Head>
+          
           <Header2 />
           <main className="main">{children}</main>
           <Footer2 />

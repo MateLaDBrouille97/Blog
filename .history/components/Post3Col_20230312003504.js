@@ -94,7 +94,7 @@ export default function Post3col({ post }) {
           </div>
           <div className="title">
             <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-              <a className="text-3xl font-bold text-gray-800 hover:text-gray-600">
+              <a className="text-2xl font-bold text-gray-800 hover:text-gray-600">
                 {post?.title}
               </a>
             </Link>
