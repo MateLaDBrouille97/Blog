@@ -1,5 +1,6 @@
 .postCol3-description{
     text-align: justify;
+    padding-top:4px;
 }
 
 .section2__posts{
@@ -11,3 +12,6 @@
   padding:10px;
 }
 
+.post3col-title{
+  border-bottom: solid 3px rgb(213, 211, 211);
+}

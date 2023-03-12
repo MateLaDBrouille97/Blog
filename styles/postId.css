@@ -59,7 +59,7 @@
 
 
 .section__article-postSlug{
-  margin-top: 20px;
+  margin-top: 60px;
 }
 
 
@@ -67,7 +67,8 @@
     display:flex;
     flex-direction: row;
     justify-content:start;
-    padding-bottom: 5px;
+    padding-bottom: 3px;
+    border-bottom: solid 3px rgb(213, 211, 211);
 }
 
 .postLine__container{

@@ -1,0 +1,16 @@
+.postCol3-description{
+    text-align: justify;
+}
+
+.section2__posts{
+    border-bottom: solid 3px rgb(213, 211, 211);
+}
+
+.postCol3-container{
+  margin:10px;
+  padding:10px;
+}
+
+.post3col-title{
+  border-bottom: solid 3px rgb(213, 211, 211);
+}

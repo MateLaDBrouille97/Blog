@@ -11,12 +11,13 @@
      /* padding:10px; */
      padding-top:10px;
      padding-bottom: 10px;
-     
-
+     border-bottom: solid 3px rgb(213, 211, 211);
 }
 
 .slide__description{
      text-align: justify;
+     padding-top:4px;
+     
 }
 
 .section1__posts{

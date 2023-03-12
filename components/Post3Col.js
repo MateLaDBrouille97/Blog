@@ -92,14 +92,16 @@ export default function Post3col({ post }) {
               </a>
             </Link>
           </div>
-          <div className="title">
+          <div className="title post3col-title">
             <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-              <a className="text-3xl font-bold text-gray-800 hover:text-gray-600">
+              <a className="text-3xl font-bold text-gray-800 hover:text-gray-600 ">
                 {post?.title}
               </a>
             </Link>
           </div>
-          <p className="text-gray-500 py-3 postCol3-description">{post?.description}</p>
+          <div className="postCol3-description">
+            <p className="text-gray-500 py-3 ">{post?.description}</p>
+          </div>
           {user ? <Author author={user} /> : <></>}
         </div>
       </div>

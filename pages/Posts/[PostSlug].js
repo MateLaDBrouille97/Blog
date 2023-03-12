@@ -40,8 +40,9 @@ import AuthorDetails from "@/components/_child/AuthorDetail";
 import "highlight.js/styles/atom-one-dark.css";
 import Youtube from "@/components/Youtube";
 import Para from '@/components/_child/Para';
+import Video from "@/components/Video";
 
-const components = { Image,Button,Youtube,Para, };
+const components = { Image,Button,Youtube,Para,Video };
 
 export default function Page({ post2 }) {
   const router = useRouter();

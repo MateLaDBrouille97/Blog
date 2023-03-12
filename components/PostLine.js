@@ -88,16 +88,19 @@ export default function PostLine({ post }) {
             </a>
           </Link>
         </div>
-        <div className="title">
+        <div className="title postLine__title">
           <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-            <a className="postLine__title pl-3 text-3xl md:text-4xl font-bold text-gray-800 hover:text-gray-600">
+            <a className="text-3xl md:text-4xl font-bold text-gray-800 hover:text-gray-600">
               {post?.title}
             </a>
           </Link>
         </div>
-        <p className="text-gray-500 py-3 pr-3 postCol3-description">
+        <div className="postCol3-description pt-3">
+           <p className="text-gray-500 py-3 pr-3 ">
           {post?.description}
         </p>
+        </div>
+       
         {user ? <Author author={user} /> : <></>}
       </div>
     </div>
