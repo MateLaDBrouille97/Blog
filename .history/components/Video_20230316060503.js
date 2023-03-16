@@ -5,8 +5,8 @@ export default function Video({ video }) {
     <div className="container__youtube">
       <video
       
-       controls
-       autoPlay
+        loop
+        allow="autoplay; encrypted-media"
         title="Embedded YouTube video"
         className="frame"
       >
