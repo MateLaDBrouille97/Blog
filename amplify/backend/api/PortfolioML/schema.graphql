@@ -114,5 +114,9 @@ type User @model @auth(rules: [{allow: public}]) {
   Links: [Link] @hasMany(indexName: "byUser", fields: ["id"])
   avatar: String
   BlogPosts: [BlogPost] @hasMany(indexName: "byUser", fields: ["id"])
+  facebook: String
+  twitter: String
+  telegram: String
+  linkedIn: String
 }
  

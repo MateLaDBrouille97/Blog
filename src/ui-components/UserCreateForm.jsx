@@ -182,6 +182,10 @@ export default function UserCreateForm(props) {
     descriptionLong: undefined,
     CV: undefined,
     avatar: undefined,
+    facebook: undefined,
+    twitter: undefined,
+    telegram: undefined,
+    linkedIn: undefined,
   };
   const [firstName, setFirstName] = React.useState(initialValues.firstName);
   const [lastName, setLastName] = React.useState(initialValues.lastName);
@@ -205,6 +209,10 @@ export default function UserCreateForm(props) {
   );
   const [CV, setCV] = React.useState(initialValues.CV);
   const [avatar, setAvatar] = React.useState(initialValues.avatar);
+  const [facebook, setFacebook] = React.useState(initialValues.facebook);
+  const [twitter, setTwitter] = React.useState(initialValues.twitter);
+  const [telegram, setTelegram] = React.useState(initialValues.telegram);
+  const [linkedIn, setLinkedIn] = React.useState(initialValues.linkedIn);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setFirstName(initialValues.firstName);
@@ -224,6 +232,10 @@ export default function UserCreateForm(props) {
     setDescriptionLong(initialValues.descriptionLong);
     setCV(initialValues.CV);
     setAvatar(initialValues.avatar);
+    setFacebook(initialValues.facebook);
+    setTwitter(initialValues.twitter);
+    setTelegram(initialValues.telegram);
+    setLinkedIn(initialValues.linkedIn);
     setErrors({});
   };
   const [currentTitleValue, setCurrentTitleValue] = React.useState(undefined);
@@ -245,6 +257,10 @@ export default function UserCreateForm(props) {
     descriptionLong: [],
     CV: [],
     avatar: [],
+    facebook: [],
+    twitter: [],
+    telegram: [],
+    linkedIn: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -280,6 +296,10 @@ export default function UserCreateForm(props) {
           descriptionLong,
           CV,
           avatar,
+          facebook,
+          twitter,
+          telegram,
+          linkedIn,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -344,6 +364,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.firstName ?? value;
@@ -382,6 +406,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.lastName ?? value;
@@ -420,6 +448,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -459,6 +491,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.phone ?? value;
@@ -497,6 +533,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.instagram ?? value;
@@ -535,6 +575,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -573,6 +617,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.image ?? value;
@@ -611,6 +659,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.github ?? value;
@@ -646,6 +698,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             values = result?.title ?? values;
@@ -713,6 +769,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.experience ?? value;
@@ -760,6 +820,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.projectNumber ?? value;
@@ -798,6 +862,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.sub ?? value;
@@ -836,6 +904,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.support ?? value;
@@ -874,6 +946,10 @@ export default function UserCreateForm(props) {
               descriptionLong: value,
               CV,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.descriptionLong ?? value;
@@ -912,6 +988,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV: value,
               avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.CV ?? value;
@@ -950,6 +1030,10 @@ export default function UserCreateForm(props) {
               descriptionLong,
               CV,
               avatar: value,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
             };
             const result = onChange(modelFields);
             value = result?.avatar ?? value;
@@ -963,6 +1047,174 @@ export default function UserCreateForm(props) {
         errorMessage={errors.avatar?.errorMessage}
         hasError={errors.avatar?.hasError}
         {...getOverrideProps(overrides, "avatar")}
+      ></TextField>
+      <TextField
+        label="Facebook"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              email,
+              phone,
+              instagram,
+              description,
+              image,
+              github,
+              title,
+              experience,
+              projectNumber,
+              sub,
+              support,
+              descriptionLong,
+              CV,
+              avatar,
+              facebook: value,
+              twitter,
+              telegram,
+              linkedIn,
+            };
+            const result = onChange(modelFields);
+            value = result?.facebook ?? value;
+          }
+          if (errors.facebook?.hasError) {
+            runValidationTasks("facebook", value);
+          }
+          setFacebook(value);
+        }}
+        onBlur={() => runValidationTasks("facebook", facebook)}
+        errorMessage={errors.facebook?.errorMessage}
+        hasError={errors.facebook?.hasError}
+        {...getOverrideProps(overrides, "facebook")}
+      ></TextField>
+      <TextField
+        label="Twitter"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              email,
+              phone,
+              instagram,
+              description,
+              image,
+              github,
+              title,
+              experience,
+              projectNumber,
+              sub,
+              support,
+              descriptionLong,
+              CV,
+              avatar,
+              facebook,
+              twitter: value,
+              telegram,
+              linkedIn,
+            };
+            const result = onChange(modelFields);
+            value = result?.twitter ?? value;
+          }
+          if (errors.twitter?.hasError) {
+            runValidationTasks("twitter", value);
+          }
+          setTwitter(value);
+        }}
+        onBlur={() => runValidationTasks("twitter", twitter)}
+        errorMessage={errors.twitter?.errorMessage}
+        hasError={errors.twitter?.hasError}
+        {...getOverrideProps(overrides, "twitter")}
+      ></TextField>
+      <TextField
+        label="Telegram"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              email,
+              phone,
+              instagram,
+              description,
+              image,
+              github,
+              title,
+              experience,
+              projectNumber,
+              sub,
+              support,
+              descriptionLong,
+              CV,
+              avatar,
+              facebook,
+              twitter,
+              telegram: value,
+              linkedIn,
+            };
+            const result = onChange(modelFields);
+            value = result?.telegram ?? value;
+          }
+          if (errors.telegram?.hasError) {
+            runValidationTasks("telegram", value);
+          }
+          setTelegram(value);
+        }}
+        onBlur={() => runValidationTasks("telegram", telegram)}
+        errorMessage={errors.telegram?.errorMessage}
+        hasError={errors.telegram?.hasError}
+        {...getOverrideProps(overrides, "telegram")}
+      ></TextField>
+      <TextField
+        label="Linked in"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              email,
+              phone,
+              instagram,
+              description,
+              image,
+              github,
+              title,
+              experience,
+              projectNumber,
+              sub,
+              support,
+              descriptionLong,
+              CV,
+              avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.linkedIn ?? value;
+          }
+          if (errors.linkedIn?.hasError) {
+            runValidationTasks("linkedIn", value);
+          }
+          setLinkedIn(value);
+        }}
+        onBlur={() => runValidationTasks("linkedIn", linkedIn)}
+        errorMessage={errors.linkedIn?.errorMessage}
+        hasError={errors.linkedIn?.hasError}
+        {...getOverrideProps(overrides, "linkedIn")}
       ></TextField>
       <Flex
         justifyContent="space-between"

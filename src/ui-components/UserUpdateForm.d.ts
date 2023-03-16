@@ -30,6 +30,10 @@ export declare type UserUpdateFormInputValues = {
     descriptionLong?: string;
     CV?: string;
     avatar?: string;
+    facebook?: string;
+    twitter?: string;
+    telegram?: string;
+    linkedIn?: string;
 };
 export declare type UserUpdateFormValidationValues = {
     firstName?: ValidationFunction<string>;
@@ -48,6 +52,10 @@ export declare type UserUpdateFormValidationValues = {
     descriptionLong?: ValidationFunction<string>;
     CV?: ValidationFunction<string>;
     avatar?: ValidationFunction<string>;
+    facebook?: ValidationFunction<string>;
+    twitter?: ValidationFunction<string>;
+    telegram?: ValidationFunction<string>;
+    linkedIn?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserUpdateFormOverridesProps = {
@@ -68,6 +76,10 @@ export declare type UserUpdateFormOverridesProps = {
     descriptionLong?: FormProps<TextFieldProps>;
     CV?: FormProps<TextFieldProps>;
     avatar?: FormProps<TextFieldProps>;
+    facebook?: FormProps<TextFieldProps>;
+    twitter?: FormProps<TextFieldProps>;
+    telegram?: FormProps<TextFieldProps>;
+    linkedIn?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserUpdateFormProps = React.PropsWithChildren<{
     overrides?: UserUpdateFormOverridesProps | undefined | null;

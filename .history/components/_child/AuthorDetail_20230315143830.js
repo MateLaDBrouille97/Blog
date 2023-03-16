@@ -2,7 +2,7 @@ import Image from 'next/image';
 // import SocialIconLink from '../SocialIconLink/SocialIconLink';
 // import bmcButton from '../../../public/images/bmc-button.png';
 import React, { useEffect, useState } from "react";
-import SocialIconLink from './SocialIconLink';
+import SocialIconLink from "./_child/SocialIconLink";
 import im1 from "../../public/ManuelTL2.jpg";
 import Link from "next/link";
 import { useUserContext } from "@/contexts/UserContext";
@@ -69,7 +69,7 @@ const AuthorDetails = ({ author }) => {
           <h2 className="text-4xl">{author?.firstName}</h2>
 
           <div className="flex flex-row my-3 justify-center sm:justify-start">
-            <SocialIconLink instagram={author?.instagram} github={author?.github} facebook={author?.facebook} twitter={author?.twitter} linkedIn={author?.linkedIn} telegram={author?.telegram}/>
+            <SocialIconLink/>
           {/* <ul className="icons-share">
               <FacebookShareButton
                 // url={href}

@@ -894,6 +894,34 @@ export const schema = {
                         ]
                     }
                 },
+                "facebook": {
+                    "name": "facebook",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "twitter": {
+                    "name": "twitter",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "telegram": {
+                    "name": "telegram",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "linkedIn": {
+                    "name": "linkedIn",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -980,5 +1008,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "76838781249b111cfdd463d336674530"
+    "version": "67a07556b70d2a1c4921960f7eb3ca4d"
 };

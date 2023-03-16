@@ -313,6 +313,10 @@ type EagerUser = {
   readonly Links?: (Link | null)[] | null;
   readonly avatar?: string | null;
   readonly BlogPosts?: (BlogPost | null)[] | null;
+  readonly facebook?: string | null;
+  readonly twitter?: string | null;
+  readonly telegram?: string | null;
+  readonly linkedIn?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -345,6 +349,10 @@ type LazyUser = {
   readonly Links: AsyncCollection<Link>;
   readonly avatar?: string | null;
   readonly BlogPosts: AsyncCollection<BlogPost>;
+  readonly facebook?: string | null;
+  readonly twitter?: string | null;
+  readonly telegram?: string | null;
+  readonly linkedIn?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

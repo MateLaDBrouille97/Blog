@@ -69,7 +69,7 @@ const AuthorDetails = ({ author }) => {
           <h2 className="text-4xl">{author?.firstName}</h2>
 
           <div className="flex flex-row my-3 justify-center sm:justify-start">
-            <SocialIconLink instagram={author?.instagram} github={author?.github} facebook={author?.facebook} twitter={author?.twitter} linkedIn={author?.linkedIn} telegram={author?.telegram}/>
+            <SocialIconLink/>
           {/* <ul className="icons-share">
               <FacebookShareButton
                 // url={href}
