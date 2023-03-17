@@ -1,4 +1,5 @@
 const withVideos = require('next-videos');
+
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
@@ -11,6 +12,7 @@ const withMDX = require('@next/mdx')({
     // providerImportSource: "@mdx-js/react",
   },
 })
+const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -63,6 +65,27 @@ const nextConfig = {
 }
 
 // module.exports = nextConfig
+
 module.exports = withMDX(
   withVideos({
-    ...nextConfig}))
+    ...nextConfig,
+    async rewrites() {
+      return [
+        {
+          source: '/public',
+          destination: async ({ req, res, params }) => {
+            const s3Client = new S3Client({ region: 'us-east-1' });
+            const command = new GetObjectCommand({
+              Bucket: "portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging",
+              Key: `/public/images/${params.path.join('/')}.mp4`,
+            });
+            const { Body } = await s3Client.send(command);
+            res.setHeader('Content-Type', 'video/mp4');
+            res.setHeader('Content-Length', Body.length);
+            res.send(Body);
+          },
+        },
+      ];
+    },
+  })
+);

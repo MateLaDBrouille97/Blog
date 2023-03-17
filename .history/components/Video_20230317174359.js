@@ -30,7 +30,7 @@ export default function Video({ video }) {
     <div className="container__youtube">
       <video 
        controls
-       autoPlay
+       autoplay
        className="frame"
        src={video1}
       />

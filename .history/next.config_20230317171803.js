@@ -63,6 +63,17 @@ const nextConfig = {
 }
 
 // module.exports = nextConfig
+
 module.exports = withMDX(
   withVideos({
-    ...nextConfig}))
+    ...nextConfig,
+    async rewrites() {
+      return [
+        {
+          source: '/public/images',
+          
+        },
+      ];
+    },
+  })
+);

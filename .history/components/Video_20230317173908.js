@@ -30,12 +30,11 @@ export default function Video({ video }) {
     <div className="container__youtube">
       <video 
        controls
-       autoPlay
+       autoplay
        className="frame"
-       src={video1}
-      />
-        {/* <source  type="video/mp4" /> */}
-      {/* </video> */}
+      >
+        <source src={require(video1)} type="video/mp4" />
+      </video>
     </div>
   );
 }

@@ -65,4 +65,8 @@ const nextConfig = {
 // module.exports = nextConfig
 module.exports = withMDX(
   withVideos({
-    ...nextConfig}))
+    ...nextConfig,
+    webpack(config, options) {
+      return config
+    }
+  }))

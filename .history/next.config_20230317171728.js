@@ -1,4 +1,4 @@
-const withVideos = require('next-videos');
+
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
@@ -63,6 +63,17 @@ const nextConfig = {
 }
 
 // module.exports = nextConfig
+
 module.exports = withMDX(
   withVideos({
-    ...nextConfig}))
+    ...nextConfig,
+    async rewrites() {
+      return [
+        {
+          source: '/public/images',
+          
+        },
+      ];
+    },
+  })
+);
