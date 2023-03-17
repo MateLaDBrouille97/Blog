@@ -11,6 +11,10 @@ const withMDX = require('@next/mdx')({
     // providerImportSource: "@mdx-js/react",
   },
 })
+const withVideos = require('next-videos');
+const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
+
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -18,9 +22,6 @@ const nextConfig = {
   reactStrictMode: true,
   eslint: {
     dirs: ['pages', 'utils'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
-  },
-  videos:{
-    dirs:'public',
   },
   images: {
     domains:["portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging.s3.amazonaws.com",]
@@ -63,4 +64,26 @@ const nextConfig = {
 }
 
 // module.exports = nextConfig
-module.exports = withMDX(nextConfig)
+module.exports = withMDX(
+  withVideos({
+    ...nextConfig,
+    async rewrites() {
+      return [
+        {
+          source: '/videos/:path*',
+          destination: async ({ req, res, params }) => {
+            const s3Client = new S3Client({ region: process.env.AWS_REGION });
+            const command = new GetObjectCommand({
+              Bucket: process.env.S3_BUCKET_NAME,
+              Key: `videos/${params.path.join('/')}`,
+            });
+            const { Body } = await s3Client.send(command);
+            res.setHeader('Content-Type', 'video/mp4');
+            res.setHeader('Content-Length', Body.length);
+            res.send(Body);
+          },
+        },
+      ];
+    },
+  })
+);

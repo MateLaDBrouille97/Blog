@@ -20,7 +20,7 @@ const nextConfig = {
     dirs: ['pages', 'utils'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
   },
   videos:{
-    dirs:'public',
+    domains:'public',
   },
   images: {
     domains:["portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging.s3.amazonaws.com",]
