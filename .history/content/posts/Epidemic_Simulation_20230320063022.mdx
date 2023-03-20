@@ -20,7 +20,6 @@ Boids are artificial life objects that were developed by Craig Reynolds in 1986.
 <br />
 3-Cohesion: Boids try to stay close to nearby Boids to move together in a group. This helps them to simulate the behavior of bird flocks or fish schools, where individual birds or fish move together as a cohesive unit.
 <br />
-
 ```java
 public Boid() {
         if(!hasInfected) {
@@ -179,7 +178,7 @@ Vector align(ArrayList<Boid> flock) {
 ```
 <br />
 This is a Java code for simulating the behavior of a flock of birds, specifically for simulating the spread of a disease. The flock is represented as an ArrayList of Boid objects, and each Boid has properties such as position, velocity, immunity, and health status.
-The code begins with a method called "Vector align(ArrayList **Boid** flock)," which calculates the alignment of each Boid in the flock by summing up the velocities of nearby Boids within a certain perception radius. If a Boid has a disease, the code reduces its lifespan and determines whether it should die or recover based on a mortality rate. If a Boid is immune, the code reduces its immunity lifespan and determines whether it should lose its immunity.
+The code begins with a method called "Vector align(ArrayList<Boid> flock)," which calculates the alignment of each Boid in the flock by summing up the velocities of nearby Boids within a certain perception radius. If a Boid has a disease, the code reduces its lifespan and determines whether it should die or recover based on a mortality rate. If a Boid is immune, the code reduces its immunity lifespan and determines whether it should lose its immunity.
 If a Boid is not a paramedic or a paramedic not locked onto a patient, the code checks the nearby Boids and adds their velocities to the steering vector if they are within the perception radius. The code also simulates viral transmission, immunity gain, immunity loss, and paramedic curing. Finally, the code updates the Boid's position and velocity based on its steering vector and other factors.
 There are some sound effects that are played during certain events, such as when a Boid recovers or is diagnosed with a disease. There is also a siren sound effect that is played when a paramedic is locked onto a patient.
 Overall, this code is a simulation of a flock of birds with disease spread and immunity gain/loss dynamics. The code also has some elements of a game, with sound effects and a paramedic feature.
@@ -219,7 +218,6 @@ The method initializes variables for the perception radius, the total number of 
 If the current Boid is not a paramedic or if it is a paramedic but not currently locked onto a patient, then the method proceeds to calculate the steering force based on the nearby Boids. If there are nearby Boids, then the steering force is divided by the total number of nearby Boids to calculate the average position. If there are no nearby Boids, then the steering force is directed towards the patient's position. In either case, the steering force is then adjusted to take into account the current Boid's position and velocity, and is limited by a maximum force determined by the maxForce and isParamedic variables.
 Finally, the method returns the steering force as a Vector object.
 <br />
-
 ```java
 
  Vector separation(ArrayList<Boid> flock) {
@@ -376,5 +374,6 @@ The third method, "draw()", takes a Graphics2D object and uses it to draw the bo
 <br />
 
  
-<br /><br />
+</p>
+<br />
 
