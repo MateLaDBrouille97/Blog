@@ -2,10 +2,24 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
+const SubCategory = {
+  "PRODUCTIVITY": "PRODUCTIVITY",
+  "ASSISTANTS": "ASSISTANTS",
+  "RESEARCH_TOOLS": "RESEARCH_TOOLS",
+  "COPYWRITING": "COPYWRITING",
+  "APP": "APP",
+  "WEB": "WEB",
+  "AI": "AI",
+  "ANALYZE": "ANALYZE",
+  "CODE_TOOLS": "CODE_TOOLS",
+  "OTHER": "OTHER"
+};
+
 const BlogCategory = {
   "USEFULHACKS": "USEFULHACKS",
   "PROJECTS": "PROJECTS",
-  "NEWS": "NEWS"
+  "NEWS": "NEWS",
+  "OPINIONS": "OPINIONS"
 };
 
 const SkillType = {
@@ -42,6 +56,7 @@ export {
   Skill,
   PortfolioPost,
   User,
+  SubCategory,
   BlogCategory,
   SkillType,
   QualificationType,

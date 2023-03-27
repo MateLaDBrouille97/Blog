@@ -2,10 +2,24 @@ import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-
 // @ts-ignore
 import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/datastore";
 
+export enum SubCategory {
+  PRODUCTIVITY = "PRODUCTIVITY",
+  ASSISTANTS = "ASSISTANTS",
+  RESEARCH_TOOLS = "RESEARCH_TOOLS",
+  COPYWRITING = "COPYWRITING",
+  APP = "APP",
+  WEB = "WEB",
+  AI = "AI",
+  ANALYZE = "ANALYZE",
+  CODE_TOOLS = "CODE_TOOLS",
+  OTHER = "OTHER"
+}
+
 export enum BlogCategory {
   USEFULHACKS = "USEFULHACKS",
   PROJECTS = "PROJECTS",
-  NEWS = "NEWS"
+  NEWS = "NEWS",
+  OPINIONS = "OPINIONS"
 }
 
 export enum SkillType {
@@ -76,6 +90,7 @@ type EagerBlogPost = {
   readonly userID: string;
   readonly category?: BlogCategory | keyof typeof BlogCategory | null;
   readonly slug?: string | null;
+  readonly subCategory?: SubCategory | keyof typeof SubCategory | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -93,6 +108,7 @@ type LazyBlogPost = {
   readonly userID: string;
   readonly category?: BlogCategory | keyof typeof BlogCategory | null;
   readonly slug?: string | null;
+  readonly subCategory?: SubCategory | keyof typeof SubCategory | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

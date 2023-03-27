@@ -127,6 +127,15 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "subCategory": {
+                    "name": "subCategory",
+                    "isArray": false,
+                    "type": {
+                        "enum": "SubCategory"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -966,12 +975,28 @@ export const schema = {
         }
     },
     "enums": {
+        "SubCategory": {
+            "name": "SubCategory",
+            "values": [
+                "PRODUCTIVITY",
+                "ASSISTANTS",
+                "RESEARCH_TOOLS",
+                "COPYWRITING",
+                "APP",
+                "WEB",
+                "AI",
+                "ANALYZE",
+                "CODE_TOOLS",
+                "OTHER"
+            ]
+        },
         "BlogCategory": {
             "name": "BlogCategory",
             "values": [
                 "USEFULHACKS",
                 "PROJECTS",
-                "NEWS"
+                "NEWS",
+                "OPINIONS"
             ]
         },
         "SkillType": {
@@ -1008,5 +1033,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "67a07556b70d2a1c4921960f7eb3ca4d"
+    "version": "c5224bae77e8489a0191373d9cbd442e"
 };
