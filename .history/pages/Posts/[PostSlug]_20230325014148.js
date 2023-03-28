@@ -48,11 +48,11 @@ export default function Page({ post2 }) {
   const router = useRouter();
   const postSlug = router?.query?.PostSlug;
   const { data } = useBlogContext();
-  const [post1, setPost] = useState([]);
+  const [post1, setPost] = useState("");
   const aws = require("aws-sdk");
   const s3 = new aws.S3();
-  const [postImage, setPostImage] = useState();
-  const [img, setImg] = useState([]);
+  const [postImage, setPostImage] = useState("");
+  const [img, setImg] = useState("");
   const { dbUser } = useUserContext();
 
   /* Fetch Image */
@@ -62,11 +62,10 @@ export default function Page({ post2 }) {
   });
 
   useEffect(() => {
-    
     const fetchImage = async () => {
       const params = {
         Bucket: "portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging",
-        Key: img?img:post1?.image,
+        Key: img,
       };
       await s3
         .getSignedUrlPromise("getObject", params)
@@ -79,12 +78,12 @@ export default function Page({ post2 }) {
     const postsD = async () => {
       if (!router.isReady) return;
       // const posts2 = await getPost();
-      const filt = await data.filter((value) => value?.slug == postSlug);
+      const filt = data.filter((value) => value?.slug == postSlug);
       setPost(filt[0]);
       setImg(filt?.[0]?.image);
     };
     postsD();
-  }, [postSlug, router.isReady,data]);
+  }, [postSlug, router.isReady]);
 
   // if (isLoading) return <Spinner />;
   // if (isError) return <Error />;
@@ -214,32 +213,32 @@ function Article({ image, post, post2 }) {
           <p className="article__text-social">
             <ul className="icons-share">
               <FacebookShareButton
-                url={`https://main.d6iszn1o7sirg.amplifyapp.com/Posts/${post?.slug}`}
+                url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <FacebookIcon size={30} round={true} />
               </FacebookShareButton>
 
               <LinkedinShareButton
-                 url={`https://main.d6iszn1o7sirg.amplifyapp.com/Posts/${post?.slug}`}
+                 url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <LinkedinIcon size={30} round={true} />
               </LinkedinShareButton>
               <TwitterShareButton
-                 url={`https://main.d6iszn1o7sirg.amplifyapp.com/Posts/${post?.slug}`}
+                 url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <TwitterIcon size={30} round={true} />
               </TwitterShareButton>
               <WhatsappShareButton
-                url={`https://main.d6iszn1o7sirg.amplifyapp.com/Posts/${post?.slug}`}
+                url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <WhatsappIcon size={30} round={true} />
               </WhatsappShareButton>
               <TelegramShareButton
-                 url={`https://main.d6iszn1o7sirg.amplifyapp.com/Posts/${post?.slug}`}
+                 url={`https://blog-ten-lilac-20.vercel.app/Posts/${post?.slug}`}
                 className="social__link-share"
               >
                 <TelegramIcon size={30} round={true} />

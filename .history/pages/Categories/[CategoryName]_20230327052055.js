@@ -2,7 +2,7 @@ import Author from "@/components/_child/Author";
 import Related from "@/components/_child/Related";
 import Format from "@/layout/Format";
 import Image from "next/image";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { categoriesName } from "@/public/blogDataName";
 import { useRouter } from "next/router";
 import { useBlogContext } from "@/contexts/BlogContext";
@@ -149,7 +149,7 @@ function Category({ category, posts }) {
 
   const [dataSort, setDataSort] = useState([]);
 
-  useMemo(() => {
+  useEffect(() => {
     const postsData = () => {
       switch (category?.name) {
         case "USEFULHACKS":

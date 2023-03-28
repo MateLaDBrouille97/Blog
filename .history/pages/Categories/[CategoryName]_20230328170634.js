@@ -149,7 +149,7 @@ function Category({ category, posts }) {
 
   const [dataSort, setDataSort] = useState([]);
 
-  useMemo(() => {
+  useEffect(() => {
     const postsData = () => {
       switch (category?.name) {
         case "USEFULHACKS":

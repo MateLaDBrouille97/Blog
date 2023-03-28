@@ -9,7 +9,7 @@ import ScrollUp from "@/components/ScrollUp";
 
 export default function Format({ children }) {
   return (
-    
+    <html lang="en">
     <>
       <Head>Blog</Head>
       <Header2 />
@@ -17,5 +17,6 @@ export default function Format({ children }) {
       <Footer2 />
       <ScrollUp />
     </>
+    </html>
   );
 }

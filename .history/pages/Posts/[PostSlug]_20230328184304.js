@@ -62,15 +62,16 @@ export default function Page({ post2 }) {
   });
 
   useEffect(() => {
-    
+
     const fetchImage = async () => {
-      const params = {
+      if(img)
+    {  const params = {
         Bucket: "portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging",
-        Key: img?img:post1?.image,
+        Key: img,
       };
       await s3
         .getSignedUrlPromise("getObject", params)
-        .then((i) => setPostImage(i));
+        .then((i) => setPostImage(i));}
     };
     fetchImage();
   }, [dbUser, router.isReady, post1]);

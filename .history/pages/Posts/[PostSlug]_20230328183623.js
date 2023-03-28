@@ -62,11 +62,10 @@ export default function Page({ post2 }) {
   });
 
   useEffect(() => {
-    
     const fetchImage = async () => {
       const params = {
         Bucket: "portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging",
-        Key: img?img:post1?.image,
+        Key: img,
       };
       await s3
         .getSignedUrlPromise("getObject", params)
@@ -84,7 +83,7 @@ export default function Page({ post2 }) {
       setImg(filt?.[0]?.image);
     };
     postsD();
-  }, [postSlug, router.isReady,data]);
+  }, [postSlug, router.isReady]);
 
   // if (isLoading) return <Spinner />;
   // if (isError) return <Error />;
