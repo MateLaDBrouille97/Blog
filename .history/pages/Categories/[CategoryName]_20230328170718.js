@@ -64,7 +64,8 @@ export default function CategoryName() {
     postsD();
   }, [router.query.CategoryName, router.isReady, data]);
 
-
+  console.log(posts);
+  console.log("category", cat);
 
   return (
     <>
