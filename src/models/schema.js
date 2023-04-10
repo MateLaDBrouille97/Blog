@@ -520,6 +520,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "href": {
+                    "name": "href",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -1027,11 +1034,12 @@ export const schema = {
             "values": [
                 "WEB",
                 "APP",
-                "SCIENCE"
+                "SCIENCE",
+                "AI"
             ]
         }
     },
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "c5224bae77e8489a0191373d9cbd442e"
+    "version": "d4718917e8d5252ad7570efd67c28f8c"
 };

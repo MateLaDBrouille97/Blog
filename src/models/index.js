@@ -42,7 +42,8 @@ const LevelSkill = {
 const PortfolioType = {
   "WEB": "WEB",
   "APP": "APP",
-  "SCIENCE": "SCIENCE"
+  "SCIENCE": "SCIENCE",
+  "AI": "AI"
 };
 
 const { Category, BlogPost, Link, Service, Qualification, Skill, PortfolioPost, User } = initSchema(schema);

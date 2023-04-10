@@ -42,7 +42,8 @@ export enum LevelSkill {
 export enum PortfolioType {
   WEB = "WEB",
   APP = "APP",
-  SCIENCE = "SCIENCE"
+  SCIENCE = "SCIENCE",
+  AI = "AI"
 }
 
 
@@ -237,6 +238,7 @@ type EagerSkill = {
   readonly name?: string | null;
   readonly userID: string;
   readonly type?: SkillType | keyof typeof SkillType | null;
+  readonly href?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -251,6 +253,7 @@ type LazySkill = {
   readonly name?: string | null;
   readonly userID: string;
   readonly type?: SkillType | keyof typeof SkillType | null;
+  readonly href?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
