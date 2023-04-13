@@ -24,7 +24,7 @@
     justify-self: center;
     color: var(--title-color);
     padding:0.25rem 0.75rem;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: var(--font-medium);
     /* border-radius: 0.5rem; */
     text-transform: capitalize;
@@ -33,7 +33,7 @@
 
 .nav__list2{
     display:grid;
-    grid-template-columns: repeat(8,1fr);
+    grid-template-columns: repeat(7,1fr);
     gap:2rem;
 }
 

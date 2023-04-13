@@ -204,9 +204,9 @@ function Category({ category, posts }) {
             });
             setDataSort(data1);
             break;
-          } else if (item.name === "marketing") {
+          } else if (item.name === "code tools") {
             const blog4 = posts.filter((d) => {
-              return d?.subCategory?.toLowerCase() === "marketing";
+              return d?.subCategory?.toLowerCase() === "code_tools";
             });
             const data1 = blog4.sort((a, b) => {
               if (b.createdAt > a.createdAt) return 1;
@@ -226,18 +226,7 @@ function Category({ category, posts }) {
             });
             setDataSort(data1);
             break;
-          } else if (item.name === "image video") {
-            const blog4 = posts.filter((d) => {
-              return d?.subCategory?.toLowerCase() === "image_video";
-            });
-            const data1 = blog4.sort((a, b) => {
-              if (b.createdAt > a.createdAt) return 1;
-              if (b.createdAt < a.createdAt) return -1;
-              return 0;
-            });
-            setDataSort(data1);
-            break;
-          }
+          } 
         case "PROJECTS":
           if (item.name === "app") {
             const blog3 = posts.filter((d) => {
@@ -419,7 +408,7 @@ function Category({ category, posts }) {
                   }}
                   className={`${
                     active === index ? "active-work" : ""
-                  } work__item2`}
+                  } work__item`}
                   key={index}
                 >
                   {item?.name}

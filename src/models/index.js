@@ -11,7 +11,8 @@ const SubCategory = {
   "WEB": "WEB",
   "AI": "AI",
   "ANALYZE": "ANALYZE",
-  "CODE_TOOLS": "CODE_TOOLS",
+  "IMAGE_VIDEO": "IMAGE_VIDEO",
+  "MARKETING": "MARKETING",
   "OTHER": "OTHER"
 };
 

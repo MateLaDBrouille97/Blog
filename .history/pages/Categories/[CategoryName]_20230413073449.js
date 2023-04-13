@@ -419,7 +419,7 @@ function Category({ category, posts }) {
                   }}
                   className={`${
                     active === index ? "active-work" : ""
-                  } work__item2`}
+                  } work__item`}
                   key={index}
                 >
                   {item?.name}

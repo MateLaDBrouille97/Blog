@@ -28,9 +28,9 @@ export const subCategoryNews = [
     { 
         name:"CopyWriting",
     },
-    { 
-        name:"Marketing",
-    },
+    // { 
+    //     name:"Marketing",
+    // },
     { 
         name:"Image Video",
     },

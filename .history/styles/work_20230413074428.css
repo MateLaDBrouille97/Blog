@@ -24,7 +24,7 @@
     justify-self: center;
     color: var(--title-color);
     padding:0.25rem 0.75rem;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: var(--font-medium);
     /* border-radius: 0.5rem; */
     text-transform: capitalize;

@@ -993,7 +993,8 @@ export const schema = {
                 "WEB",
                 "AI",
                 "ANALYZE",
-                "CODE_TOOLS",
+                "IMAGE_VIDEO",
+                "MARKETING",
                 "OTHER"
             ]
         },
