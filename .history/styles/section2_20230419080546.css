@@ -8,19 +8,11 @@
 }
 
 .postCol3-container{
-  margin:20px;
+  margin:15px;
   padding:15px;
-  /* border: 2px solid rgba(0,0,0,0.1); */
-  border-radius: 5px;
-  gap: 3rem;
+  /* border: 1px solid rgba(0,0,0,0.1); */
 }
 
 .post3col-title{
   border-bottom: solid 3px rgb(213, 211, 211);
-}
-
-.work__container{
-  grid-template-columns: repeat(2,max-content);
-  gap: 3rem;
-  justify-content: center;
 }

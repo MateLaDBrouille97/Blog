@@ -109,7 +109,7 @@ export default function Section2() {
           className="cover-strip h-screen w-3/12 bg-slate-300 fixed top-0 left-3/4 cover"
         ></div>
       </div>
-      <section className="section mx-auto md:px-20 py-20 w-4/5 ">
+      <section className="section mx-300 md:px-20 py-20 w-4/5">
         <div className="container mx-auto md:px-20">
           <div className="flex justify-center pb-8 mt-10 mb-20 section1__posts">
             <h1 className="font-bold text-4xl py-8 text-center section1__posts-title">
@@ -119,7 +119,7 @@ export default function Section2() {
 
           {/* grid columns */}
           {data ? (
-            <div className="grid md:grid-cols-1 lg:grid-cols-3  ">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
               {dataSort &&
                 dataSort
                   .slice(0, 9)

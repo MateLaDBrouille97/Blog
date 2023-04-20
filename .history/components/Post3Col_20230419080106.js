@@ -61,7 +61,7 @@ export default function Post3col({ post }) {
     }, [dbUser]);
   
     return (
-      <div className="item postCol3-container ">
+      <div className="item postCol3-container w-auto">
         <div className="images">
           <Link href={`/Posts/${post?.slug}`} legacyBehavior>
             <a className="postCol__img">

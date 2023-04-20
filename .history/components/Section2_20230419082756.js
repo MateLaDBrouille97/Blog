@@ -119,7 +119,7 @@ export default function Section2() {
 
           {/* grid columns */}
           {data ? (
-            <div className="grid md:grid-cols-1 lg:grid-cols-3  ">
+            <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 ">
               {dataSort &&
                 dataSort
                   .slice(0, 9)

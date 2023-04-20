@@ -143,7 +143,7 @@ export default function Section1() {
           }}
           pagination={{
             clickable: true,
-            
+            border:true,
           }}
           breakpoints={{
             576: {
