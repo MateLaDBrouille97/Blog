@@ -256,8 +256,8 @@ function Article({ image, post, post2 }) {
             <MDXRemote {...post2?.source} components={components} />
           </h2>
         </div>
-        {/* <hr className="my-10 border-gray-700" /> */}
-        {/* <Like /> */}
+        <hr className="mx-30 border-gray-700" />
+        <Like />
         {user&&<AuthorDetails author={user}/>}
         {/* {post2?.frontmatter?.tags.map((tag) => {return(<><div>
             #{tag}

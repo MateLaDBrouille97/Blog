@@ -104,7 +104,6 @@ export default function Page({ post2 }) {
 function Article({ image, post, post2 }) {
   const [date, setDate] = useState("");
   const [user, setUser] = useState("");
-  const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
     const convertAwsDateToDate = (awsDate) => {
@@ -256,8 +255,8 @@ function Article({ image, post, post2 }) {
             <MDXRemote {...post2?.source} components={components} />
           </h2>
         </div>
-        {/* <hr className="my-10 border-gray-700" /> */}
-        {/* <Like /> */}
+        
+        <Like like={post?.likeCount}/>
         {user&&<AuthorDetails author={user}/>}
         {/* {post2?.frontmatter?.tags.map((tag) => {return(<><div>
             #{tag}

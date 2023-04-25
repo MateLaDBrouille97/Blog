@@ -136,6 +136,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "likeCount": {
+                    "name": "likeCount",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -1042,5 +1049,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "d4718917e8d5252ad7570efd67c28f8c"
+    "version": "0ccd7031dd8b48b90888ae874dcc95ee"
 };

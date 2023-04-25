@@ -257,7 +257,7 @@ function Article({ image, post, post2 }) {
           </h2>
         </div>
         {/* <hr className="my-10 border-gray-700" /> */}
-        {/* <Like /> */}
+        <Like />
         {user&&<AuthorDetails author={user}/>}
         {/* {post2?.frontmatter?.tags.map((tag) => {return(<><div>
             #{tag}
