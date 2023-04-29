@@ -13,7 +13,7 @@ const Footer2 = () => {
   useEffect(()=>{
     
     setUser(dbUser)
-  },[dbUser])
+  },[])
 
 
   const bg = {

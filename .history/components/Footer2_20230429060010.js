@@ -1,11 +1,21 @@
-import React from "react";
-// import { useUserContext } from '../../contexts/UserContext';
+import React, { useEffect, useState } from "react";
+import { useUserContext } from "@/contexts/UserContext";
 import { Icon } from "@iconify/react";
 import Newsletter from "./_child/Newsletter";
 import Link from "next/link";
+import BuyMeACoffee from "./BuyMeACoffee";
+import BuyMeACoffee2 from "./BuyMeACoffee2";
 
 const Footer2 = () => {
-  // const {dbUser}=useUserContext();
+  const {dbUser}=useUserContext();
+  const [user,setUser]=useState();
+
+  useEffect(()=>{
+    
+    setUser(dbUser)
+  },[])
+
+
   const bg = {
     background: "url('/images/Miroodles2.png')no-repeat",
     backgroundPosition: "bottom right",
@@ -17,14 +27,17 @@ const Footer2 = () => {
       <div className="footer__container container">
         <h1 className="footer__title">OTOMATA</h1>
         <div className="footer__social">
-          <a
+         
+          <BuyMeACoffee2 author={user} className="share2"/>
+         
+          <button
             href="https://www.instagram.com/oto.mata33/"
             className="footer__social-link"
             target="_blank"
             rel="noreferrer"
           >
             <Icon icon="bxl:instagram"></Icon>
-          </a>
+          </button>
 
           <a
             href="https://www.linkedin.com/"
@@ -69,7 +82,7 @@ const Footer2 = () => {
           <li>
             <Link href={`/Categories/NEWS`} legacyBehavior>
               <a  className="footer__link">
-                Tech News
+                Techie's Society
               </a>
             </Link>
           </li>

@@ -50,7 +50,7 @@ const BuyMeACoffee = ({author}) => {
          {user?.buyMeACoffee && (
             <>
               <a href={user?.buyMeACoffee} target="_blank" rel="noreferrer">
-                <Image width={18} src={bmc} alt="Buy me a coffee" />
+                <Image width={20} src={bmc} alt="Buy me a coffee" />
               </a>
             </>
           )}

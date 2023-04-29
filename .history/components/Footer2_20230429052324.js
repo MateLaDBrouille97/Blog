@@ -4,16 +4,16 @@ import { Icon } from "@iconify/react";
 import Newsletter from "./_child/Newsletter";
 import Link from "next/link";
 import BuyMeACoffee from "./BuyMeACoffee";
-import BuyMeACoffee2 from "./BuyMeACoffee2";
 
 const Footer2 = () => {
   const {dbUser}=useUserContext();
   const [user,setUser]=useState();
 
   useEffect(()=>{
-    
+    if(!dbUser)
+    return
     setUser(dbUser)
-  },[dbUser])
+  },[])
 
 
   const bg = {
@@ -27,9 +27,14 @@ const Footer2 = () => {
       <div className="footer__container container">
         <h1 className="footer__title">OTOMATA</h1>
         <div className="footer__social">
-         
-          <BuyMeACoffee2 author={user} className="share2"/>
-          
+         <a
+            href="https://www.linkedin.com/"
+            className="footer__social-link color-link1"
+            target="_blank"
+            rel="noreferrer"
+          >
+           <BuyMeACoffee author={user} className="share2"/>
+          </a>
           <a
             href="https://www.instagram.com/oto.mata33/"
             className="footer__social-link"

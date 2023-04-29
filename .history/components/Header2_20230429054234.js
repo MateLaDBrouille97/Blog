@@ -78,7 +78,7 @@ const Header = () => {
 useEffect(()=>{
   
   setUser(dbUser)
-},[dbUser])
+},[])
 
   return (
     <header className="header">

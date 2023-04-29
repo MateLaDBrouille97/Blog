@@ -4,9 +4,8 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import bmc from "../public/bmc-logo.png";
 
-const BuyMeACoffee = ({author}) => {
+const BuyMeACoffee2 = ({author}) => {
   const [toggleState, setToggleState] = useState(false);
-  const [user,setUser]=useState('');
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -39,26 +38,21 @@ const BuyMeACoffee = ({author}) => {
     modal.style.display = "none";
   }
 
-  useEffect(()=>{
-    setUser(author)
-  },[author])
-
-
   return (
     <div className="link2">
-       <div className="linkcard-share2" onClick={showModal}>
-         {user?.buyMeACoffee && (
+       <div className="linkcard-share3" 
+       onClick={showModal}
+       >
+         {author?.buyMeACoffee && (
             <>
-              <a href={user?.buyMeACoffee} target="_blank" rel="noreferrer">
+              <a href={author?.buyMeACoffee} target="_blank" rel="noreferrer">
                 <Image width={18} src={bmc} alt="Buy me a coffee" />
               </a>
             </>
           )}
-       </div>
-      
-
+       </div>  
     </div>
   );
 };
 
-export default BuyMeACoffee;
+export default BuyMeACoffee2;
