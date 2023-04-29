@@ -137,5 +137,6 @@ type User @model @auth(rules: [{allow: public}]) {
   twitter: String
   telegram: String
   linkedIn: String
+  buyMeACoffee: String
 }
  

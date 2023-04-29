@@ -33,6 +33,7 @@ export declare type UserCreateFormInputValues = {
     twitter?: string;
     telegram?: string;
     linkedIn?: string;
+    buyMeACoffee?: string;
 };
 export declare type UserCreateFormValidationValues = {
     firstName?: ValidationFunction<string>;
@@ -55,6 +56,7 @@ export declare type UserCreateFormValidationValues = {
     twitter?: ValidationFunction<string>;
     telegram?: ValidationFunction<string>;
     linkedIn?: ValidationFunction<string>;
+    buyMeACoffee?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserCreateFormOverridesProps = {
@@ -79,6 +81,7 @@ export declare type UserCreateFormOverridesProps = {
     twitter?: FormProps<TextFieldProps>;
     telegram?: FormProps<TextFieldProps>;
     linkedIn?: FormProps<TextFieldProps>;
+    buyMeACoffee?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserCreateFormProps = React.PropsWithChildren<{
     overrides?: UserCreateFormOverridesProps | undefined | null;

@@ -186,6 +186,7 @@ export default function UserCreateForm(props) {
     twitter: undefined,
     telegram: undefined,
     linkedIn: undefined,
+    buyMeACoffee: undefined,
   };
   const [firstName, setFirstName] = React.useState(initialValues.firstName);
   const [lastName, setLastName] = React.useState(initialValues.lastName);
@@ -213,6 +214,9 @@ export default function UserCreateForm(props) {
   const [twitter, setTwitter] = React.useState(initialValues.twitter);
   const [telegram, setTelegram] = React.useState(initialValues.telegram);
   const [linkedIn, setLinkedIn] = React.useState(initialValues.linkedIn);
+  const [buyMeACoffee, setBuyMeACoffee] = React.useState(
+    initialValues.buyMeACoffee
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setFirstName(initialValues.firstName);
@@ -236,6 +240,7 @@ export default function UserCreateForm(props) {
     setTwitter(initialValues.twitter);
     setTelegram(initialValues.telegram);
     setLinkedIn(initialValues.linkedIn);
+    setBuyMeACoffee(initialValues.buyMeACoffee);
     setErrors({});
   };
   const [currentTitleValue, setCurrentTitleValue] = React.useState(undefined);
@@ -261,6 +266,7 @@ export default function UserCreateForm(props) {
     twitter: [],
     telegram: [],
     linkedIn: [],
+    buyMeACoffee: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -300,6 +306,7 @@ export default function UserCreateForm(props) {
           twitter,
           telegram,
           linkedIn,
+          buyMeACoffee,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -368,6 +375,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.firstName ?? value;
@@ -410,6 +418,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.lastName ?? value;
@@ -452,6 +461,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -495,6 +505,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.phone ?? value;
@@ -537,6 +548,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.instagram ?? value;
@@ -579,6 +591,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -621,6 +634,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.image ?? value;
@@ -663,6 +677,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.github ?? value;
@@ -702,6 +717,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             values = result?.title ?? values;
@@ -773,6 +789,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.experience ?? value;
@@ -824,6 +841,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.projectNumber ?? value;
@@ -866,6 +884,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.sub ?? value;
@@ -908,6 +927,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.support ?? value;
@@ -950,6 +970,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.descriptionLong ?? value;
@@ -992,6 +1013,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.CV ?? value;
@@ -1034,6 +1056,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.avatar ?? value;
@@ -1076,6 +1099,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.facebook ?? value;
@@ -1118,6 +1142,7 @@ export default function UserCreateForm(props) {
               twitter: value,
               telegram,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.twitter ?? value;
@@ -1160,6 +1185,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram: value,
               linkedIn,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.telegram ?? value;
@@ -1202,6 +1228,7 @@ export default function UserCreateForm(props) {
               twitter,
               telegram,
               linkedIn: value,
+              buyMeACoffee,
             };
             const result = onChange(modelFields);
             value = result?.linkedIn ?? value;
@@ -1215,6 +1242,49 @@ export default function UserCreateForm(props) {
         errorMessage={errors.linkedIn?.errorMessage}
         hasError={errors.linkedIn?.hasError}
         {...getOverrideProps(overrides, "linkedIn")}
+      ></TextField>
+      <TextField
+        label="Buy me a coffee"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              email,
+              phone,
+              instagram,
+              description,
+              image,
+              github,
+              title,
+              experience,
+              projectNumber,
+              sub,
+              support,
+              descriptionLong,
+              CV,
+              avatar,
+              facebook,
+              twitter,
+              telegram,
+              linkedIn,
+              buyMeACoffee: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.buyMeACoffee ?? value;
+          }
+          if (errors.buyMeACoffee?.hasError) {
+            runValidationTasks("buyMeACoffee", value);
+          }
+          setBuyMeACoffee(value);
+        }}
+        onBlur={() => runValidationTasks("buyMeACoffee", buyMeACoffee)}
+        errorMessage={errors.buyMeACoffee?.errorMessage}
+        hasError={errors.buyMeACoffee?.hasError}
+        {...getOverrideProps(overrides, "buyMeACoffee")}
       ></TextField>
       <Flex
         justifyContent="space-between"

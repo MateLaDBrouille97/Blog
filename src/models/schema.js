@@ -945,6 +945,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "buyMeACoffee": {
+                    "name": "buyMeACoffee",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -1049,5 +1056,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "0ccd7031dd8b48b90888ae874dcc95ee"
+    "version": "722df3032b303ca453751730b95a6fb0"
 };

@@ -339,6 +339,7 @@ type EagerUser = {
   readonly twitter?: string | null;
   readonly telegram?: string | null;
   readonly linkedIn?: string | null;
+  readonly buyMeACoffee?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -375,6 +376,7 @@ type LazyUser = {
   readonly twitter?: string | null;
   readonly telegram?: string | null;
   readonly linkedIn?: string | null;
+  readonly buyMeACoffee?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
