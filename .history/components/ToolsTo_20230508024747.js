@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import bmc from "../public/bmc-logo.png";
+import bmc from "../public/blackcat.png";
 
-const BuyMeACoffee = ({author}) => {
+const ToolsTo = ({author}) => {
   const [toggleState, setToggleState] = useState(false);
   const [user,setUser]=useState('');
 
@@ -46,10 +46,10 @@ const BuyMeACoffee = ({author}) => {
 
   return (
     <div className="link2">
-       <div className="linkcard-share2" onClick={showModal}>
-         {user?.buyMeACoffee && (
+       <div className="linkcard-share2" >
+         {user && (
             <>
-              <a href={user?.buyMeACoffee} target="_blank" rel="noreferrer">
+              <a  target="_blank" rel="noreferrer">
                 <Image width={18} src={bmc} alt="Buy me a coffee" />
               </a>
             </>
@@ -59,4 +59,4 @@ const BuyMeACoffee = ({author}) => {
   );
 };
 
-export default BuyMeACoffee;
+export default ToolsTo;

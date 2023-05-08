@@ -54,9 +54,9 @@ export default function CategoryName() {
         case "POSTS":
           setPosts(data);
           break;
-        // case "TOOLS":
+        case "TOOLS":
           
-        //   break;
+          break;
         default:
           // If categoryName doesn't match any of the above cases,
           // filter the data based on the title
@@ -347,9 +347,9 @@ function Category({ category, posts }) {
             break;
           }
 
-        // case "TOOLS":
+        case "TOOLS":
           
-        //   break;
+          break;
 
 
         default:

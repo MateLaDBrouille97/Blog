@@ -54,9 +54,9 @@ export default function CategoryName() {
         case "POSTS":
           setPosts(data);
           break;
-        // case "TOOLS":
-          
-        //   break;
+        case "TOOLS":
+          setPosts(data);
+          break;
         default:
           // If categoryName doesn't match any of the above cases,
           // filter the data based on the title
@@ -347,9 +347,14 @@ function Category({ category, posts }) {
             break;
           }
 
-        // case "TOOLS":
-          
-        //   break;
+        case "TOOLS":
+          const data2 = posts.sort((a, b) => {
+            if (b.createdAt > a.createdAt) return 1;
+            if (b.createdAt < a.createdAt) return -1;
+            return 0;
+          });
+          setDataSort(data2);
+          break;
 
 
         default:

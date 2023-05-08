@@ -29,4 +29,9 @@ export const categoriesName = [
     name: "OPINIONS",
     image: "/images/Searching.png",
   },
+  {
+    id: 7,
+    name: "TOOLS",
+    image: "/images/blackcat.png",
+  },
 ];

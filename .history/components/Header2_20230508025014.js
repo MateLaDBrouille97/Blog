@@ -176,11 +176,11 @@ useEffect(()=>{
               </Link>
             </li>
 
-            {/* <li className="nav__item">
-              <Link href={`/Categories/TOOLS`} legacyBehavior>
+            <li className="nav__item">
+              <Link href={`/Categories/NEWS`} legacyBehavior>
                 <ToolsTo author={user}/>
               </Link>
-            </li> */}
+            </li>
 
           </ul>
           <Icon

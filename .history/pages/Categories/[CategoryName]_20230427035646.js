@@ -31,7 +31,7 @@ export default function CategoryName() {
   const { blogUFH, blogP, blogN, data, blogO } = useBlogContext();
   const [cat, setCat] = useState("");
   const [posts, setPosts] = useState([]);
-  console.log(cat)
+
   useEffect(() => {
     const postsD = () => {
       if (!router.isReady) return;
@@ -39,7 +39,7 @@ export default function CategoryName() {
         (value) => value?.name == categoryName
       );
       setCat(filt?.[0]);
-     
+
       switch (categoryName) {
         case "USEFULHACKS":
           setPosts(blogUFH);
@@ -54,9 +54,6 @@ export default function CategoryName() {
         case "POSTS":
           setPosts(data);
           break;
-        // case "TOOLS":
-          
-        //   break;
         default:
           // If categoryName doesn't match any of the above cases,
           // filter the data based on the title
@@ -347,11 +344,9 @@ function Category({ category, posts }) {
             break;
           }
 
-        // case "TOOLS":
-          
+        // case "POSTS":
+        //   setPosts(data);
         //   break;
-
-
         default:
           const data1 = posts.sort((a, b) => {
             if (b.createdAt > a.createdAt) return 1;
