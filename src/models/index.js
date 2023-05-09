@@ -20,7 +20,8 @@ const BlogCategory = {
   "USEFULHACKS": "USEFULHACKS",
   "PROJECTS": "PROJECTS",
   "NEWS": "NEWS",
-  "OPINIONS": "OPINIONS"
+  "OPINIONS": "OPINIONS",
+  "TOOLS": "TOOLS"
 };
 
 const SkillType = {

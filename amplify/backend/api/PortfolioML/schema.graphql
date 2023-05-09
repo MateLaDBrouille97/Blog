@@ -23,6 +23,7 @@ enum BlogCategory {
   PROJECTS
   NEWS
   OPINIONS
+  TOOLS
 }
 
 type BlogPost @model @auth(rules: [{allow: public}]) {

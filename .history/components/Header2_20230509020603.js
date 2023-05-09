@@ -208,7 +208,7 @@ useEffect(()=>{
             <Icon icon="uil:apps" className="uil uil-apps"></Icon>
           </div>
           <div className="nav__toggle-share-socials">
-          <BuyMeACoffee author={user}/>
+          <BuyMeACoffee author={user} className="share2"/>
           <LinkShare className="share"/>
           </div> 
         </div>

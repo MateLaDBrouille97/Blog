@@ -41,7 +41,7 @@ const BuyMeACoffee2 = ({author}) => {
   }
 
   return (
-    <div className="link3">
+    <div className="link">
        <div className="linkcard-share3" 
        onClick={showModal}
        >

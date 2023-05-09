@@ -41,8 +41,8 @@ const BuyMeACoffee2 = ({author}) => {
   }
 
   return (
-    <div className="link3">
-       <div className="linkcard-share3" 
+    <div className="link2">
+       <div 
        onClick={showModal}
        >
          {user?.buyMeACoffee && (

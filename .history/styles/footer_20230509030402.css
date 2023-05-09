@@ -40,7 +40,8 @@
 .footer__social-link{
     background-color:rgb(195, 99, 131);
     color: var(--container-color);
-    font-size: 1.9rem;
+    size: 2rem;
+    font-size: 2rem;
     padding: 0.5rem;
     border-radius:1.4rem;
     display: flex;

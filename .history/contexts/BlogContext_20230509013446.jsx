@@ -18,6 +18,7 @@ const BlogContextProvider = ({ children }) => {
     const[blogO,setBlogO]=useState([]);
     const[categories,setCategories]=useState([]);
     const [data,setData]= useState([]);
+    const[tools,setTools]=useState([]);
 
     useEffect(()=>{
         const fetchPort= async () => {
@@ -26,6 +27,7 @@ const BlogContextProvider = ({ children }) => {
           const blog2 =data.filter(d=>d?.category=="PROJECTS");setBlogP(blog2);
           const blog3 =data.filter(d=>d?.category=="NEWS");setBlogN(blog3);
           const blog4 =data.filter(d=>d?.category=="OPINIONS");setBlogO(blog4);
+          const blog5 =data.filter(d=>d?.category=="TOOLS");setBlogO(blog5);
           // await DataStore.query(BlogPost,p=>p.category.eq("USEFULHACKS")).then(port=>setBlogUFH(port));
           // await DataStore.query(BlogPost,p=>p.category.eq("PROJECTS")).then(port=>setBlogP(port));
           // await DataStore.query(BlogPost,p=>p.category.eq("NEWS")).then(port=>setBlogN(port));
@@ -43,6 +45,8 @@ const BlogContextProvider = ({ children }) => {
       await DataStore.query(Category).then(cats=>setCategories(cats));
     }
 
+
+    
     
  return (
     <BlogContext.Provider 
@@ -54,11 +58,13 @@ const BlogContextProvider = ({ children }) => {
         blogN,
         blogO,
         data,
+        tools,
         setBlogUFH,
         setBlogP,
         setBlogN,
         setData,
         setBlogO,
+        setTools,
          }}>
       {children}
     </BlogContext.Provider>

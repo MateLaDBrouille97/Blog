@@ -8,7 +8,7 @@ import LinkShare from "./LinkShare";
 import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
 import BuyMeACoffee from "./BuyMeACoffee";
-// import ToolsTo from "./ToolsTo";
+import ToolsTo from "./ToolsTo";
 
 
 // import Head from "next/head";
@@ -176,7 +176,7 @@ useEffect(()=>{
               </Link>
             </li>
 
-            {/* <li className="nav__item">
+            <li className="nav__item">
               <Link href={`/Categories/TOOLS`} legacyBehavior>
               <a
                   href="#news"
@@ -190,7 +190,7 @@ useEffect(()=>{
                   <i className="uil uil-scenery nav__icon"></i>Tools To
                 </a>
               </Link>
-            </li> */}
+            </li>
 
           </ul>
           <Icon
@@ -208,7 +208,7 @@ useEffect(()=>{
             <Icon icon="uil:apps" className="uil uil-apps"></Icon>
           </div>
           <div className="nav__toggle-share-socials">
-          <BuyMeACoffee author={user}/>
+          <BuyMeACoffee author={user} className="share2"/>
           <LinkShare className="share"/>
           </div> 
         </div>

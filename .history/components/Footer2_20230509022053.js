@@ -28,7 +28,7 @@ const Footer2 = () => {
         <h1 className="footer__title">OTOMATA</h1>
         <div className="footer__social">
          
-          <BuyMeACoffee2 author={user} />
+          <BuyMeACoffee2 author={user} className="share2"/>
           
           <a
             href="https://www.instagram.com/oto.mata33/"

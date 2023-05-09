@@ -1018,7 +1018,8 @@ export const schema = {
                 "USEFULHACKS",
                 "PROJECTS",
                 "NEWS",
-                "OPINIONS"
+                "OPINIONS",
+                "TOOLS"
             ]
         },
         "SkillType": {

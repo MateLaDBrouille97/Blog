@@ -28,7 +28,7 @@ export default function CategoryName() {
   const router = useRouter();
   const categoryName = router?.query?.CategoryName;
   // const { categoriesName } = blogData;
-  const { blogUFH, blogP, blogN, data, blogO,tools } = useBlogContext();
+  const { blogUFH, blogP, blogN, data, blogO } = useBlogContext();
   const [cat, setCat] = useState("");
   const [posts, setPosts] = useState([]);
   console.log(cat)
@@ -54,9 +54,9 @@ export default function CategoryName() {
         case "POSTS":
           setPosts(data);
           break;
-        case "TOOLS":
-          setPosts(tools);
-          break;
+        // case "TOOLS":
+          
+        //   break;
         default:
           // If categoryName doesn't match any of the above cases,
           // filter the data based on the title
@@ -347,19 +347,9 @@ function Category({ category, posts }) {
             break;
           }
 
-        case "TOOLS":
-          if (item.name === "ai") {
-            const blog4 = posts.filter((d) => {
-              return d?.subCategory?.toLowerCase() === "ai";
-            });
-            const data1 = blog4.sort((a, b) => {
-              if (b.createdAt > a.createdAt) return 1;
-              if (b.createdAt < a.createdAt) return -1;
-              return 0;
-            });
-            setDataSort(data1);
-            break;
-          }
+        // case "TOOLS":
+          
+        //   break;
 
 
         default:
@@ -460,24 +450,6 @@ function Category({ category, posts }) {
             </ul>
           </div>
         ) : category?.name == "PROJECTS" ? (
-          <div className="work__filters">
-            {subCategoryProject.map((item, index) => {
-              return (
-                <span
-                  onClick={(e) => {
-                    handleClick(e, index);
-                  }}
-                  className={`${
-                    active === index ? "active-work" : ""
-                  } work__item`}
-                  key={index}
-                >
-                  {item?.name}
-                </span>
-              );
-            })}
-          </div>
-        ) : category?.name == "TOOLS" ? (
           <div className="work__filters">
             {subCategoryProject.map((item, index) => {
               return (
