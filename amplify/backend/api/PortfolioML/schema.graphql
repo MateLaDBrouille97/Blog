@@ -37,6 +37,7 @@ type BlogPost @model @auth(rules: [{allow: public}]) {
   slug: String
   subCategory: SubCategory
   likeCount: Int
+  href: String
 }
 
 type Link @model @auth(rules: [{allow: public}]) {
