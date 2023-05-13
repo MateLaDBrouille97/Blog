@@ -34,6 +34,8 @@ export default function CategoryName() {
   const [cat, setCat] = useState("");
   const [posts, setPosts] = useState([]);
 
+  
+
 
   useEffect(() => {
     const postsD = () => {

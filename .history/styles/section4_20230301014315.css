@@ -1,3 +1,0 @@
-.postCol:nth-child(2n+1) {
-    flex-direction: row-reverse;
-  }

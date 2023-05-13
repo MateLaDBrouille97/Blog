@@ -10,8 +10,12 @@ import { useBlogContext } from "@/contexts/BlogContext";
 import { useUserContext } from "@/contexts/UserContext";
 import { User } from "@/src/models";
 import { DataStore } from "aws-amplify";
+import Author2 from "./_child/Author2";
 
-export default function PostCol({post}) {
+
+
+
+export default function PostCol3({post}) {
 
     const aws = require("aws-sdk");
     const s3 = new aws.S3();
@@ -19,7 +23,8 @@ export default function PostCol({post}) {
     const [date, setDate] = useState("");
     const [user, setUser] = useState("");
     const [postImage, setPostImage] = useState("");
-  
+   
+
     useEffect(() => {
       const convertAwsDateToDate = (awsDate) => {
         const year = awsDate.substring(0, 4);
@@ -60,8 +65,8 @@ export default function PostCol({post}) {
     }, [dbUser]);
   
     return (
-      <>
-      <div className="flex gap-5 p-2 m-3">
+    <>
+    <div className="flex gap-2 p-2 m-4 postCol3__card">
         <div className="image flex flex-col justify-start">
           <Link href={`/Posts/${post?.slug}`} legacyBehavior>
             <a className="postCol__img">
@@ -70,13 +75,13 @@ export default function PostCol({post}) {
                 alt=""
                 width={300}
                 height={250}
-                className=" rounded postCol__img "
+                className=" rounded "
               />}
             </a>
           </Link>
         </div>
         <div className="info flex justify-center flex-col py-4">
-          <div className="cat flex gap-3">
+          <div className="cat flex gap-3 mb-4">
             <Link href={`/Categories/${post?.category=="OPINIONS"?"NEWS":post?.category}`} legacyBehavior>
               <a className="text-orange-600 hover:text-orange-800">
               {post?.category || "UnKnown"}
@@ -86,22 +91,29 @@ export default function PostCol({post}) {
               <a className="text-gray-600 hover:text-gray-800">{date || "UnKnown"}</a>
             </Link>
           </div>
-          <div className="title">
+          <div className="title mb-2">
             <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-              <a className=" postCol__title text-xl font-bold text-gray-800 hover:text-gray-600 ">
+              <a className=" postCol__title text-xl font-bold text-gray-800 hover:text-gray-600  ">
               {post?.title}
               </a>
             </Link>
           </div>
-          {user ? <Author author={user} /> : <></>}
+          {/* <div className="description">
+            <Link href={`/Posts/${post?.slug}`} legacyBehavior>
+              <a className="postCol__description text-m  text-gray-800 hover:text-gray-600 mt-10">
+              {post?.description}
+              </a>
+            </Link>
+          </div> */}
+          {user ? <Author2 author={user} /> : <></>}
         </div>
       </div>
       <div className="flex justify-center items-center">
-      <hr className=" my-10 border-gray-700 w-1/2" />
-    </div>
-      </>
+        <hr className=" my-10 border-gray-700 w-1/2" />
+      </div>
+    
+    </>
       
-  
     );
   }
   

@@ -181,7 +181,7 @@ useEffect(()=>{
               <a
                   href="#news"
                   onClick={() => setActiveNav("#news")}
-                  className={ 
+                  className={
                     activeNav === "#news"
                       ? "nav__link active-link"
                       : "nav__link nav-item-border"

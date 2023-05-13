@@ -181,10 +181,10 @@ useEffect(()=>{
               <a
                   href="#news"
                   onClick={() => setActiveNav("#news")}
-                  className={ 
+                  className={
                     activeNav === "#news"
                       ? "nav__link active-link"
-                      : "nav__link nav-item-border"
+                      : "nav__link"
                   }
                 >
                   <i className="uil uil-scenery nav__icon"></i>Tools To
