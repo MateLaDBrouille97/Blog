@@ -1,0 +1,32 @@
+---
+title: "Automatic Prompt Optimization with “Gradient Descent” and Beam Search"
+layout: "Article"
+tags: 
+  -Definition
+  -IT
+  -News
+  -Tech
+  -Technologies
+  -Automatic Prompt Optimisation
+excerpt:
+publishedAt:
+---
+<br/>
+The APO algorithm introduces a fresh perspective by utilizing minibatches of data to construct natural language "gradients." These gradients serve as critical feedback to assess the effectiveness of the current prompt. By evaluating a prompt with a batch of data, APO generates a local loss signal that illuminates the path towards prompt improvement. It then undertakes prompt editing, moving in the opposite semantic direction of the gradient—a concept akin to the well-known "gradient descent" optimization technique.
+<br/>
+Guiding the gradient descent steps, APO incorporates beam search, a heuristic search algorithm that intelligently explores the prompt space by expanding only a limited set of nodes at each level. This approach strikes a balance between exploration and exploitation through an efficient bandit selection step. By selecting actions based on their estimated value and uncertainty, APO ensures a targeted and efficient optimization process.
+<br/>
+To substantiate its prowess, APO undergoes rigorous evaluation across four benchmark classification tasks: Ethos, Jailbreak, Liar, and Sarcasm. These tasks serve as litmus tests to compare APO against two state-of-the-art baselines: random search and grid search. The results are nothing short of astounding. APO consistently outperforms both baselines, achieving an average accuracy improvement of 3.5% over random search and 2.4% over grid search. Not only does it offer superior performance, but it also excels in efficiency—requiring fewer evaluations than random search and fewer iterations than grid search.
+<br/>
+Delving deeper into the analysis, the researchers conduct qualitative examinations of the optimization steps for each dataset and starting prompt. They note that the gradients effectively identify incongruities between the prompt and specific datapoints, with some exceptions. While gradients for Jailbreak and Sarcasm appear less useful, the Ethos and Liar gradients exhibit great promise, highlighting the versatility of APO.
+<br/>
+APO emerges as a versatile and effective framework for automating the optimization of LLM prompts. It introduces a novel technique that deftly overcomes the challenges posed by discrete optimization. By mirroring the steps of gradient descent within a text-based dialogue and leveraging beam search to explore the prompt space, APO unlocks substantial improvements without the need for hyperparameter tuning or model training. Excitingly, the researchers suggest that APO's potential extends beyond LLMs to other natural language processing tasks such as machine translation and text generation.
+<br/>
+However, it is important to acknowledge the limitations of APO. It assumes access to training data and an LLM API, which may not always be feasible in every context. Additionally, due to the non-convex nature of the optimization problem, APO may not always converge to the global optimum. Nevertheless, the researchers argue that the significant enhancements APO provides over hand-written prompts with minimal effort make it a worthy choice for prompt optimization.
+<br/>
+The advent of Automatic Prompt Optimization marks a significant milestone in the evolution of LLMs. By harnessing the power of numerical gradient descent and beam search, APO ushers in a new era of prompt optimization, surpassing traditional baselines and streamlining the workflow of tech developers and enthusiasts worldwide. Embrace this transformative tool, and witness the untapped potential of your language models come to life. Let APO be your guiding light in the realm of prompt optimization and propel your projects to new heights. The future of language models is now within your grasp.
+<br/>
+<Button
+  address="https://arxiv.org/pdf/2305.03495.pdf"
+  text="Source"
+/>
