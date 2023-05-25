@@ -12,6 +12,7 @@ import { useUserContext } from "@/contexts/UserContext";
 import { DataStore } from "aws-amplify";
 import { User } from "@/src/models";
 import Spinner from "./_child/Spinner";
+import Like3 from "./Like3";
 
 export default function Post3col({ post }) {
     const aws = require("aws-sdk");
@@ -61,27 +62,38 @@ export default function Post3col({ post }) {
     }, [dbUser]);
   
     return (
-      <div className="item postCol3-container w-auto">
+      <div className="item postCol3-container ">
         <div className="images">
           <Link href={`/Posts/${post?.slug}`} legacyBehavior>
             <a className="postCol__img">
-              {!postImage?<Spinner />:<Image
-                src={postImage || "/"}
-                alt=""
-                width={500}
-                height={350}
-                sizes="(max-width: 468px) 100vw,
+              {!postImage ? (
+                <Spinner />
+              ) : (
+                <Image
+                  src={postImage || "/"}
+                  alt=""
+                  width={500}
+                  height={350}
+                  fill
+                  sizes="(max-width: 468px) 100vw,
                        (max-width: 900px) 50vw,
                         33vw"
-                style={{ height: '100%', width: '100%' }}
-                className="rounded"
-              />}
+                  style={{ height: "100%", width: "100%",objectFit:"cover" }}
+                
+                  className="rounded postCol__img"
+                />
+              )}
             </a>
           </Link>
         </div>
         <div className="info flex justify-center flex-col py-4">
           <div className="cat flex gap-6 pt-2 pb-2">
-            <Link href={`/Categories/${post?.category=="OPINIONS"?"NEWS":post?.category}`} legacyBehavior>
+            <Link
+              href={`/Categories/${
+                post?.category == "OPINIONS" ? "NEWS" : post?.category
+              }`}
+              legacyBehavior
+            >
               <a className="text-orange-600 hover:text-orange-800">
                 {post?.category || "UnKnown"}
               </a>
@@ -102,7 +114,12 @@ export default function Post3col({ post }) {
           <div className="postCol3-description">
             <p className="text-gray-500 py-3 ">{post?.description}</p>
           </div>
-          {user ? <Author author={user} /> : <></>}
+          <div>
+            {user ? <Author author={user} /> : <></>}
+            <div className="slide__end-bar">
+              <Like3 id={post?.id} />
+            </div>
+          </div>
         </div>
       </div>
     );

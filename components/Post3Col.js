@@ -77,7 +77,8 @@ export default function Post3col({ post }) {
                   sizes="(max-width: 468px) 100vw,
                        (max-width: 900px) 50vw,
                         33vw"
-                  style={{ height: "100%", width: "100%" }}
+                  style={{ height: "100%", width: "100%",objectFit:"cover" }}
+                
                   className="rounded postCol__img"
                 />
               )}
