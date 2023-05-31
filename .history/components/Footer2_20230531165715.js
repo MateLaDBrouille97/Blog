@@ -13,7 +13,7 @@ const Footer2 = () => {
   useEffect(()=>{
     
     setUser(dbUser)
-  },[])
+  },[dbUser])
 
 
   const bg = {
@@ -28,34 +28,34 @@ const Footer2 = () => {
         <h1 className="footer__title">OTOMATA</h1>
         <div className="footer__social">
          
-          <BuyMeACoffee2 author={user} className="share2"/>
-         
-          <button
+          <BuyMeACoffee2 author={user} />
+          
+          <a
             href="https://www.instagram.com/oto.mata33/"
             className="footer__social-link"
             target="_blank"
             rel="noreferrer"
           >
             <Icon icon="bxl:instagram"></Icon>
-          </button>
+          </a>
 
-          <button
-            href="https://www.linkedin.com/"
+          <a
+            href="https://www.linkedin.com/in/manuel-thomas-labridy-70220a3a"
             className="footer__social-link color-link1"
             target="_blank"
             rel="noreferrer"
           >
             <Icon icon="bxl:linkedin-square"></Icon>
-          </button>
+          </a>
 
-          <button
+          <a
             href="https://github.com/LuckyMate97"
             className="footer__social-link color-link2"
             target="_blank"
             rel="noreferrer"
           >
             <Icon icon="bxl:github"></Icon>
-          </button>
+          </a>
         </div>
         <ul className="footer__list">
           <li>

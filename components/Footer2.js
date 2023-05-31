@@ -40,7 +40,7 @@ const Footer2 = () => {
           </a>
 
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/manuel-thomas-labridy-70220a3a"
             className="footer__social-link color-link1"
             target="_blank"
             rel="noreferrer"
