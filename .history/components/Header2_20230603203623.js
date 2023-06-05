@@ -8,6 +8,7 @@ import LinkShare from "./LinkShare";
 import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
 import BuyMeACoffee from "./BuyMeACoffee";
+// import ToolsTo from "./ToolsTo";
 
 
 // import Head from "next/head";
@@ -76,10 +77,9 @@ const Header = () => {
   };
 
 useEffect(()=>{
-  if(!dbUser)
-  return
+  
   setUser(dbUser)
-},[])
+},[dbUser])
 
   return (
     <header className="header">
@@ -110,7 +110,8 @@ useEffect(()=>{
         </div>
 
         <div className={!toggle ? "nav__menu show-menu" : "nav__menu"} >
-          <ul className="nav__list grid">
+          <ul className="nav__list grid ">
+
             <li className="nav__item">
               <Link href={`/`} legacyBehavior>
                 <a
@@ -174,6 +175,23 @@ useEffect(()=>{
                 </a>
               </Link>
             </li>
+
+            <li className="nav__item nav-item-border">
+              <Link href={`/Categories/TOOLS`} legacyBehavior>
+              <a
+                  href="#tools"
+                  onClick={() => setActiveNav("#tools")}
+                  className={ 
+                    activeNav === "#tools"
+                      ? "nav__link active-link"
+                      : "nav__link nav-item-border"
+                  }
+                >
+                  <i className="uil uil-scenery nav__icon"></i>Tools To
+                </a>
+              </Link>
+            </li>
+
           </ul>
           <Icon
             icon="uil:times"
@@ -190,7 +208,7 @@ useEffect(()=>{
             <Icon icon="uil:apps" className="uil uil-apps"></Icon>
           </div>
           <div className="nav__toggle-share-socials">
-          <BuyMeACoffee author={user} className="share"/>
+          <BuyMeACoffee author={user}/>
           <LinkShare className="share"/>
           </div> 
         </div>

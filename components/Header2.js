@@ -9,8 +9,6 @@ import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
 import BuyMeACoffee from "./BuyMeACoffee";
 // import ToolsTo from "./ToolsTo";
-
-
 // import Head from "next/head";
 
 const Header = () => {
@@ -179,10 +177,10 @@ useEffect(()=>{
             <li className="nav__item nav-item-border">
               <Link href={`/Categories/TOOLS`} legacyBehavior>
               <a
-                  href="#news"
-                  onClick={() => setActiveNav("#news")}
+                  href="#tools"
+                  onClick={() => setActiveNav("#tools")}
                   className={ 
-                    activeNav === "#news"
+                    activeNav === "#tools"
                       ? "nav__link active-link"
                       : "nav__link nav-item-border"
                   }

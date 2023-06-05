@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 // import Pic from "../../assets/Mur.jpg";
-// import { useUserContext } from "../../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import LinkShare from "./LinkShare";
 import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
-
-
+import BuyMeACoffee from "./BuyMeACoffee";
+// import ToolsTo from "./ToolsTo";
 // import Head from "next/head";
 
 const Header = () => {
@@ -20,12 +20,16 @@ const Header = () => {
   //     if(this.scrollY>=80) header.classList.add("scroll-header");
   //     else header.classList.remove("scroll-header");
   // })
-  /*====================== Toggle Menu ====================== */
-
+  /*==================== Toggle Menu ====================== */
+  
   const [toggle, showMenu] = useState(false);
+  const [user,setUser]=useState('');
   const [activeNav, setActiveNav] = useState("#home");
   const [item, setItem] = useState({ name: "All" });
   const router = useRouter();
+  const { dbUser } = useUserContext();
+
+
   /* +++++++++++++++++++++++++++++++++++++++++++++++++ */
   //   const { dbUser, image } = useUserContext();
 
@@ -70,6 +74,11 @@ const Header = () => {
     setActiveNav(index);
   };
 
+useEffect(()=>{
+  
+  setUser(dbUser)
+},[dbUser])
+
   return (
     <header className="header">
       <nav className="nav container">
@@ -99,7 +108,8 @@ const Header = () => {
         </div>
 
         <div className={!toggle ? "nav__menu show-menu" : "nav__menu"} >
-          <ul className="nav__list grid">
+          <ul className="nav__list grid ">
+
             <li className="nav__item">
               <Link href={`/`} legacyBehavior>
                 <a
@@ -163,6 +173,23 @@ const Header = () => {
                 </a>
               </Link>
             </li>
+
+            <li className="nav__item nav-item-border">
+              <Link href={`/Categories/TOOLS`} legacyBehavior>
+              <a
+                  href="#tools"
+                  onClick={() => setActiveNav("#tools")}
+                  className={ 
+                    activeNav === "#tools"
+                      ? "nav__link active-link"
+                      : "nav__link nav-item-border"
+                  }
+                >
+                  <i className="uil uil-scenery nav__icon"></i>Tools To
+                </a>
+              </Link>
+            </li>
+
           </ul>
           <Icon
             icon="uil:times"
@@ -171,13 +198,17 @@ const Header = () => {
           ></Icon>
         </div>
         <div className="nav__toggle-share">
+        
           <div
             className={toggle == true ? "nav_toggle" : "noshow"}
             onClick={() => showMenu(!toggle)}
           >
             <Icon icon="uil:apps" className="uil uil-apps"></Icon>
           </div>
+          <div className="nav__toggle-share-socials">
+          <BuyMeACoffee author={user}/>
           <LinkShare className="share"/>
+          </div> 
         </div>
       </nav>
     </header>
