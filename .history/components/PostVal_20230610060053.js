@@ -64,14 +64,14 @@ const PostVal = ({ post }) => {
    
     <div className="post" key={post.id}>
       
-        <div className="img5">
+        <div className="img">
           {postImage && (
             <Image
               src={postImage || ""}
               alt=""
               width={300}
               height={250}
-              className="rounded img"
+              className="rounded img5"
             />
           )}
         </div>

@@ -7,7 +7,7 @@
 }
 
 .article__title{
-    mix-blend-mode: darken;
+    mix-blend-mode: difference;
 }
 
 .article__subtitle{
@@ -103,7 +103,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    filter: blur(15px) brightness(1.8) contrast(0.9) ;
+    filter: blur(15px)brightness(1.8) contrast(0.9) ;
     -webkit-filter: blur(15px)brightness(1.8) contrast(0.9) ;
     -moz-filter: blur(15px)brightness(1.8) contrast(0.9) ;
     -o-filter: blur(15px)brightness(1.8) contrast(0.9) ;
@@ -160,10 +160,6 @@
   .post__article-blog{
     height: 80%;
   }
-
-  .article__title{
-    mix-blend-mode: difference;
-}
 }
 
 

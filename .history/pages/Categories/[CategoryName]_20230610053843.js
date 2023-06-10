@@ -419,7 +419,7 @@ function Category({ category, posts }) {
               className="category__img "
             />
           </div>
-          <h1 className={`font-bold flex flex-col justify-center text-4xl text-center pb-5 category__news ${category?.name === "TOOLS" ? "text-white" : ""}`} >
+          <h1 className={`font-bold flex flex-col justify-center text-4xl text-center pb-5 category__news ${category?.name === "TOOLS" ? "text-white" : "category__news "}`} >
             {category?.name == "NEWS"
               ? "TECHIE'S SOCIETY"
               :category?.name == "TOOLS"

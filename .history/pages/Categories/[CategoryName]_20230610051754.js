@@ -406,7 +406,7 @@ function Category({ category, posts }) {
         ></div>
       </div>
       <section className="section section__cat mx-auto md:px-2 py-8 w-3/4">
-        <div className="post__article-blog3" style={backgroundImageStyle} />
+        <div className="post__article-blog" style={backgroundImageStyle} />
         <div className="container post py-10 flex flex-row justify-begin mt-20 content">
           
           <div className="image pr-10 flex justify-center ">
@@ -419,7 +419,7 @@ function Category({ category, posts }) {
               className="category__img "
             />
           </div>
-          <h1 className={`font-bold flex flex-col justify-center text-4xl text-center pb-5 category__news ${category?.name === "TOOLS" ? "text-white" : ""}`} >
+          <h1 className=" font-bold flex flex-col justify-center text-4xl text-center pb-5 ">
             {category?.name == "NEWS"
               ? "TECHIE'S SOCIETY"
               :category?.name == "TOOLS"

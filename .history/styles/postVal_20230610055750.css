@@ -102,25 +102,7 @@
  }
 
  .postCol__title2{
-  position: relative;
-  z-index: 1;
- }
-
- .img5{
-  position: absolute;
-  z-index: -10;
- 
-  width: 50%;
-  height: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: blur(2.5px) contrast(0.9) ;
-    -webkit-filter: blur(2.5px) contrast(0.9) ;
-    -moz-filter: blur(2.5px) contrast(0.9) ;
-    -o-filter: blur(2.5px) contrast(0.9) ;
-    -ms-filter: blur(2.5px) contrast(0.9) ;
-  
+  size:40px;
  }
 }
 

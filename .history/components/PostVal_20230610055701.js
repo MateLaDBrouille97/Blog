@@ -64,7 +64,7 @@ const PostVal = ({ post }) => {
    
     <div className="post" key={post.id}>
       
-        <div className="img5">
+        <div className="img">
           {postImage && (
             <Image
               src={postImage || ""}
@@ -76,7 +76,7 @@ const PostVal = ({ post }) => {
           )}
         </div>
         <div className="content">
-          <h1 className="postCol__title2">{post.title}</h1>
+          <div className="postCol__title2">{post.title}</div>
 
           <a className="postCol__description2 text-m  text-gray-800 hover:text-gray-600 mt-10">
             {post?.description}

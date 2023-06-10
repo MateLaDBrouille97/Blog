@@ -7,7 +7,7 @@
 }
 
 .article__title{
-    mix-blend-mode: darken;
+    mix-blend-mode: difference;
 }
 
 .article__subtitle{
@@ -160,10 +160,6 @@
   .post__article-blog{
     height: 80%;
   }
-
-  .article__title{
-    mix-blend-mode: difference;
-}
 }
 
 
