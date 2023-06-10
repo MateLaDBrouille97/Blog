@@ -20,11 +20,10 @@ const Pagination = ({ page, itemCount, perPage }) => {
     page: page,
     itemsPerPage: perPage,
     maxPageItems: 7,
-    
   });
 
   console.log(page)
-  console.log(itemCount)
+  console.log(itemcount)
   console.log(perPage)
 
   const firstPage = 1;
@@ -51,8 +50,8 @@ const Pagination = ({ page, itemCount, perPage }) => {
         }
 
         if (page === "gap") {
-          return <span key={`${page}-${i}`} 
-          >...</span>;
+          return <span key={`${page}-${i}`} aria-hidden="true"
+          className="text-gray-400">...</span>;
         }
 
         if (page === "next") {
@@ -64,7 +63,7 @@ const Pagination = ({ page, itemCount, perPage }) => {
         }
 
         return (
-          <PaginationLink active={current} key={page} page={page}>
+          <PaginationLink active={current } key={page} page={page}>
             {page}
           </PaginationLink>
         );

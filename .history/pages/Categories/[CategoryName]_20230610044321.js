@@ -554,7 +554,7 @@ function Category({ category, posts }) {
         )}
 
        <div className="flex justify-center items-center">
-          <Pagination page={page} perPage={parseInt(limit)} itemCount={itemCount?.length} />
+          <Pagination page={page} perPage={limit} itemCount={itemCount?.length} />
         </div>
       </section>
     </Format>

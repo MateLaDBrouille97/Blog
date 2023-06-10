@@ -164,10 +164,8 @@ function Category({ category, posts }) {
   // Lines 27-29: Define limit and skip which is used by DummyJSON API for pagination
   const limit = perPage;
   const skip = (parseInt(page) - 1) * parseInt(limit);
-  const endIndex = skip + parseInt(limit);
-  const itemCount=dataSort?.slice(9);
-  const pageData = itemCount?.slice(skip, endIndex);
-  
+  const endIndex = skip + limit;
+  const pageData = dataSort.slice(9).slice(skip, endIndex);
 
   //------------------------------------------------------------
 
@@ -381,8 +379,6 @@ function Category({ category, posts }) {
     setActive(index);
   };
 
-  console.log("count",dataSort)
-
   return (
     <Format>
       <div className="flex flex-col overflow-hidden relative z-50">
@@ -553,8 +549,8 @@ function Category({ category, posts }) {
           </div>
         )}
 
-       <div className="flex justify-center items-center">
-          <Pagination page={page} perPage={parseInt(limit)} itemCount={itemCount?.length} />
+        <div className="flex justify-center items-center">
+          <Pagination page={1} perPage={12} itemCount={dataSort?.length?? 0} />
         </div>
       </section>
     </Format>
