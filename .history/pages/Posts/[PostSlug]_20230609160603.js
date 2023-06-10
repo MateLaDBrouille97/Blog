@@ -203,8 +203,7 @@ function Article({ image, post, post2 }) {
         ></div>
       </div>
       <section className="section section__article-postSlug mx-auto md:px-2 py-16 w-4/6 " >
-        <div className="container " >
-          <div className="post__article-blog" style={backgroundImageStyle} />
+        <div className="container post__article-blog" style={backgroundImageStyle}>
           <div className=" article__img">
             <Image src={image} alt="" width={900} height={800} />
           </div>
@@ -257,7 +256,7 @@ function Article({ image, post, post2 }) {
               {user ? <Author author={user} /> : <></>}
             </div>
           </p>
-          <h2 className="article__text content">
+          <h2 className="article__text ">
             <MDXRemote {...post2?.source} components={components} />
           </h2>
         </div>

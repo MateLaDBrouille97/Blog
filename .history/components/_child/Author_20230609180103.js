@@ -44,7 +44,7 @@ export default function Author({ author }) {
             {author?.firstName}
           </a>
         </Link>
-        <span className="text-sm text-gray-500 author-title">
+        <span className="text-sm text-gray-500">
           {author?.title?.[1] ? author?.title?.[1] : author?.title?.[0]}
         </span>
       </div>

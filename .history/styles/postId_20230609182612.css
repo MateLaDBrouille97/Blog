@@ -86,30 +86,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    filter: blur(15px)brightness(1.8) contrast(0.9) ;
-    -webkit-filter: blur(15px)brightness(1.8) contrast(0.9) ;
-    -moz-filter: blur(15px)brightness(1.8) contrast(0.9) ;
-    -o-filter: blur(15px)brightness(1.8) contrast(0.9) ;
-    -ms-filter: blur(15px)brightness(1.8) contrast(0.9) ;
+    filter: blur(15px)brightness(1.8) contrast(1.2) saturate(3.2);
+    -webkit-filter: blur(15px)brightness(1.8) contrast(1.2) saturate(3.2);
+    -moz-filter: blur(15px)brightness(1.8) contrast(1.2) saturate(3.2);
+    -o-filter: blur(15px)brightness(1.8) contrast(1.2) saturate(3.2);
+    -ms-filter: blur(15px)brightness(1.8) contrast(1.2) saturate(3.2);
   }
-
-  .post__article-blog2{
-    position: absolute;
-    z-index: -10;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: blur(15px)brightness(1.8) contrast(0.9) ;
-    -webkit-filter: blur(15px)brightness(1.8) contrast(0.9) ;
-    -moz-filter: blur(15px)brightness(1.8) contrast(0.9) ;
-    -o-filter: blur(15px)brightness(1.8) contrast(0.9) ;
-    -ms-filter: blur(15px)brightness(1.8) contrast(0.9) ;
-  }
-  
   
   .content {
     position: relative;
@@ -139,9 +121,7 @@
   .article__desc{
     color: black;
   } */
-  .post__article-blog{
-    height: 80%;
-  }
+
 }
 
 

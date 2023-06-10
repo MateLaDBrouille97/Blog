@@ -40,11 +40,11 @@ export default function Author({ author }) {
       />
       <div className="flex flex-col justify-center px-4 ">
         <Link href="/" legacyBehavior>
-          <a className="text-md flex justify-begin font-bold text-gray-900 hover:text-gray-600 author-name">
+          <a className="text-md flex justify-begin font-bold text-gray-900 hover:text-gray-600 ">
             {author?.firstName}
           </a>
         </Link>
-        <span className="text-sm text-gray-500 author-title">
+        <span className="text-sm text-gray-500">
           {author?.title?.[1] ? author?.title?.[1] : author?.title?.[0]}
         </span>
       </div>

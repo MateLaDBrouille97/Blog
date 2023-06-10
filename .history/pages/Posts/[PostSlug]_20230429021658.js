@@ -178,9 +178,7 @@ function Article({ image, post, post2 }) {
     };
   }, [router]);
 
-  const backgroundImageStyle = {
-    backgroundImage: `url(${image})`,
-  };
+  
 
   return (
     <Format>
@@ -202,9 +200,8 @@ function Article({ image, post, post2 }) {
           className="cover-strip h-screen w-3/12 bg-slate-300 fixed top-0 left-3/4 cover"
         ></div>
       </div>
-      <section className="section section__article-postSlug mx-auto md:px-2 py-16 w-4/6 " >
-        <div className="container " >
-          <div className="post__article-blog" style={backgroundImageStyle} />
+      <section className="section section__article-postSlug mx-auto md:px-2 py-16 w-4/6">
+        <div className="container ">
           <div className=" article__img">
             <Image src={image} alt="" width={900} height={800} />
           </div>
@@ -257,7 +254,7 @@ function Article({ image, post, post2 }) {
               {user ? <Author author={user} /> : <></>}
             </div>
           </p>
-          <h2 className="article__text content">
+          <h2 className="article__text ">
             <MDXRemote {...post2?.source} components={components} />
           </h2>
         </div>

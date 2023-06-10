@@ -125,7 +125,7 @@ export default function Section1() {
         ></div>
       </div>
       <section className="section py-16 trending__container" >
-      <div className="post__article-blog2" style={bg} />
+      <div className="post__article-blog" style={bg} />
         <div className="container mt-36 mx-auto md:px-20 content">
           <div className="flex justify-center pb-8 mt-10 mb-20 section1__posts">
             <h1 className="font-bold text-4xl text-center section1__posts-title">

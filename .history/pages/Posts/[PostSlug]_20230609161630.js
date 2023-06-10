@@ -257,7 +257,7 @@ function Article({ image, post, post2 }) {
               {user ? <Author author={user} /> : <></>}
             </div>
           </p>
-          <h2 className="article__text content">
+          <h2 className="article__text ">
             <MDXRemote {...post2?.source} components={components} />
           </h2>
         </div>
