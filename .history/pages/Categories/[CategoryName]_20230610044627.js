@@ -381,7 +381,7 @@ function Category({ category, posts }) {
     setActive(index);
   };
 
- 
+  console.log("count",dataSort)
 
   return (
     <Format>
