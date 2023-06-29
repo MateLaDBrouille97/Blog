@@ -55,11 +55,12 @@ const LinkShare = () => {
           toggleState === true ? "work__modal active-modal" : "work__modal"
         }
       >
-        
+        <div className="nav__close-container2"> </div>
         <Icon
           icon="uil:times"
           onClick={() => setToggleState(false)}
-          className="work__modal-close"  
+          className="work__modal-close"
+          
         ></Icon>
         <form
           className="md:flex-none w-70 order-2 sm:order-1 flex justify-center py-4 sm:py-0 form__text work__form-text"

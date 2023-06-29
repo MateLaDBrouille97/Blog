@@ -140,8 +140,6 @@
     display: none;
 }
 
-
-
 /*=============== BREAKPOINTS ===============*/
 
 @media screen and (max-width: 768px) {
@@ -211,14 +209,9 @@
 
   .nav__close2 {
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    
-    text-align: center;
-    
-    font-size: 3rem;
+    right: 0.3rem;
+    bottom: 0.25rem;
+    font-size: 2.5rem;
     cursor: pointer;
     color: var(--title-color);
   }
@@ -263,13 +256,7 @@
 
   .nav__close-container {
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-   
-    text-align: center;
-    
+    right: 22rem;
     top: -5rem;
     background-color: white;
     opacity: 0.8;
@@ -277,7 +264,7 @@
     border-radius: 1.5rem;
     height: 3rem;
     width: 3rem;
-    z-index: var(--z-tooltip);
+    z-index: 100;
     transition: 0.4s;
     display: flex;
     justify-content: center;
@@ -285,24 +272,10 @@
   }
 
   .three-bars {
+ 
     font-size: 2rem;
   }
 }
-
-
-
-
-
-
-@media only screen and (max-width:576px) {
-  
-}
-
-
-
-
-
-
 
 @media screen and (max-width: 350px) {
   .nav__menu2 {
@@ -317,5 +290,5 @@
     display: none;
   } 
 
-  
+ 
 }

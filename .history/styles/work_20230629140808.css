@@ -157,7 +157,6 @@ color: black;
     margin:30px;
 
 }
-
 .swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -247,14 +246,8 @@ color: black;
 
 .work__modal-close{
     position:absolute;
-
-    margin-left: auto;
-margin-right: auto;
-left: 0;
-right: 0;
-top : 250px;
-text-align: center;
-    
+    top: 250px;
+    right: 830px;
     font-size: 3.5rem;
     color: var(--title-color);
     cursor: pointer;
@@ -379,6 +372,15 @@ font-size:20px
         font-size:20px
         }
 
+    .work__modal-close{
+            position:absolute;
+            top: 250px;
+            right: 350px;
+            font-size: 3.5rem;
+            color: var(--title-color);
+            cursor: pointer;
+        
+        }
 
 
         .nav__list2{
@@ -409,16 +411,17 @@ font-size:20px
         font-size: 18px;
     }
 
+    .work__modal-close{
+        position:absolute;
+        top: 250px;
+        right: 310px;
+        font-size: 3.5rem;
+        color: var(--title-color);
+        cursor: pointer;
     
+    }
    
   }
-
-
-  @media screen and (max-width: 668px) {
-   
-  
-  }
-  
 
   @media screen and (max-width: 576px) {
     .work__container{
@@ -447,7 +450,9 @@ font-size:20px
         padding-left: 10px;
         font-size:20px
         }
-  
+
+
+       
   }
 
   /* For small devices */

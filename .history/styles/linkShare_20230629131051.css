@@ -159,7 +159,7 @@
 
 
 .nav__close-container2 {
-  position: absolute;
+  position: relative;
   right: 22rem;
   top: -5rem;
   background-color: white;
@@ -168,7 +168,7 @@
   border-radius: 1.5rem;
   height: 3rem;
   width: 3rem;
-  z-index:var(--z-tooltip);
+  z-index: var(--z-tooltip);
   transition: 0.4s;
   display: flex;
   justify-content: center;

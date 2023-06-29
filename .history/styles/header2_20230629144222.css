@@ -140,7 +140,9 @@
     display: none;
 }
 
-
+.three-bars{
+  display: none;
+}
 
 /*=============== BREAKPOINTS ===============*/
 
