@@ -405,7 +405,7 @@ function Category({ category, posts }) {
           className="cover-strip h-screen w-3/12 bg-slate-300 fixed top-0 left-3/4 cover"
         ></div>
       </div>
-      <section className="section section__cat mx-auto md:px-2 py-8 lg:w-4/6   md:w-5.5/6">
+      <section className="section section__cat mx-auto md:px-2 py-8 w-5.5/6">
         <div className="post__article-blog3" style={backgroundImageStyle} />
         <div className="container post py-10 flex flex-row justify-begin mt-20 content">
           

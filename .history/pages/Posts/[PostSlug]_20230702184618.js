@@ -202,7 +202,7 @@ function Article({ image, post, post2 }) {
           className="cover-strip h-screen w-3/12 bg-slate-300 fixed top-0 left-3/4 cover"
         ></div>
       </div>
-      <section className="section section__article-postSlug mx-auto md:px-2 py-16 lg:w-4/6 md:w-5.5/6  " >
+      <section className="section section__article-postSlug mx-auto md:px-2 py-16 lg:w-4/5 md:w-5.5/6  " >
         <div className="container " >
           <div className="post__article-blog" style={backgroundImageStyle} />
           <div className=" article__img">
