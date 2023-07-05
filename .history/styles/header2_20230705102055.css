@@ -147,7 +147,7 @@
 @media screen and (max-width: 768px) {
   .header {
     top: 0;
-    bottom: initial;
+    /* bottom: 0; */
   }
 
   .nav {
@@ -188,7 +188,7 @@
 
   .nav__menu2 .nav__list2 .nav__link2{
     padding:5px;
-    font-size: 2.5rem;
+    font-size: 2.0rem;
   }
 
 
