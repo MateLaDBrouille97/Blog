@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import { sync } from 'glob'
 
+
 const articlesPath = path.join(process.cwd(), 'content/posts')
 
 export async function getSlug() {
@@ -21,15 +22,16 @@ export async function getSlug() {
 }
 
 export async function getArticleFromSlug(slug) {
+    
     const articleDir = path.join(path.join(process.cwd(), 'content/posts'), `${slug}.mdx`)
     const source = fs.readFileSync(articleDir)
     const { content, data } = matter(source)
-    
+    const {tags}=data?.tags
     return {
       content,
       frontmatter: {
         slug,
-        tags:data.tags ?? [],
+        tags:tags,
         excerpt: data.excerpt,
         title: data.title,
         publishedAt: data.publishedAt,
