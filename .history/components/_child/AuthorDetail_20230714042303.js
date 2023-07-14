@@ -118,8 +118,8 @@ const AuthorDetails = ({ author }) => {
               <p className="mt-5 mb-2 font-semibold">
                 If you want to support me personally, you can
               </p>
-              <a href={author?.buyMeACoffee} target="_blank" rel="noreferrer">
-                <Image width={218} src={bmc} alt="Buy me a coffee" />
+              <a href={author?.buyMeACoffee} target="_blank" rel="noreferrer" >
+                <Image width={218} src={bmc}  alt="Buy me a coffee" />
               </a>
             </>
           )}

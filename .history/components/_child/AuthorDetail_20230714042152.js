@@ -3,7 +3,7 @@ import Image from 'next/image';
 // import bmcButton from '../../../public/images/bmc-button.png';
 import React, { useEffect, useState } from "react";
 import SocialIconLink from './SocialIconLink';
-import im1 from "../../public/ManuelTL2.jpg";
+import bmc from "../../public/bmc-button.png";
 import Link from "next/link";
 import { useUserContext } from "@/contexts/UserContext";
 import {
@@ -113,18 +113,18 @@ const AuthorDetails = ({ author }) => {
             }}
           />
 
-          {/* {author.buyMeACoffee && (
+          {author?.buyMeACoffee && (
             <>
               <p className="mt-5 mb-2 font-semibold">
                 If you want to support me personally, you can
               </p>
-              <a href={author.buyMeACoffee} target="_blank" rel="noreferrer">
-                <Image width={218} src={bmcButton} alt="Buy me a coffee" />
+              <a href={author?.buyMeACoffee} target="_blank" rel="noreferrer" className='md:flex md:justify-center md:items-center'>
+                <Image width={218} src={bmc}  alt="Buy me a coffee" />
               </a>
             </>
-          )} */}
+          )}
           <>
-          <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="mlab33972z" data-color="#FFDD00" data-emoji=""  data-font="Poppins" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+          
           </>
         </div>
       </div>

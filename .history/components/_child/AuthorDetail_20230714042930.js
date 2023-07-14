@@ -3,7 +3,7 @@ import Image from 'next/image';
 // import bmcButton from '../../../public/images/bmc-button.png';
 import React, { useEffect, useState } from "react";
 import SocialIconLink from './SocialIconLink';
-import im1 from "../../public/ManuelTL2.jpg";
+import bmc from "../../public/bmc-button.png";
 import Link from "next/link";
 import { useUserContext } from "@/contexts/UserContext";
 import {
@@ -113,16 +113,16 @@ const AuthorDetails = ({ author }) => {
             }}
           />
 
-          {/* {author.buyMeACoffee && (
+          {author?.buyMeACoffee && (
             <>
               <p className="mt-5 mb-2 font-semibold">
                 If you want to support me personally, you can
               </p>
-              <a href={author.buyMeACoffee} target="_blank" rel="noreferrer">
-                <Image width={218} src={bmcButton} alt="Buy me a coffee" />
+              <a href={author?.buyMeACoffee} target="_blank" rel="noreferrer" className='author_detail'>
+                <Image width={218} src={bmc}  alt="Buy me a coffee" />
               </a>
             </>
-          )} */}
+          )}
           <>
           
           </>

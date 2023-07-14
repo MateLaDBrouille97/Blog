@@ -10,6 +10,13 @@ import ScrollUp from "@/components/ScrollUp";
 
 export default function Format({ children }) {
 
+  useEffect(() => {
+    document.documentElement.style.zoom = '75%';
+
+    return () => {
+      document.documentElement.style.zoom = ''; // Reset the zoom level when the component is unmounted
+    };
+  }, []);
 
 
   return (

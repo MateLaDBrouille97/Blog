@@ -157,12 +157,20 @@
   .article__desc{
     color: black;
   } */
+
+
   .post__article-blog{
     height: 80%;
   }
 
   .article__title{
     mix-blend-mode: difference;
+}
+
+.author_detail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 }
 
