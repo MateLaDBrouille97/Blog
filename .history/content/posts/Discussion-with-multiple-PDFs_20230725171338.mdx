@@ -1,0 +1,240 @@
+---
+title: "Discuss with multiple PDFs"
+layout: "Article"
+tags: 
+  -Definition
+  -IT
+  -Project
+  -Tech
+  -Technologies
+excerpt:
+publishedAt:
+---
+<br/>
+Working with PDF documents often requires the extraction of specific information contained within them. However, manually combing through a large number of PDFs can be a time-consuming and laborious task. In response to this challenge, the developers have introduced Multi-PDF-Bot, a cutting-edge solution that harnesses the capabilities of natural language processing and conversational AI.
+<br/>
+Multi-PDF-Bot serves as an interactive system designed to facilitate the querying and retrieval of relevant data from PDF documents. By leveraging advanced natural language processing algorithms and conversational AI technologies, the bot streamlines the process of extracting information, making it more efficient and user-friendly.
+<br/>
+In the development of Multi-PDF-Bot, a range of powerful libraries and modules have been carefully integrated. These components work synergistically to enhance the bot's performance and enable it to handle various PDF-related tasks with accuracy and speed.
+<br/>
+Our interactive web application is built upon ***Streamlit***, providing a solid foundation for its functionality and user interface.
+<br/>
+The ***Langchain*** library plays a crucial role in our project, offering various features that enhance the application's capabilities:
+<br/>
+ -***CharacterTextSplitter***: Facilitates text chunking for efficient processing.
+ -***OpenAIEmbeddings***: Empowers the application with semantic embeddings, enabling a deeper understanding of text content.
+ -***FAISS***: Integrates vector storage for optimized data retrieval and management.
+ -***ConversationBufferMemory***: Efficiently manages conversation history for seamless handling.
+ -***ConversationalRetrievalChain***: Combines all these components into a cohesive and responsive chatbot system.
+<br/>
+To ensure secure storage and loading of environment variables, we rely on the dotenv library, safeguarding sensitive information and configurations.
+<br/>
+For PDF document processing, our application leverages PyPDF2's PdfReader module, enabling users to effortlessly extract text from PDF files, enhancing the versatility and usefulness of the application.
+<br/>
+With these powerful libraries and modules as the backbone of our project, we are confident in delivering a feature-rich, efficient, and user-friendly interactive web application.
+<br/>
+Let's get started
+<br/>
+<br/>
+```js
+pip install python-dotenv PyPDF2 streamlit langchain openai  htmlTemplates
+
+```
+<br/>
+<br/>
+
+```python
+import streamlit as st
+from dotenv import load_dotenv
+from PyPDF2 import PdfReader
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import FAISS
+from langchain.chat_models import ChatOpenAI
+from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationalRetrievalChain
+from htmlTemplates import css,bot_template,user_template 
+
+```
+
+<br/>
+<br/>
+Create a new file named “htmlTemplates.py” and add the following code to define the styles for displaying user-generated questions and model responses:
+<br/>
+
+```python
+
+css = '''
+<style>
+.chat-message {
+    padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; display: flex
+}
+.chat-message.user {
+    background-color: #ff4d4d
+}
+.chat-message.bot {
+    background-color: #475063
+}
+
+.chat-message .message {
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+'''
+
+bot_template = '''
+<div class="chat-message bot">
+    <div class="message">{{MSG}}</div>
+</div>
+'''
+
+user_template = '''
+<div class="chat-message user">  
+    <div class="message">{{MSG}}</div>
+</div>
+'''
+
+```
+
+<br/>
+<br/>
+The CODE comprises several essential functions that serve distinct tasks:
+<br/>
+1. `get_pdf_text(pdf_docs)`: This function efficiently extracts text from a list of provided PDF documents using the PdfReader module. It amalgamates the extracted text and returns the concatenated result.
+<br/>
+2. `get_text_chunks(text)`: Taking the extracted text as input, this function divides it into smaller and manageable chunks utilizing the CharacterTextSplitter module. The chunk size, overlap, and other parameters are fine-tuned to optimize the efficiency of the text processing.
+<br/>
+3. `get_vectorstore(text_chunks)`: With text chunks as its input, this function creates a vector store by leveraging both OpenAIEmbeddings and FAISS. The vector store indexes the vector representations of the text chunks, facilitating efficient retrieval based on semantic similarity.
+<br/>
+4. `get_conversation_chain(vectorstore)`: This function constructs a conversation chain using the conversational AI model (ChatOpenAI), the vector store created in the previous function, and the conversation memory (ConversationBufferMemory). The chain enables the system to engage in interactive conversational interactions with users.
+<br/>
+5. `handle_userinput`: Responsible for processing the user's input question, this function generates a response from the chatbot, enabling seamless communication and interaction between the user and the system.
+<br/>
+By employing these specialized functions, the CODE forms a robust and comprehensive framework, empowering the application to perform text extraction, chunking, semantic indexing, and interactive chatbot conversations with users.
+<br/>
+
+```python
+
+def get_pdf_text(pdf_docs):
+    text = ""
+    for pdf in pdf_docs:
+        pdf_reader = PdfReader(pdf)
+        for page in pdf_reader.pages:
+            text += page.extract_text()
+    return text
+
+
+def get_text_chunks(text):
+    text_splitter = CharacterTextSplitter(
+        separator="\n",
+        chunk_size=1000,
+        chunk_overlap=200,
+        length_function=len
+    )
+    chunks = text_splitter.split_text(text)
+    return chunks
+
+
+def get_vectorstore(text_chunks):
+    embeddings = OpenAIEmbeddings()
+    # embeddings = HuggingFaceInstructEmbeddings(model_
+    # name="hkunlp/instructor-xl")
+    vectorstore = FAISS.from_texts(
+          texts=text_chunks, 
+          embedding=embeddings
+    )
+    return vectorstore
+
+
+def get_conversation_chain(vectorstore):
+    llm = ChatOpenAI()
+    # llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", 
+    # model_kwargs={"temperature":0.5, "max_length":512})
+
+    memory = ConversationBufferMemory(
+        memory_key='chat_history', return_messages=True)
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm=llm,
+        retriever=vectorstore.as_retriever(),
+        memory=memory
+    )
+    return conversation_chain
+
+
+
+
+def handle_userinput(user_question):
+    response = st.session_state.conversation({'question': user_question})
+    st.session_state.chat_history = response['chat_history']
+
+    for i, message in enumerate(st.session_state.chat_history):
+        if i % 2 == 0:
+            st.write(user_template.replace(
+                "{{MSG}}", message.content), 
+                  unsafe_allow_html=True)
+        else:
+            st.write(bot_template.replace(
+                "{{MSG}}", message.content), 
+                  unsafe_allow_html=True)
+
+```
+<br/>
+
+<br/>
+The `main()` function is composed of several important steps that facilitate the functionality of the Streamlit application:
+<br/>
+1.`load_dotenv()`: This function loads the environment variables from a `.env` file, ensuring secure storage and access to sensitive configurations.
+<br/>
+2. `st.set_page_config()`: Streamlit's built-in method to set the page configuration, allowing customization of the application's appearance, including the page title and icon.
+<br/>
+3. `st.write(css, unsafe_allow_html=True)`: This line writes the CSS style to the Streamlit application, providing the flexibility to customize the visual appearance as desired.
+<br/>
+4. Conditional checks:
+   - `if "conversation" not in st.session_state` and `if "chat_history" not in st.session_state`: These conditions check if the conversation and chat history are not present in the session state, and if so, they initialize them to None. This ensures that the application starts with a clean slate for new interactions.
+<br/>
+5. Application header: 
+   - `st.header("Chat with multiple PDFs :books:")`: A header with the specified text appears at the top of the Streamlit application, providing context and clarity to users about the application's purpose.
+<br/>
+6. User input handling:
+   - `user_question = st.text_input("Ask a question about your documents:")`: This creates a text input box where users can input questions related to their documents, fostering an interactive user experience.
+<br/>
+7. User input processing:
+   - `if user_question: handle_userinput(user_question)`: If the user enters a question, the `handle_userinput()` function is called to process the user's input and generate a response from the chatbot.
+<br/>
+8. PDF processing on button click:
+   - `if st.button("Process")`: If the user clicks the "Process" button, the following steps are executed:
+     - `raw_text = get_pdf_text(pdf_docs)`: This retrieves the text content from the uploaded PDF documents, enabling further processing.
+     - `text_chunks = get_text_chunks(raw_text)`: The text content is split into smaller chunks for more efficient processing and analysis.
+     - `vectorstore = get_vectorstore(text_chunks)`: A vector store is created, indexing the vector representations of the text chunks. This enables faster retrieval of relevant information based on semantic similarity.
+<br/>
+By following these steps, the `main()` function ensures a smooth and interactive experience for users, allowing them to engage in chat-based interactions and access information from multiple PDF documents seamlessly.
+<br/>
+<br/>
+
+# ***Running the Application***
+<br/>
+<Image src="/MultiPDF2code.jpeg" alt="" width={600} height={500} />
+<br />
+1. Open a terminal or command prompt.
+<br/>
+2. Navigate to the directory where your chatbot file is located.
+<br/>
+3. Execute the following command:
+<br/>
+```python
+streamlit run name_of_your_file.py
+
+```
+<br/>
+4. Streamlit application will start running, and you will be provided with a URL. Copy the URL displayed in the terminal and paste it into your web browser to access the application’s user interface.
+<br/>
+5. From there, you can interact with the Multi-PDF-Bot, upload PDF documents, ask questions, and explore the responses.
+<br/>
+<br/>
+You have successfully built a powerful chatbot using LangChain, OpenAI, and Streamlit.
+<br/>
+<br/>
+By employing Multi-PDF-Bot, users can now seamlessly interact with their PDF documents, saving valuable time and effort while obtaining the specific information they need. Whether it's for research, data analysis, or other purposes, Multi-PDF-Bot is poised to revolutionize the way we work with PDFs.
+<br/>
+
