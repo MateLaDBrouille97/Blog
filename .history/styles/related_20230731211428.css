@@ -1,0 +1,26 @@
+.related__post{
+    margin-bottom:150px;
+}
+
+.related__title{
+    cursor: pointer;
+}
+
+
+.custom-image-wrapper2 {
+  width: 285px;
+  height: 150px;
+  overflow: hidden;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-image2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16/12;
+
+}
