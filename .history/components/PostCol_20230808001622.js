@@ -61,7 +61,7 @@ export default function PostCol({post}) {
   
     return (
       <>
-      <div className="flex gap-9 pl-4">
+      <div className="flex gap-5">
         <div className="image flex flex-col justify-start custom-image-wrapper2">
           <Link href={`/Posts/${post?.slug}`} legacyBehavior>
             <a className="postCol__img">
