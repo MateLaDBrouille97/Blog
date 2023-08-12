@@ -6,9 +6,6 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { fetchByPath, validateField } from "./utils";
-import { User } from "../models";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import {
   Badge,
   Button,
@@ -21,6 +18,9 @@ import {
   TextField,
   useTheme,
 } from "@aws-amplify/ui-react";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { User } from "../models";
+import { fetchByPath, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 function ArrayField({
   items = [],
@@ -32,8 +32,18 @@ function ArrayField({
   setFieldValue,
   currentFieldValue,
   defaultFieldValue,
+  lengthLimit,
+  getBadgeText,
+  errorMessage,
 }) {
-  const { tokens } = useTheme();
+  const labelElement = <Text>{label}</Text>;
+  const {
+    tokens: {
+      components: {
+        fieldmessages: { error: errorStyles },
+      },
+    },
+  } = useTheme();
   const [selectedBadgeIndex, setSelectedBadgeIndex] = React.useState();
   const [isEditing, setIsEditing] = React.useState();
   React.useEffect(() => {
@@ -48,9 +58,9 @@ function ArrayField({
   };
   const addItem = async () => {
     if (
-      (currentFieldValue !== undefined ||
-        currentFieldValue !== null ||
-        currentFieldValue !== "") &&
+      currentFieldValue !== undefined &&
+      currentFieldValue !== null &&
+      currentFieldValue !== "" &&
       !hasError
     ) {
       const newItems = [...items];
@@ -64,45 +74,8 @@ function ArrayField({
       setIsEditing(false);
     }
   };
-  return (
+  const arraySection = (
     <React.Fragment>
-      {isEditing && children}
-      {!isEditing ? (
-        <>
-          <Text>{label}</Text>
-          <Button
-            onClick={() => {
-              setIsEditing(true);
-            }}
-          >
-            Add item
-          </Button>
-        </>
-      ) : (
-        <Flex justifyContent="flex-end">
-          {(currentFieldValue || isEditing) && (
-            <Button
-              children="Cancel"
-              type="button"
-              size="small"
-              onClick={() => {
-                setFieldValue(defaultFieldValue);
-                setIsEditing(false);
-                setSelectedBadgeIndex(undefined);
-              }}
-            ></Button>
-          )}
-          <Button
-            size="small"
-            variation="link"
-            color={tokens.colors.brand.primary[80]}
-            isDisabled={hasError}
-            onClick={addItem}
-          >
-            {selectedBadgeIndex !== undefined ? "Save" : "Add"}
-          </Button>
-        </Flex>
-      )}
       {!!items?.length && (
         <ScrollView height="inherit" width="inherit" maxHeight={"7rem"}>
           {items.map((value, index) => {
@@ -123,7 +96,7 @@ function ArrayField({
                   setIsEditing(true);
                 }}
               >
-                {value.toString()}
+                {getBadgeText ? getBadgeText(value) : value.toString()}
                 <Icon
                   style={{
                     cursor: "pointer",
@@ -152,6 +125,60 @@ function ArrayField({
       <Divider orientation="horizontal" marginTop={5} />
     </React.Fragment>
   );
+  if (lengthLimit !== undefined && items.length >= lengthLimit && !isEditing) {
+    return (
+      <React.Fragment>
+        {labelElement}
+        {arraySection}
+      </React.Fragment>
+    );
+  }
+  return (
+    <React.Fragment>
+      {labelElement}
+      {isEditing && children}
+      {!isEditing ? (
+        <>
+          <Button
+            onClick={() => {
+              setIsEditing(true);
+            }}
+          >
+            Add item
+          </Button>
+          {errorMessage && hasError && (
+            <Text color={errorStyles.color} fontSize={errorStyles.fontSize}>
+              {errorMessage}
+            </Text>
+          )}
+        </>
+      ) : (
+        <Flex justifyContent="flex-end">
+          {(currentFieldValue || isEditing) && (
+            <Button
+              children="Cancel"
+              type="button"
+              size="small"
+              onClick={() => {
+                setFieldValue(defaultFieldValue);
+                setIsEditing(false);
+                setSelectedBadgeIndex(undefined);
+              }}
+            ></Button>
+          )}
+          <Button
+            size="small"
+            variation="link"
+            isDisabled={hasError}
+            onClick={addItem}
+          >
+            {selectedBadgeIndex !== undefined ? "Save" : "Add"}
+          </Button>
+        </Flex>
+      )}
+      {arraySection}
+    </React.Fragment>
+  );
 }
 export default function UserCreateForm(props) {
   const {
@@ -159,34 +186,33 @@ export default function UserCreateForm(props) {
     onSuccess,
     onError,
     onSubmit,
-    onCancel,
     onValidate,
     onChange,
     overrides,
     ...rest
   } = props;
   const initialValues = {
-    firstName: undefined,
-    lastName: undefined,
-    email: undefined,
-    phone: undefined,
-    instagram: undefined,
-    description: undefined,
-    image: undefined,
-    github: undefined,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    instagram: "",
+    description: "",
+    image: "",
+    github: "",
     title: [],
-    experience: undefined,
-    projectNumber: undefined,
-    sub: undefined,
-    support: undefined,
-    descriptionLong: undefined,
-    CV: undefined,
-    avatar: undefined,
-    facebook: undefined,
-    twitter: undefined,
-    telegram: undefined,
-    linkedIn: undefined,
-    buyMeACoffee: undefined,
+    experience: "",
+    projectNumber: "",
+    sub: "",
+    support: "",
+    descriptionLong: "",
+    CV: "",
+    avatar: "",
+    facebook: "",
+    twitter: "",
+    telegram: "",
+    linkedIn: "",
+    buyMeACoffee: "",
   };
   const [firstName, setFirstName] = React.useState(initialValues.firstName);
   const [lastName, setLastName] = React.useState(initialValues.lastName);
@@ -228,7 +254,7 @@ export default function UserCreateForm(props) {
     setImage(initialValues.image);
     setGithub(initialValues.github);
     setTitle(initialValues.title);
-    setCurrentTitleValue(undefined);
+    setCurrentTitleValue("");
     setExperience(initialValues.experience);
     setProjectNumber(initialValues.projectNumber);
     setSub(initialValues.sub);
@@ -243,7 +269,7 @@ export default function UserCreateForm(props) {
     setBuyMeACoffee(initialValues.buyMeACoffee);
     setErrors({});
   };
-  const [currentTitleValue, setCurrentTitleValue] = React.useState(undefined);
+  const [currentTitleValue, setCurrentTitleValue] = React.useState("");
   const titleRef = React.createRef();
   const validations = {
     firstName: [],
@@ -268,7 +294,15 @@ export default function UserCreateForm(props) {
     linkedIn: [],
     buyMeACoffee: [],
   };
-  const runValidationTasks = async (fieldName, value) => {
+  const runValidationTasks = async (
+    fieldName,
+    currentValue,
+    getDisplayValue
+  ) => {
+    const value =
+      currentValue && getDisplayValue
+        ? getDisplayValue(currentValue)
+        : currentValue;
     let validationResponse = validateField(value, validations[fieldName]);
     const customValidator = fetchByPath(onValidate, fieldName);
     if (customValidator) {
@@ -331,6 +365,11 @@ export default function UserCreateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
+          Object.entries(modelFields).forEach(([key, value]) => {
+            if (typeof value === "string" && value.trim() === "") {
+              modelFields[key] = undefined;
+            }
+          });
           await DataStore.save(new User(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
@@ -344,13 +383,14 @@ export default function UserCreateForm(props) {
           }
         }
       }}
-      {...rest}
       {...getOverrideProps(overrides, "UserCreateForm")}
+      {...rest}
     >
       <TextField
         label="First name"
         isRequired={false}
         isReadOnly={false}
+        value={firstName}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -394,6 +434,7 @@ export default function UserCreateForm(props) {
         label="Last name"
         isRequired={false}
         isReadOnly={false}
+        value={lastName}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -437,6 +478,7 @@ export default function UserCreateForm(props) {
         label="Email"
         isRequired={false}
         isReadOnly={false}
+        value={email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -481,6 +523,7 @@ export default function UserCreateForm(props) {
         isRequired={false}
         isReadOnly={false}
         type="tel"
+        value={phone}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -524,6 +567,7 @@ export default function UserCreateForm(props) {
         label="Instagram"
         isRequired={false}
         isReadOnly={false}
+        value={instagram}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -567,6 +611,7 @@ export default function UserCreateForm(props) {
         label="Description"
         isRequired={false}
         isReadOnly={false}
+        value={description}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -610,6 +655,7 @@ export default function UserCreateForm(props) {
         label="Image"
         isRequired={false}
         isReadOnly={false}
+        value={image}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -653,6 +699,7 @@ export default function UserCreateForm(props) {
         label="Github"
         isRequired={false}
         isReadOnly={false}
+        value={github}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -723,15 +770,16 @@ export default function UserCreateForm(props) {
             values = result?.title ?? values;
           }
           setTitle(values);
-          setCurrentTitleValue(undefined);
+          setCurrentTitleValue("");
         }}
         currentFieldValue={currentTitleValue}
         label={"Title"}
         items={title}
-        hasError={errors.title?.hasError}
+        hasError={errors?.title?.hasError}
+        errorMessage={errors?.title?.errorMessage}
         setFieldValue={setCurrentTitleValue}
         inputFieldRef={titleRef}
-        defaultFieldValue={undefined}
+        defaultFieldValue={""}
       >
         <TextField
           label="Title"
@@ -749,6 +797,7 @@ export default function UserCreateForm(props) {
           errorMessage={errors.title?.errorMessage}
           hasError={errors.title?.hasError}
           ref={titleRef}
+          labelHidden={true}
           {...getOverrideProps(overrides, "title")}
         ></TextField>
       </ArrayField>
@@ -758,15 +807,11 @@ export default function UserCreateForm(props) {
         isReadOnly={false}
         type="number"
         step="any"
+        value={experience}
         onChange={(e) => {
-          let value = parseInt(e.target.value);
-          if (isNaN(value)) {
-            setErrors((errors) => ({
-              ...errors,
-              experience: "Value must be a valid number",
-            }));
-            return;
-          }
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               firstName,
@@ -810,15 +855,11 @@ export default function UserCreateForm(props) {
         isReadOnly={false}
         type="number"
         step="any"
+        value={projectNumber}
         onChange={(e) => {
-          let value = parseInt(e.target.value);
-          if (isNaN(value)) {
-            setErrors((errors) => ({
-              ...errors,
-              projectNumber: "Value must be a valid number",
-            }));
-            return;
-          }
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               firstName,
@@ -860,6 +901,7 @@ export default function UserCreateForm(props) {
         label="Sub"
         isRequired={false}
         isReadOnly={false}
+        value={sub}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -903,6 +945,7 @@ export default function UserCreateForm(props) {
         label="Support"
         isRequired={false}
         isReadOnly={false}
+        value={support}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -946,6 +989,7 @@ export default function UserCreateForm(props) {
         label="Description long"
         isRequired={false}
         isReadOnly={false}
+        value={descriptionLong}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -989,6 +1033,7 @@ export default function UserCreateForm(props) {
         label="Cv"
         isRequired={false}
         isReadOnly={false}
+        value={CV}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1032,6 +1077,7 @@ export default function UserCreateForm(props) {
         label="Avatar"
         isRequired={false}
         isReadOnly={false}
+        value={avatar}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1075,6 +1121,7 @@ export default function UserCreateForm(props) {
         label="Facebook"
         isRequired={false}
         isReadOnly={false}
+        value={facebook}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1118,6 +1165,7 @@ export default function UserCreateForm(props) {
         label="Twitter"
         isRequired={false}
         isReadOnly={false}
+        value={twitter}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1161,6 +1209,7 @@ export default function UserCreateForm(props) {
         label="Telegram"
         isRequired={false}
         isReadOnly={false}
+        value={telegram}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1204,6 +1253,7 @@ export default function UserCreateForm(props) {
         label="Linked in"
         isRequired={false}
         isReadOnly={false}
+        value={linkedIn}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1247,6 +1297,7 @@ export default function UserCreateForm(props) {
         label="Buy me a coffee"
         isRequired={false}
         isReadOnly={false}
+        value={buyMeACoffee}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1293,21 +1344,16 @@ export default function UserCreateForm(props) {
         <Button
           children="Clear"
           type="reset"
-          onClick={resetStateValues}
+          onClick={(event) => {
+            event.preventDefault();
+            resetStateValues();
+          }}
           {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
           gap="15px"
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
-          <Button
-            children="Cancel"
-            type="button"
-            onClick={() => {
-              onCancel && onCancel();
-            }}
-            {...getOverrideProps(overrides, "CancelButton")}
-          ></Button>
           <Button
             children="Submit"
             type="submit"

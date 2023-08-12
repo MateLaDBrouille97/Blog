@@ -6,51 +6,62 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { fetchByPath, validateField } from "./utils";
-import { Category } from "../models";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { Category } from "../models";
+import { fetchByPath, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 export default function CategoryUpdateForm(props) {
   const {
-    id,
-    category,
+    id: idProp,
+    category: categoryModelProp,
     onSuccess,
     onError,
     onSubmit,
-    onCancel,
     onValidate,
     onChange,
     overrides,
     ...rest
   } = props;
   const initialValues = {
-    name: undefined,
-    image: undefined,
+    name: "",
+    image: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    const cleanValues = { ...initialValues, ...categoryRecord };
+    const cleanValues = categoryRecord
+      ? { ...initialValues, ...categoryRecord }
+      : initialValues;
     setName(cleanValues.name);
     setImage(cleanValues.image);
     setErrors({});
   };
-  const [categoryRecord, setCategoryRecord] = React.useState(category);
+  const [categoryRecord, setCategoryRecord] = React.useState(categoryModelProp);
   React.useEffect(() => {
     const queryData = async () => {
-      const record = id ? await DataStore.query(Category, id) : category;
+      const record = idProp
+        ? await DataStore.query(Category, idProp)
+        : categoryModelProp;
       setCategoryRecord(record);
     };
     queryData();
-  }, [id, category]);
+  }, [idProp, categoryModelProp]);
   React.useEffect(resetStateValues, [categoryRecord]);
   const validations = {
     name: [],
     image: [],
   };
-  const runValidationTasks = async (fieldName, value) => {
+  const runValidationTasks = async (
+    fieldName,
+    currentValue,
+    getDisplayValue
+  ) => {
+    const value =
+      currentValue && getDisplayValue
+        ? getDisplayValue(currentValue)
+        : currentValue;
     let validationResponse = validateField(value, validations[fieldName]);
     const customValidator = fetchByPath(onValidate, fieldName);
     if (customValidator) {
@@ -94,6 +105,11 @@ export default function CategoryUpdateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
+          Object.entries(modelFields).forEach(([key, value]) => {
+            if (typeof value === "string" && value.trim() === "") {
+              modelFields[key] = undefined;
+            }
+          });
           await DataStore.save(
             Category.copyOf(categoryRecord, (updated) => {
               Object.assign(updated, modelFields);
@@ -108,14 +124,14 @@ export default function CategoryUpdateForm(props) {
           }
         }
       }}
-      {...rest}
       {...getOverrideProps(overrides, "CategoryUpdateForm")}
+      {...rest}
     >
       <TextField
         label="Name"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={name}
+        value={name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -140,7 +156,7 @@ export default function CategoryUpdateForm(props) {
         label="Image"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={image}
+        value={image}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -168,7 +184,11 @@ export default function CategoryUpdateForm(props) {
         <Button
           children="Reset"
           type="reset"
-          onClick={resetStateValues}
+          onClick={(event) => {
+            event.preventDefault();
+            resetStateValues();
+          }}
+          isDisabled={!(idProp || categoryModelProp)}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
@@ -176,18 +196,13 @@ export default function CategoryUpdateForm(props) {
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
-            children="Cancel"
-            type="button"
-            onClick={() => {
-              onCancel && onCancel();
-            }}
-            {...getOverrideProps(overrides, "CancelButton")}
-          ></Button>
-          <Button
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            isDisabled={
+              !(idProp || categoryModelProp) ||
+              Object.values(errors).some((e) => e?.hasError)
+            }
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>

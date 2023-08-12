@@ -3,6 +3,9 @@ export const subCategoryNews = [
         name:"All",
     },
     { 
+        name:"Analysis",
+    },
+    { 
         name:"News",
     },
     { 
@@ -28,9 +31,9 @@ export const subCategoryNews = [
     { 
         name:"CopyWriting",
     },
-    // { 
-    //     name:"Marketing",
-    // },
+    { 
+        name:"Marketing",
+    },
     { 
         name:"Image Video",
     },
@@ -57,6 +60,26 @@ export const subCategoryNews = [
     { 
         name:"Web",
     },
+
+    
+  ];
+
+  export const subCategoryTools = [
+    { 
+        name:"All",
+    },
+    // { 
+    //     name:"App",
+    // },
+    // { 
+    //     name:"AI",
+    // },
+    // { 
+    //     name:"Analyze",
+    // },
+    // { 
+    //     name:"Web",
+    // },
 
     
   ];

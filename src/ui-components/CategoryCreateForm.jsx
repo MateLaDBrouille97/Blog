@@ -6,10 +6,10 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { fetchByPath, validateField } from "./utils";
-import { Category } from "../models";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { Category } from "../models";
+import { fetchByPath, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 export default function CategoryCreateForm(props) {
   const {
@@ -17,15 +17,14 @@ export default function CategoryCreateForm(props) {
     onSuccess,
     onError,
     onSubmit,
-    onCancel,
     onValidate,
     onChange,
     overrides,
     ...rest
   } = props;
   const initialValues = {
-    name: undefined,
-    image: undefined,
+    name: "",
+    image: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [image, setImage] = React.useState(initialValues.image);
@@ -39,7 +38,15 @@ export default function CategoryCreateForm(props) {
     name: [],
     image: [],
   };
-  const runValidationTasks = async (fieldName, value) => {
+  const runValidationTasks = async (
+    fieldName,
+    currentValue,
+    getDisplayValue
+  ) => {
+    const value =
+      currentValue && getDisplayValue
+        ? getDisplayValue(currentValue)
+        : currentValue;
     let validationResponse = validateField(value, validations[fieldName]);
     const customValidator = fetchByPath(onValidate, fieldName);
     if (customValidator) {
@@ -83,6 +90,11 @@ export default function CategoryCreateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
+          Object.entries(modelFields).forEach(([key, value]) => {
+            if (typeof value === "string" && value.trim() === "") {
+              modelFields[key] = undefined;
+            }
+          });
           await DataStore.save(new Category(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
@@ -96,13 +108,14 @@ export default function CategoryCreateForm(props) {
           }
         }
       }}
-      {...rest}
       {...getOverrideProps(overrides, "CategoryCreateForm")}
+      {...rest}
     >
       <TextField
         label="Name"
         isRequired={false}
         isReadOnly={false}
+        value={name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -127,6 +140,7 @@ export default function CategoryCreateForm(props) {
         label="Image"
         isRequired={false}
         isReadOnly={false}
+        value={image}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -154,21 +168,16 @@ export default function CategoryCreateForm(props) {
         <Button
           children="Clear"
           type="reset"
-          onClick={resetStateValues}
+          onClick={(event) => {
+            event.preventDefault();
+            resetStateValues();
+          }}
           {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
           gap="15px"
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
-          <Button
-            children="Cancel"
-            type="button"
-            onClick={() => {
-              onCancel && onCancel();
-            }}
-            {...getOverrideProps(overrides, "CancelButton")}
-          ></Button>
           <Button
             children="Submit"
             type="submit"

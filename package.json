@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^4.3.7",
+    "@aws-amplify/ui-react": "^5.1.0",
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@iconify/react": "^4.1.0",
@@ -18,7 +18,7 @@
     "@mdx-js/react": "^2.3.0",
     "@next/font": "13.1.6",
     "@next/mdx": "^13.2.1",
-    "aws-amplify": "^5.0.14",
+    "aws-amplify": "^5.3.7",
     "aws-sdk": "^2.1326.0",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",

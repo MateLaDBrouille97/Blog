@@ -5,9 +5,9 @@
  **************************************************************************/
 
 import * as React from "react";
-import { User } from "../models";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { User } from "../models";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -59,30 +59,30 @@ export declare type UserUpdateFormValidationValues = {
     linkedIn?: ValidationFunction<string>;
     buyMeACoffee?: ValidationFunction<string>;
 };
-export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserUpdateFormOverridesProps = {
-    UserUpdateFormGrid?: FormProps<GridProps>;
-    firstName?: FormProps<TextFieldProps>;
-    lastName?: FormProps<TextFieldProps>;
-    email?: FormProps<TextFieldProps>;
-    phone?: FormProps<TextFieldProps>;
-    instagram?: FormProps<TextFieldProps>;
-    description?: FormProps<TextFieldProps>;
-    image?: FormProps<TextFieldProps>;
-    github?: FormProps<TextFieldProps>;
-    title?: FormProps<TextFieldProps>;
-    experience?: FormProps<TextFieldProps>;
-    projectNumber?: FormProps<TextFieldProps>;
-    sub?: FormProps<TextFieldProps>;
-    support?: FormProps<TextFieldProps>;
-    descriptionLong?: FormProps<TextFieldProps>;
-    CV?: FormProps<TextFieldProps>;
-    avatar?: FormProps<TextFieldProps>;
-    facebook?: FormProps<TextFieldProps>;
-    twitter?: FormProps<TextFieldProps>;
-    telegram?: FormProps<TextFieldProps>;
-    linkedIn?: FormProps<TextFieldProps>;
-    buyMeACoffee?: FormProps<TextFieldProps>;
+    UserUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    firstName?: PrimitiveOverrideProps<TextFieldProps>;
+    lastName?: PrimitiveOverrideProps<TextFieldProps>;
+    email?: PrimitiveOverrideProps<TextFieldProps>;
+    phone?: PrimitiveOverrideProps<TextFieldProps>;
+    instagram?: PrimitiveOverrideProps<TextFieldProps>;
+    description?: PrimitiveOverrideProps<TextFieldProps>;
+    image?: PrimitiveOverrideProps<TextFieldProps>;
+    github?: PrimitiveOverrideProps<TextFieldProps>;
+    title?: PrimitiveOverrideProps<TextFieldProps>;
+    experience?: PrimitiveOverrideProps<TextFieldProps>;
+    projectNumber?: PrimitiveOverrideProps<TextFieldProps>;
+    sub?: PrimitiveOverrideProps<TextFieldProps>;
+    support?: PrimitiveOverrideProps<TextFieldProps>;
+    descriptionLong?: PrimitiveOverrideProps<TextFieldProps>;
+    CV?: PrimitiveOverrideProps<TextFieldProps>;
+    avatar?: PrimitiveOverrideProps<TextFieldProps>;
+    facebook?: PrimitiveOverrideProps<TextFieldProps>;
+    twitter?: PrimitiveOverrideProps<TextFieldProps>;
+    telegram?: PrimitiveOverrideProps<TextFieldProps>;
+    linkedIn?: PrimitiveOverrideProps<TextFieldProps>;
+    buyMeACoffee?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserUpdateFormProps = React.PropsWithChildren<{
     overrides?: UserUpdateFormOverridesProps | undefined | null;
@@ -92,7 +92,6 @@ export declare type UserUpdateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: UserUpdateFormInputValues) => UserUpdateFormInputValues;
     onSuccess?: (fields: UserUpdateFormInputValues) => void;
     onError?: (fields: UserUpdateFormInputValues, errorMessage: string) => void;
-    onCancel?: () => void;
     onChange?: (fields: UserUpdateFormInputValues) => UserUpdateFormInputValues;
     onValidate?: UserUpdateFormValidationValues;
 } & React.CSSProperties>;

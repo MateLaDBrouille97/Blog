@@ -21,7 +21,8 @@ const BlogCategory = {
   "PROJECTS": "PROJECTS",
   "NEWS": "NEWS",
   "OPINIONS": "OPINIONS",
-  "TOOLS": "TOOLS"
+  "TOOLS": "TOOLS",
+  "ANALYSIS": "ANALYSIS"
 };
 
 const SkillType = {

@@ -1026,7 +1026,8 @@ export const schema = {
                 "PROJECTS",
                 "NEWS",
                 "OPINIONS",
-                "TOOLS"
+                "TOOLS",
+                "ANALYSIS"
             ]
         },
         "SkillType": {
@@ -1063,6 +1064,6 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "codegenVersion": "3.3.2",
+    "codegenVersion": "3.4.4",
     "version": "5305c9aea4ba8ba8f95d0771e6b0f608"
 };

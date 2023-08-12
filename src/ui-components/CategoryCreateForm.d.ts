@@ -5,8 +5,8 @@
  **************************************************************************/
 
 import * as React from "react";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -20,11 +20,11 @@ export declare type CategoryCreateFormValidationValues = {
     name?: ValidationFunction<string>;
     image?: ValidationFunction<string>;
 };
-export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type CategoryCreateFormOverridesProps = {
-    CategoryCreateFormGrid?: FormProps<GridProps>;
-    name?: FormProps<TextFieldProps>;
-    image?: FormProps<TextFieldProps>;
+    CategoryCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    name?: PrimitiveOverrideProps<TextFieldProps>;
+    image?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type CategoryCreateFormProps = React.PropsWithChildren<{
     overrides?: CategoryCreateFormOverridesProps | undefined | null;
@@ -33,7 +33,6 @@ export declare type CategoryCreateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: CategoryCreateFormInputValues) => CategoryCreateFormInputValues;
     onSuccess?: (fields: CategoryCreateFormInputValues) => void;
     onError?: (fields: CategoryCreateFormInputValues, errorMessage: string) => void;
-    onCancel?: () => void;
     onChange?: (fields: CategoryCreateFormInputValues) => CategoryCreateFormInputValues;
     onValidate?: CategoryCreateFormValidationValues;
 } & React.CSSProperties>;

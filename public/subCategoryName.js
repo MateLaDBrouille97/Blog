@@ -3,6 +3,9 @@ export const subCategoryNews = [
         name:"All",
     },
     { 
+        name:"Analysis",
+    },
+    { 
         name:"News",
     },
     { 

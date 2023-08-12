@@ -30,7 +30,7 @@ export default function CategoryName() {
   const router = useRouter();
   const categoryName = router?.query?.CategoryName;
   // const { categoriesName } = blogData;
-  const { blogUFH, blogP, blogN, data, blogO, tools,blogA } = useBlogContext();
+  const { blogUFH, blogP, blogN, data, blogO, tools } = useBlogContext();
   const [cat, setCat] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -51,7 +51,7 @@ export default function CategoryName() {
           setPosts(blogP);
           break;
         case "NEWS":
-          const blogmerge = [...blogN, ...blogO,...blogA];
+          const blogmerge = [...blogN, ...blogO];
           setPosts(blogmerge);
           break;
         case "POSTS":

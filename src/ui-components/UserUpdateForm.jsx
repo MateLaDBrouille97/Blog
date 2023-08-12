@@ -6,9 +6,6 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { fetchByPath, validateField } from "./utils";
-import { User } from "../models";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import {
   Badge,
   Button,
@@ -21,6 +18,9 @@ import {
   TextField,
   useTheme,
 } from "@aws-amplify/ui-react";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { User } from "../models";
+import { fetchByPath, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 function ArrayField({
   items = [],
@@ -32,8 +32,18 @@ function ArrayField({
   setFieldValue,
   currentFieldValue,
   defaultFieldValue,
+  lengthLimit,
+  getBadgeText,
+  errorMessage,
 }) {
-  const { tokens } = useTheme();
+  const labelElement = <Text>{label}</Text>;
+  const {
+    tokens: {
+      components: {
+        fieldmessages: { error: errorStyles },
+      },
+    },
+  } = useTheme();
   const [selectedBadgeIndex, setSelectedBadgeIndex] = React.useState();
   const [isEditing, setIsEditing] = React.useState();
   React.useEffect(() => {
@@ -48,9 +58,9 @@ function ArrayField({
   };
   const addItem = async () => {
     if (
-      (currentFieldValue !== undefined ||
-        currentFieldValue !== null ||
-        currentFieldValue !== "") &&
+      currentFieldValue !== undefined &&
+      currentFieldValue !== null &&
+      currentFieldValue !== "" &&
       !hasError
     ) {
       const newItems = [...items];
@@ -64,45 +74,8 @@ function ArrayField({
       setIsEditing(false);
     }
   };
-  return (
+  const arraySection = (
     <React.Fragment>
-      {isEditing && children}
-      {!isEditing ? (
-        <>
-          <Text>{label}</Text>
-          <Button
-            onClick={() => {
-              setIsEditing(true);
-            }}
-          >
-            Add item
-          </Button>
-        </>
-      ) : (
-        <Flex justifyContent="flex-end">
-          {(currentFieldValue || isEditing) && (
-            <Button
-              children="Cancel"
-              type="button"
-              size="small"
-              onClick={() => {
-                setFieldValue(defaultFieldValue);
-                setIsEditing(false);
-                setSelectedBadgeIndex(undefined);
-              }}
-            ></Button>
-          )}
-          <Button
-            size="small"
-            variation="link"
-            color={tokens.colors.brand.primary[80]}
-            isDisabled={hasError}
-            onClick={addItem}
-          >
-            {selectedBadgeIndex !== undefined ? "Save" : "Add"}
-          </Button>
-        </Flex>
-      )}
       {!!items?.length && (
         <ScrollView height="inherit" width="inherit" maxHeight={"7rem"}>
           {items.map((value, index) => {
@@ -123,7 +96,7 @@ function ArrayField({
                   setIsEditing(true);
                 }}
               >
-                {value.toString()}
+                {getBadgeText ? getBadgeText(value) : value.toString()}
                 <Icon
                   style={{
                     cursor: "pointer",
@@ -152,42 +125,95 @@ function ArrayField({
       <Divider orientation="horizontal" marginTop={5} />
     </React.Fragment>
   );
+  if (lengthLimit !== undefined && items.length >= lengthLimit && !isEditing) {
+    return (
+      <React.Fragment>
+        {labelElement}
+        {arraySection}
+      </React.Fragment>
+    );
+  }
+  return (
+    <React.Fragment>
+      {labelElement}
+      {isEditing && children}
+      {!isEditing ? (
+        <>
+          <Button
+            onClick={() => {
+              setIsEditing(true);
+            }}
+          >
+            Add item
+          </Button>
+          {errorMessage && hasError && (
+            <Text color={errorStyles.color} fontSize={errorStyles.fontSize}>
+              {errorMessage}
+            </Text>
+          )}
+        </>
+      ) : (
+        <Flex justifyContent="flex-end">
+          {(currentFieldValue || isEditing) && (
+            <Button
+              children="Cancel"
+              type="button"
+              size="small"
+              onClick={() => {
+                setFieldValue(defaultFieldValue);
+                setIsEditing(false);
+                setSelectedBadgeIndex(undefined);
+              }}
+            ></Button>
+          )}
+          <Button
+            size="small"
+            variation="link"
+            isDisabled={hasError}
+            onClick={addItem}
+          >
+            {selectedBadgeIndex !== undefined ? "Save" : "Add"}
+          </Button>
+        </Flex>
+      )}
+      {arraySection}
+    </React.Fragment>
+  );
 }
 export default function UserUpdateForm(props) {
   const {
-    id,
-    user,
+    id: idProp,
+    user: userModelProp,
     onSuccess,
     onError,
     onSubmit,
-    onCancel,
     onValidate,
     onChange,
     overrides,
     ...rest
   } = props;
   const initialValues = {
-    firstName: undefined,
-    lastName: undefined,
-    email: undefined,
-    phone: undefined,
-    instagram: undefined,
-    description: undefined,
-    image: undefined,
-    github: undefined,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    instagram: "",
+    description: "",
+    image: "",
+    github: "",
     title: [],
-    experience: undefined,
-    projectNumber: undefined,
-    sub: undefined,
-    support: undefined,
-    descriptionLong: undefined,
-    CV: undefined,
-    avatar: undefined,
-    facebook: undefined,
-    twitter: undefined,
-    telegram: undefined,
-    linkedIn: undefined,
-    buyMeACoffee: undefined,
+    experience: "",
+    projectNumber: "",
+    sub: "",
+    support: "",
+    descriptionLong: "",
+    CV: "",
+    avatar: "",
+    facebook: "",
+    twitter: "",
+    telegram: "",
+    linkedIn: "",
+    buyMeACoffee: "",
   };
   const [firstName, setFirstName] = React.useState(initialValues.firstName);
   const [lastName, setLastName] = React.useState(initialValues.lastName);
@@ -220,7 +246,9 @@ export default function UserUpdateForm(props) {
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    const cleanValues = { ...initialValues, ...userRecord };
+    const cleanValues = userRecord
+      ? { ...initialValues, ...userRecord }
+      : initialValues;
     setFirstName(cleanValues.firstName);
     setLastName(cleanValues.lastName);
     setEmail(cleanValues.email);
@@ -230,7 +258,7 @@ export default function UserUpdateForm(props) {
     setImage(cleanValues.image);
     setGithub(cleanValues.github);
     setTitle(cleanValues.title ?? []);
-    setCurrentTitleValue(undefined);
+    setCurrentTitleValue("");
     setExperience(cleanValues.experience);
     setProjectNumber(cleanValues.projectNumber);
     setSub(cleanValues.sub);
@@ -245,16 +273,18 @@ export default function UserUpdateForm(props) {
     setBuyMeACoffee(cleanValues.buyMeACoffee);
     setErrors({});
   };
-  const [userRecord, setUserRecord] = React.useState(user);
+  const [userRecord, setUserRecord] = React.useState(userModelProp);
   React.useEffect(() => {
     const queryData = async () => {
-      const record = id ? await DataStore.query(User, id) : user;
+      const record = idProp
+        ? await DataStore.query(User, idProp)
+        : userModelProp;
       setUserRecord(record);
     };
     queryData();
-  }, [id, user]);
+  }, [idProp, userModelProp]);
   React.useEffect(resetStateValues, [userRecord]);
-  const [currentTitleValue, setCurrentTitleValue] = React.useState(undefined);
+  const [currentTitleValue, setCurrentTitleValue] = React.useState("");
   const titleRef = React.createRef();
   const validations = {
     firstName: [],
@@ -279,7 +309,15 @@ export default function UserUpdateForm(props) {
     linkedIn: [],
     buyMeACoffee: [],
   };
-  const runValidationTasks = async (fieldName, value) => {
+  const runValidationTasks = async (
+    fieldName,
+    currentValue,
+    getDisplayValue
+  ) => {
+    const value =
+      currentValue && getDisplayValue
+        ? getDisplayValue(currentValue)
+        : currentValue;
     let validationResponse = validateField(value, validations[fieldName]);
     const customValidator = fetchByPath(onValidate, fieldName);
     if (customValidator) {
@@ -342,6 +380,11 @@ export default function UserUpdateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
+          Object.entries(modelFields).forEach(([key, value]) => {
+            if (typeof value === "string" && value.trim() === "") {
+              modelFields[key] = undefined;
+            }
+          });
           await DataStore.save(
             User.copyOf(userRecord, (updated) => {
               Object.assign(updated, modelFields);
@@ -356,14 +399,14 @@ export default function UserUpdateForm(props) {
           }
         }
       }}
-      {...rest}
       {...getOverrideProps(overrides, "UserUpdateForm")}
+      {...rest}
     >
       <TextField
         label="First name"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={firstName}
+        value={firstName}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -407,7 +450,7 @@ export default function UserUpdateForm(props) {
         label="Last name"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={lastName}
+        value={lastName}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -451,7 +494,7 @@ export default function UserUpdateForm(props) {
         label="Email"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={email}
+        value={email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -496,7 +539,7 @@ export default function UserUpdateForm(props) {
         isRequired={false}
         isReadOnly={false}
         type="tel"
-        defaultValue={phone}
+        value={phone}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -540,7 +583,7 @@ export default function UserUpdateForm(props) {
         label="Instagram"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={instagram}
+        value={instagram}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -584,7 +627,7 @@ export default function UserUpdateForm(props) {
         label="Description"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={description}
+        value={description}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -628,7 +671,7 @@ export default function UserUpdateForm(props) {
         label="Image"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={image}
+        value={image}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -672,7 +715,7 @@ export default function UserUpdateForm(props) {
         label="Github"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={github}
+        value={github}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -743,15 +786,16 @@ export default function UserUpdateForm(props) {
             values = result?.title ?? values;
           }
           setTitle(values);
-          setCurrentTitleValue(undefined);
+          setCurrentTitleValue("");
         }}
         currentFieldValue={currentTitleValue}
         label={"Title"}
         items={title}
-        hasError={errors.title?.hasError}
+        hasError={errors?.title?.hasError}
+        errorMessage={errors?.title?.errorMessage}
         setFieldValue={setCurrentTitleValue}
         inputFieldRef={titleRef}
-        defaultFieldValue={undefined}
+        defaultFieldValue={""}
       >
         <TextField
           label="Title"
@@ -769,6 +813,7 @@ export default function UserUpdateForm(props) {
           errorMessage={errors.title?.errorMessage}
           hasError={errors.title?.hasError}
           ref={titleRef}
+          labelHidden={true}
           {...getOverrideProps(overrides, "title")}
         ></TextField>
       </ArrayField>
@@ -778,16 +823,11 @@ export default function UserUpdateForm(props) {
         isReadOnly={false}
         type="number"
         step="any"
-        defaultValue={experience}
+        value={experience}
         onChange={(e) => {
-          let value = parseInt(e.target.value);
-          if (isNaN(value)) {
-            setErrors((errors) => ({
-              ...errors,
-              experience: "Value must be a valid number",
-            }));
-            return;
-          }
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               firstName,
@@ -831,16 +871,11 @@ export default function UserUpdateForm(props) {
         isReadOnly={false}
         type="number"
         step="any"
-        defaultValue={projectNumber}
+        value={projectNumber}
         onChange={(e) => {
-          let value = parseInt(e.target.value);
-          if (isNaN(value)) {
-            setErrors((errors) => ({
-              ...errors,
-              projectNumber: "Value must be a valid number",
-            }));
-            return;
-          }
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               firstName,
@@ -882,7 +917,7 @@ export default function UserUpdateForm(props) {
         label="Sub"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={sub}
+        value={sub}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -926,7 +961,7 @@ export default function UserUpdateForm(props) {
         label="Support"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={support}
+        value={support}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -970,7 +1005,7 @@ export default function UserUpdateForm(props) {
         label="Description long"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={descriptionLong}
+        value={descriptionLong}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1014,7 +1049,7 @@ export default function UserUpdateForm(props) {
         label="Cv"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={CV}
+        value={CV}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1058,7 +1093,7 @@ export default function UserUpdateForm(props) {
         label="Avatar"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={avatar}
+        value={avatar}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1102,7 +1137,7 @@ export default function UserUpdateForm(props) {
         label="Facebook"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={facebook}
+        value={facebook}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1146,7 +1181,7 @@ export default function UserUpdateForm(props) {
         label="Twitter"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={twitter}
+        value={twitter}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1190,7 +1225,7 @@ export default function UserUpdateForm(props) {
         label="Telegram"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={telegram}
+        value={telegram}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1234,7 +1269,7 @@ export default function UserUpdateForm(props) {
         label="Linked in"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={linkedIn}
+        value={linkedIn}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1278,7 +1313,7 @@ export default function UserUpdateForm(props) {
         label="Buy me a coffee"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={buyMeACoffee}
+        value={buyMeACoffee}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -1325,7 +1360,11 @@ export default function UserUpdateForm(props) {
         <Button
           children="Reset"
           type="reset"
-          onClick={resetStateValues}
+          onClick={(event) => {
+            event.preventDefault();
+            resetStateValues();
+          }}
+          isDisabled={!(idProp || userModelProp)}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
@@ -1333,18 +1372,13 @@ export default function UserUpdateForm(props) {
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
-            children="Cancel"
-            type="button"
-            onClick={() => {
-              onCancel && onCancel();
-            }}
-            {...getOverrideProps(overrides, "CancelButton")}
-          ></Button>
-          <Button
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            isDisabled={
+              !(idProp || userModelProp) ||
+              Object.values(errors).some((e) => e?.hasError)
+            }
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>
