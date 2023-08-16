@@ -1,0 +1,20 @@
+
+
+.main-section-zero{
+     width: 1800px; 
+    height:960px;
+    max-height: 1040px;
+    /* max-width: 1040px;  */
+   
+    background-color: red;
+}
+
+.left{
+    width: 45%;
+    height: 100%;
+    background-color: yellow;
+}
+
+.right{
+
+}

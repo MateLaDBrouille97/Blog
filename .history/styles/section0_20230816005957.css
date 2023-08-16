@@ -1,0 +1,26 @@
+
+
+
+.section0__container{
+    
+    width: 100%;
+    height: 100%;
+    max-width: 1160px;
+}
+
+
+.main-section-zero{
+    width: 100%;
+    height:100%;
+    background-color: red;
+}
+
+.left{
+    width: 45%;
+    height: 100%;
+    background-color: yellow;
+}
+
+.right{
+
+}
