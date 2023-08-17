@@ -352,7 +352,7 @@ function Category({ category, posts }) {
             break;
             
           }
-          else if (item.name === "geopol") {
+          else if (item.name === "Geopol") {
             const blog4 = posts.filter((d) => {
               return d?.category.toLowerCase() === "geopol";
             });

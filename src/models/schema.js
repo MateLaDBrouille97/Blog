@@ -1027,7 +1027,8 @@ export const schema = {
                 "NEWS",
                 "OPINIONS",
                 "TOOLS",
-                "ANALYSIS"
+                "ANALYSIS",
+                "GEOPOL"
             ]
         },
         "SkillType": {

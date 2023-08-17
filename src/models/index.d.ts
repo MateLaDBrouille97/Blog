@@ -22,7 +22,8 @@ export enum BlogCategory {
   NEWS = "NEWS",
   OPINIONS = "OPINIONS",
   TOOLS = "TOOLS",
-  ANALYSIS = "ANALYSIS"
+  ANALYSIS = "ANALYSIS",
+  GEOPOL = "GEOPOL"
 }
 
 export enum SkillType {

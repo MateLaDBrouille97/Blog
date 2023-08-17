@@ -22,7 +22,8 @@ const BlogCategory = {
   "NEWS": "NEWS",
   "OPINIONS": "OPINIONS",
   "TOOLS": "TOOLS",
-  "ANALYSIS": "ANALYSIS"
+  "ANALYSIS": "ANALYSIS",
+  "GEOPOL": "GEOPOL"
 };
 
 const SkillType = {

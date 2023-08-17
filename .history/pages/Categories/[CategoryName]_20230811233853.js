@@ -30,7 +30,7 @@ export default function CategoryName() {
   const router = useRouter();
   const categoryName = router?.query?.CategoryName;
   // const { categoriesName } = blogData;
-  const { blogUFH, blogP, blogN, data, blogO, tools,blogA,blogG } = useBlogContext();
+  const { blogUFH, blogP, blogN, data, blogO, tools,blogA } = useBlogContext();
   const [cat, setCat] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -51,7 +51,7 @@ export default function CategoryName() {
           setPosts(blogP);
           break;
         case "NEWS":
-          const blogmerge = [...blogN, ...blogO,...blogA,...blogG];
+          const blogmerge = [...blogN, ...blogO,...blogA];
           setPosts(blogmerge);
           break;
         case "POSTS":
@@ -342,19 +342,6 @@ function Category({ category, posts }) {
           }else if (item.name === "analysis") {
             const blog4 = posts.filter((d) => {
               return d?.category.toLowerCase() === "analysis";
-            });
-            const data1 = blog4.sort((a, b) => {
-              if (b.createdAt > a.createdAt) return 1;
-              if (b.createdAt < a.createdAt) return -1;
-              return 0;
-            });
-            setDataSort(data1);
-            break;
-            
-          }
-          else if (item.name === "geopol") {
-            const blog4 = posts.filter((d) => {
-              return d?.category.toLowerCase() === "geopol";
             });
             const data1 = blog4.sort((a, b) => {
               if (b.createdAt > a.createdAt) return 1;

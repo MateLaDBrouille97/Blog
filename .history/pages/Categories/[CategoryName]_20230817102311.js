@@ -165,7 +165,7 @@ function Category({ category, posts }) {
   const limit = perPage;
   const skip = (parseInt(page) - 1) * parseInt(limit);
   const endIndex = skip + parseInt(limit);
-  const itemCount=dataSort?.slice(9);
+  const itemCount=dataSort?.slice(8);
   const pageData = itemCount?.slice(skip, endIndex);
   
 
