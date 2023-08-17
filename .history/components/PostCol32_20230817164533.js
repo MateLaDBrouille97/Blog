@@ -79,7 +79,7 @@ export default function PostCol32({ post }) {
             </Link>
           </div>
         </div>
-        <div className="info flex justify-center flex-col py-4 mx-3">
+        <div className="info flex justify-center flex-col py-4">
           <div className="cat flex gap-3 mb-4 ml-4">
             <Link
               href={`/Categories/${

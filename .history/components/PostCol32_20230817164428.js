@@ -62,8 +62,8 @@ export default function PostCol32({ post }) {
   return (
     <>
       <div className="flex  p-2  ">
-        <div className="custom-cont2">
-          <div className="image flex flex-col justify-start custom-image-wrapper9">
+        <div className="custom-cont">
+          <div className="image flex flex-col justify-start custom-image-wrapper5">
             <Link href={`/Posts/${post?.slug}`} legacyBehavior>
               <a className="postCol__img">
                 {postImage && (
@@ -79,7 +79,7 @@ export default function PostCol32({ post }) {
             </Link>
           </div>
         </div>
-        <div className="info flex justify-center flex-col py-4 mx-3">
+        <div className="info flex justify-center flex-col py-4">
           <div className="cat flex gap-3 mb-4 ml-4">
             <Link
               href={`/Categories/${
