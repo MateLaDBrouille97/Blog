@@ -2,27 +2,27 @@ export const categoriesName = [
   {
     id: 1,
     name: "USEFULHACKS",
-    image: "/images/Miroodles.png",
+    image: "/keys-pattern-yellow-getty.jpeg",
   },
   {
     id: 2,
     name: "PROJECTS",
-    image: "/images/Sticker.png",
+    image: "/marvin-meyer-SYTO3xs06fU-unsplash.jpg",
   },
   {
     id: 3,
     name: "NEWS",
-    image: "/images/Miroodles2.png",
+    image: "/lukas-lehotsky-ixcHGhae2mg-unsplash.jpg",
   },
   {
     id: 4,
     name: "POSTS",
-    image: "/images/Sticker2.png",
+    image: "/absolutvision-WYd_PkCa1BY-unsplash.jpg",
   },
   {
     id: 5,
     name: "SEARCH",
-    image: "/images/Searching.png",
+    image: "/markus-winkler-afW1hht0NSs-unsplash.jpg",
   },
   {
     id: 6,

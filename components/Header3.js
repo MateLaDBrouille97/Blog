@@ -115,7 +115,7 @@ export default function Header3() {
                       : "nav__link2"
                   }
                 >
-                  <i className="uil uil-user nav__icon"></i> UseFul Hacks
+                  <i className="uil uil-user nav__icon"></i> Useful Hacks
                 </a>
               </Link>
             </li>

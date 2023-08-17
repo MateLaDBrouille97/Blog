@@ -137,7 +137,7 @@ useEffect(()=>{
                       : "nav__link"
                   }
                 >
-                  <i className="uil uil-user nav__icon"></i> UseFul Hacks
+                  <i className="uil uil-user nav__icon"></i> Useful Hacks
                 </a>
               </Link>
             </li>
