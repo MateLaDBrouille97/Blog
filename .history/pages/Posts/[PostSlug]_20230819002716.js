@@ -178,16 +178,34 @@ function Article({ image, post, post2 }) {
 
   const backgroundImageStyle = {
     backgroundImage: `url(${image})`,
-    width: "1278px",
+    width:"1278px",
   };
 
   return (
     <Format>
-      <section className="section  mt-20 section section4 mx-auto md:px-20 py-16 lg:w-4/6 md:w-5.25/6 ">
-        <div className="container-section4 ">
-          <div className="section__cat container-section4">
+      <div className="flex flex-col overflow-hidden relative z-50">
+        <div
+          id="cover"
+          className="cover-strip h-screen w-3/12 bg-slate-50  top-0 left-0 cover fixed"
+        ></div>
+        <div
+          id="cover1"
+          className="cover-strip h-screen w-3/12 bg-slate-100 fixed top-0 left-1/4 cover"
+        ></div>
+        <div
+          id="cover2"
+          className="cover-strip h-screen w-3/12 bg-slate-200 fixed top-0 left-2/4 cover"
+        ></div>
+        <div
+          id="cover3"
+          className="cover-strip h-screen w-3/12 bg-slate-300 fixed top-0 left-3/4 cover"
+        ></div>
+      </div>
+      <section className="section mx-3 section4 mx-auto md:px-20 py-16 w-5.5/6 ">
+        <div className="section__article-postSlug container-section4 ">
+          <div className="container ">
             <div className="post__article-blog" style={backgroundImageStyle} />
-            <div className=" article__img ">
+            <div className=" article__img">
               <Image src={image} alt="" width={900} height={800} />
             </div>
             <h1 className="font-bold text-4xl text-begin pb-5 article__title">
@@ -242,16 +260,15 @@ function Article({ image, post, post2 }) {
             <h2 className="article__text content">
               <MDXRemote {...post2?.source} components={components} />
             </h2>
-            {/* <hr className="my-10 border-gray-700" /> */}
-            <Like2 id={post?.id} />
-            {user && <AuthorDetails author={user} />}
-            {/* {post2?.frontmatter?.tags.map((tag) => {return(<><div>
+          </div>
+          {/* <hr className="my-10 border-gray-700" /> */}
+          <Like2 id={post?.id} />
+          {user && <AuthorDetails author={user} />}
+          {/* {post2?.frontmatter?.tags.map((tag) => {return(<><div>
             #{tag}
         </div></>)})} */}
-           
-          </div>
+          <div className="">{post && <Related post={post} />}</div>
         </div>
-        <div className="">{post && <Related post={post} />}</div>
       </section>
     </Format>
   );

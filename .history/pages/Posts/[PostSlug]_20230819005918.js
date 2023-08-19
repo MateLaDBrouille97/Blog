@@ -248,10 +248,9 @@ function Article({ image, post, post2 }) {
             {/* {post2?.frontmatter?.tags.map((tag) => {return(<><div>
             #{tag}
         </div></>)})} */}
-           
+            <div className="">{post && <Related post={post} />}</div>
           </div>
         </div>
-        <div className="">{post && <Related post={post} />}</div>
       </section>
     </Format>
   );

@@ -404,14 +404,30 @@ function Category({ category, posts }) {
 
   const backgroundImageStyle = {
     backgroundImage: `url(${category?.image})`,
-    width:"1278px"
   };
 
   return (
     <Format>
-     
-      <section className="section  m-2 section section4 mx-auto md:px-20 py-16 lg:w-4/6 md:w-5.25/6">
-        <div className="section__cat container-section4">
+      <div className="flex flex-col overflow-hidden relative z-50">
+        <div
+          id="cover"
+          className="cover-strip h-screen w-3/12 bg-slate-50  top-0 left-0 cover fixed"
+        ></div>
+        <div
+          id="cover1"
+          className="cover-strip h-screen w-3/12 bg-slate-100 fixed top-0 left-1/4 cover"
+        ></div>
+        <div
+          id="cover2"
+          className="cover-strip h-screen w-3/12 bg-slate-200 fixed top-0 left-2/4 cover"
+        ></div>
+        <div
+          id="cover3"
+          className="cover-strip h-screen w-3/12 bg-slate-300 fixed top-0 left-3/4 cover"
+        ></div>
+      </div>
+      <section className="section  m-2">
+        <div className="section__cat mx-auto md:px-2 py-8 lg:w-4/6 md:w-5.25/6">
           <div className="post__article-blog3" style={backgroundImageStyle} />
           <div className="container post py-10 flex flex-row justify-begin mt-20 content">
             <div className="image pr-10 flex justify-center ">

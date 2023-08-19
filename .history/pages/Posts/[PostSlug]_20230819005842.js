@@ -183,7 +183,7 @@ function Article({ image, post, post2 }) {
 
   return (
     <Format>
-      <section className="section  mt-20 section section4 mx-auto md:px-20 py-16 lg:w-4/6 md:w-5.25/6 ">
+      <section className="section  m-8 section section4 mx-auto md:px-20 py-16 lg:w-4/6 md:w-5.25/6 ">
         <div className="container-section4 ">
           <div className="section__cat container-section4">
             <div className="post__article-blog" style={backgroundImageStyle} />
@@ -248,10 +248,9 @@ function Article({ image, post, post2 }) {
             {/* {post2?.frontmatter?.tags.map((tag) => {return(<><div>
             #{tag}
         </div></>)})} */}
-           
+            <div className="">{post && <Related post={post} />}</div>
           </div>
         </div>
-        <div className="">{post && <Related post={post} />}</div>
       </section>
     </Format>
   );
