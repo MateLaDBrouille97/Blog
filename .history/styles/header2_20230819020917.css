@@ -148,7 +148,6 @@
   .header {
     top: 0;
     bottom: initial;
-    /* height:90px; */
   }
 
   .nav {
@@ -301,11 +300,6 @@
   .three-bars {
     font-size: 2rem;
   }
-
-  .nav__toggle-share .nav__toggle-share-socials .share{
-    width:3rem;
-    height: 1rem;
-  }
 }
 
 
@@ -315,10 +309,10 @@
 
 @media only screen and (max-width:576px) {
   
-  .nav__menu2 .nav__list2 .nav__link2{
+  /* .nav__menu2 .nav__list2 .nav__link2{
     padding:5px;
     font-size: 6.25rem;
-  } 
+  } */
   
 }
 
@@ -343,9 +337,9 @@
 
   
 
-  .nav__menu2 .nav__list2 .nav__link2{
+  /* .nav__menu2 .nav__list2 .nav__link2{
     padding:5px;
     font-size: 7rem;
-  }
+  } */
   
 }

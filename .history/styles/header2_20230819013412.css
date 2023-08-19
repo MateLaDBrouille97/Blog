@@ -148,7 +148,6 @@
   .header {
     top: 0;
     bottom: initial;
-    /* height:90px; */
   }
 
   .nav {
@@ -160,7 +159,7 @@
     position: fixed;
     bottom: -100%;
     left: 0;
-    height: 80%;
+    height: 70%;
     width: 100%;
     background-color: var(--body-color);
     padding: 2rem 1.5rem 4rem;
@@ -173,10 +172,6 @@
  
 
   /*============  Show Menu  ===========*/
-
-
-
-
 
   .show-menu {
     bottom: 0;
@@ -191,18 +186,9 @@
   }
 
 
-  .nav__menu2
-  {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .nav__menu2 .nav__list2 .nav__link2{
     padding:5px;
-    font-size: 4.5rem;
-    margin: auto;
+    font-size: 2.5rem;
   }
 
 
@@ -232,7 +218,7 @@
     
     text-align: center;
     
-    font-size: 6.5rem;
+    font-size: 5rem;
     cursor: pointer;
     color: var(--title-color);
   }
@@ -286,7 +272,7 @@
     
     top: -9rem;
     background-color: white;
-    /* opacity: 0.8; */
+    opacity: 0.8;
     padding: 0.3rem 0.5rem;
     border-radius: 4rem;
     height: 8rem;
@@ -301,11 +287,6 @@
   .three-bars {
     font-size: 2rem;
   }
-
-  .nav__toggle-share .nav__toggle-share-socials .share{
-    width:3rem;
-    height: 1rem;
-  }
 }
 
 
@@ -314,11 +295,6 @@
 
 
 @media only screen and (max-width:576px) {
-  
-  .nav__menu2 .nav__list2 .nav__link2{
-    padding:5px;
-    font-size: 6.25rem;
-  } 
   
 }
 
@@ -341,11 +317,5 @@
     display: none;
   } 
 
-  
-
-  .nav__menu2 .nav__list2 .nav__link2{
-    padding:5px;
-    font-size: 7rem;
-  }
   
 }

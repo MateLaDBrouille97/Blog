@@ -412,7 +412,7 @@ function Category({ category, posts }) {
       <section className="section section4 mx-auto md:px-20 py-16 lg:w-4/6 md:w-5.25/6">
         <div className="section__cat container-section4">
           <div className="post__article-blog3" style={backgroundImageStyle} />
-          <div className="  py-10 flex flex-row justify-center mt-20 content">
+          <div className="  py-10 flex flex-row justify-begin mt-20 content">
             <div className="image pr-10 flex justify-center ">
               <Image
                 src={category?.image}

@@ -148,7 +148,7 @@
   .header {
     top: 0;
     bottom: initial;
-    /* height:90px; */
+    height:60px;
   }
 
   .nav {
@@ -300,11 +300,6 @@
 
   .three-bars {
     font-size: 2rem;
-  }
-
-  .nav__toggle-share .nav__toggle-share-socials .share{
-    width:3rem;
-    height: 1rem;
   }
 }
 

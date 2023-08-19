@@ -235,13 +235,15 @@
     }
 
    
- 
+ .nav__close-container{
+    size: 6rem;
+ }
 
 }
 
 
 @media only screen and (max-width:576px) {
-    
+
     
 }
 

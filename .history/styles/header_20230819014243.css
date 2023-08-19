@@ -241,7 +241,9 @@
 
 
 @media only screen and (max-width:576px) {
-    
+    .nav__item{
+        font-size:var(--h2-font-size);
+    }
     
 }
 
