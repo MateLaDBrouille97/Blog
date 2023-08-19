@@ -139,7 +139,7 @@ export default function Section1() {
           </div>
           <div className="swiper__section1">
             <Swiper
-              className="postLine__container3"
+              className="postLine__container2"
               spaceBetween={10}
               autoplay={{
                 delay: 6000,
