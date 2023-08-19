@@ -153,27 +153,6 @@
 
 /*=============== BREAKPOINTS ===============*/
 
-@media screen and (max-width: 968px) {
-
-  .post__article-blog{
-     width: 1270px;
-  }
-
-  .post__article-blog2{
-    width: 1270px;
-  }
-
-  .post__article-blog3{
-    width: 1270px;
-  }
-
-
-
-}
-
-
-
-
 @media screen and (max-width: 768px) {
  
 

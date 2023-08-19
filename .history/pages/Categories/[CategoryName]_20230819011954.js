@@ -404,7 +404,7 @@ function Category({ category, posts }) {
 
   const backgroundImageStyle = {
     backgroundImage: `url(${category?.image})`,
-  
+    width: "1278px",
   };
 
   return (

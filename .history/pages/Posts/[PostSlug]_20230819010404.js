@@ -178,7 +178,7 @@ function Article({ image, post, post2 }) {
 
   const backgroundImageStyle = {
     backgroundImage: `url(${image})`,
-    
+    width: "1278px",
   };
 
   return (
