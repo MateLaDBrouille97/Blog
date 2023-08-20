@@ -292,12 +292,11 @@
   .nav_toggle {
     position: absolute;
     right: 1.3rem;
-    bottom: 0.5rem;
+    bottom: 0.8rem;
     font-size: 1.5rem;
     cursor: pointer;
     visibility: visible;
-    width:1.6rem;
-    height:3rem;
+    
   }
 
   .nav_toggle .svg{

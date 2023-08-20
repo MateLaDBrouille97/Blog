@@ -148,7 +148,7 @@
   .header {
     top: 0;
     bottom: initial;
-    height:100px;
+    height:90px;
     
   }
 
@@ -293,16 +293,9 @@
     position: absolute;
     right: 1.3rem;
     bottom: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     visibility: visible;
-    width:1.6rem;
-    height:3rem;
-  }
-
-  .nav_toggle .svg{
-    height: 1.8rem;
-    width:1.8rem;
   }
 
   .noshow {

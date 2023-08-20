@@ -148,7 +148,7 @@
   .header {
     top: 0;
     bottom: initial;
-    height:100px;
+    height:90px;
     
   }
 
@@ -195,9 +195,9 @@
   .nav__menu2
   {
 
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
   }
 
   .nav__menu2 .nav__list2 .nav__link2{
@@ -266,7 +266,7 @@
     /* position: absolute; */
     right: 1.3rem;
     bottom: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
   }
 
@@ -293,16 +293,9 @@
     position: absolute;
     right: 1.3rem;
     bottom: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     visibility: visible;
-    width:1.6rem;
-    height:3rem;
-  }
-
-  .nav_toggle .svg{
-    height: 1.8rem;
-    width:1.8rem;
   }
 
   .noshow {

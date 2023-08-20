@@ -47,10 +47,12 @@ const BuyMeACoffee2 = ({author}) => {
        >
          {user?.buyMeACoffee && (
             <>
-            
+            <div className="images custom-image-wrapper11">
               <a href={user?.buyMeACoffee} target="_blank" rel="noreferrer">
-                <Image width={18} height={18} src={bmc} alt="Buy me a coffee" className="buyMe__a-coffee" />
+                <Image width={18} height={18} src={bmc} alt="Buy me a coffee" className="buyMe__a-coffee custom-image10" />
               </a>
+            </div>
+              
             </>
           )}
        </div>  
