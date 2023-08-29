@@ -58,11 +58,7 @@
 }
 
 .category__postId{
-  /* background-color: brown; */
-  padding: 5px;
-  margin:5px;
-  /* background: linear-gradient(180deg,rgb(255, 254, 254),transparent); */
-  /* opacity: .5; */
+  background-color: brown;
 }
 
 .section__article-postSlug{

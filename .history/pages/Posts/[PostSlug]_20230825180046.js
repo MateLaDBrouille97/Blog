@@ -194,8 +194,8 @@ function Article({ image, post, post2 }) {
               }`}
               legacyBehavior
             >
-              <a className="text-orange-700 hover:text-orange-800">  
-               / {post?.category || "UnKnown"}
+              <a className="text-orange-600 hover:text-orange-800">
+                {post?.category || "UnKnown"}
               </a>
             </Link>
           </div>

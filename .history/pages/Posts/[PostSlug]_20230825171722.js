@@ -179,25 +179,26 @@ function Article({ image, post, post2 }) {
 
   const backgroundImageStyle = {
     backgroundImage: `url(${image})`,
+    
   };
 
   return (
     <Format>
       <section className="section  mt-20 section section4 mx-auto md:px-20 py-16 lg:w-4/6 md:w-5.25/6 ">
         <div className="container-section4 ">
-          <div className="cat flex gap-6 pt-2 pb-2 category__postId ">
+        <div className="cat flex gap-6 pt-2 pb-2">
             <Link
               href={`/Categories/${
-                post?.category == "OPINIONS" || "ANALYSIS" || "GEOPOL"
-                  ? "NEWS"
-                  : post?.category
+                post?.category == "OPINIONS"||"ANALYSIS"||"GEOPOL" ? "NEWS" : post?.category
               }`}
               legacyBehavior
             >
-              <a className="text-orange-700 hover:text-orange-800">  
-               / {post?.category || "UnKnown"}
+              <a className="text-orange-600 hover:text-orange-800">
+                {post?.category || "UnKnown"}
               </a>
             </Link>
+            
+          
           </div>
           <div className="section__cat container-section4">
             <div className="post__article-blog" style={backgroundImageStyle} />
@@ -262,6 +263,7 @@ function Article({ image, post, post2 }) {
             {/* {post2?.frontmatter?.tags.map((tag) => {return(<><div>
             #{tag}
         </div></>)})} */}
+           
           </div>
         </div>
         <div className="">{post && <Related post={post} />}</div>
