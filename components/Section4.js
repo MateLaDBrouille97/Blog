@@ -1,22 +1,12 @@
-import Image from "next/image";
+
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import img1 from "../public/images/code.jpg";
-import Author from "./_child/Author";
-import Error from "./_child/Error";
-import Spinner from "./_child/Spinner";
-import fetcher from "@/lib/fetcher";
+
 import { useBlogContext } from "@/contexts/BlogContext";
-import { useUserContext } from "@/contexts/UserContext";
-import { User } from "@/src/models";
-import { DataStore } from "aws-amplify";
-import PostCol from "./PostCol";
+
 import { gsap } from "gsap";
 import { useRouter } from "next/router";
-import PostCol2 from "./PostCol2";
-import PostCol3 from "./PostCol3";
-import PostP7 from "./PostP7";
-import PostColMultiple from "./PostColMultiple";
+
 import PostColMultiple2 from "./PostColMultiple2";
 
 export default function Section4() {

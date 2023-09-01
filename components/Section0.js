@@ -39,11 +39,11 @@ function Section0() {
         <div className="main-section-zero ">
           <div className="left">
             <div className="lnav">
-              <i class="ri-copyright-line"></i>
+              <i className="ri-copyright-line"></i>
               <div className="lnavr">
                 <a href="#lastestPosts">Home</a>
                 {/* <i class="ri-instagram-line"></i> */}
-                <a  href="https://www.linkedin.com/in/manuel-thomas-labridy-70220a3a"><i class="ri-linkedin-box-fill"></i></a>
+                <a  href="https://www.linkedin.com/in/manuel-thomas-labridy-70220a3a"><i className="ri-linkedin-box-fill"></i></a>
                 
               </div>
             </div>

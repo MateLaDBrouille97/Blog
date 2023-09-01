@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useUserContext } from "@/contexts/UserContext";
 import { Icon } from "@iconify/react";
-import Newsletter from "./_child/Newsletter";
+// import Newsletter from "./_child/Newsletter";
 import Link from "next/link";
-import BuyMeACoffee from "./BuyMeACoffee";
+
 import BuyMeACoffee2 from "./BuyMeACoffee2";
 
 const Footer2 = () => {
