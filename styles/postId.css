@@ -65,6 +65,24 @@
   /* opacity: .5; */
 }
 
+.postId-img{
+  position: absolute;
+  opacity: 1;
+}
+
+.category__postId2{
+  position: relative;
+  padding: 5px;
+  margin:5px;
+  height: 40px;
+  width: 10%;
+  background-color: brown;
+  opacity: 0.8;
+  bottom:14px;
+  right:16px;
+  
+}
+
 .section__article-postSlug{
   margin-top: 60px;
   display: flex;

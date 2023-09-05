@@ -185,19 +185,22 @@ function Article({ image, post, post2 }) {
     <Format>
       <section className="section  mt-20 section section4 mx-auto md:px-20 py-16 lg:w-4/6 md:w-5.25/6 ">
         <div className="container-section4 ">
-          <div className="cat flex gap-6 pt-2 pb-2 category__postId ">
+          <div className="cat flex gap-6 pt-2 pb-2 category__postId">
+            <div className="category__postId2">
+              
+            </div>
             <Link
-              href={`/Categories/${
-                post?.category == "OPINIONS" || "ANALYSIS" || "GEOPOL"
-                  ? "NEWS"
-                  : post?.category
-              }`}
-              legacyBehavior
-            >
-              <a className="text-orange-700 hover:text-orange-800">  
-               / {post?.category || "UnKnown"}
-              </a>
-            </Link>
+                href={`/Categories/${
+                  post?.category == "OPINIONS" || "ANALYSIS" || "GEOPOL"
+                    ? "NEWS"
+                    : post?.category
+                }`}
+                legacyBehavior
+              >
+                <a className="text-white hover:text-black-800 postId-img">
+                   {post?.category || "UnKnown"} .
+                </a>
+              </Link>
           </div>
           <div className="section__cat container-section4">
             <div className="post__article-blog" style={backgroundImageStyle} />
