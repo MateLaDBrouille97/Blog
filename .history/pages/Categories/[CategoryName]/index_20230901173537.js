@@ -26,6 +26,7 @@ import PostCol2 from "@/components/PostCol2";
 import Pagination from "@/components/Pagination";
 import PostVal from "@/components/PostVal";
 
+
 export default function CategoryName() {
   const router = useRouter();
   const categoryName = router?.query?.CategoryName;
@@ -169,6 +170,8 @@ function Category({ category, posts }) {
   const pageData = itemCount?.slice(skip, endIndex);
 
   //------------------------------------------------------------
+
+ 
 
   //---------------------------------------------------------------------------------
   useMemo(() => {

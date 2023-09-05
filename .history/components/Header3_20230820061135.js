@@ -58,9 +58,9 @@ export default function Header3() {
     showMenu(true);
   }, []);
 
-  const handleClick = (e) => {
+  const handleClick = (e, index) => {
     setItem({ name: e.target.textContent.toLowerCase() });
-    // setActiveNav(index);
+    setActiveNav(index);
   };
 
   useEffect(() => {
@@ -92,9 +92,7 @@ export default function Header3() {
               <Link href={`/`} legacyBehavior>
                 <a
                   href="#home"
-                  onClick={(e) => {
-                    handleClick(e);
-                    setActiveNav("#home")}}
+                  onClick={() => setActiveNav("#home")}
                   className={
                     activeNav === "#home"
                       ? "nav__link2 active-link"
@@ -110,10 +108,7 @@ export default function Header3() {
               <Link href={`/Categories/USEFULHACKS`} legacyBehavior>
                 <a
                   href="#usefulHacks"
-                  onClick={(e) => {
-                    handleClick(e);
-                    setActiveNav("#usefulHacks")
-                  }}
+                  onClick={() => setActiveNav("#usefulHacks")}
                   className={
                     activeNav === "#usefulHacks"
                       ? "nav__link2 active-link"
@@ -129,10 +124,7 @@ export default function Header3() {
               <Link href={`/Categories/PROJECTS`} legacyBehavior>
                 <a
                   href="#projects"
-                  onClick={(e) =>
-                   { handleClick(e);
-                    setActiveNav("#projects")
-                  }}
+                  onClick={() => setActiveNav("#projects")}
                   className={
                     activeNav === "#projects"
                       ? "nav__link2 active-link"
@@ -148,9 +140,7 @@ export default function Header3() {
               <Link href={`/Categories/NEWS`} legacyBehavior>
                 <a
                   href="#news"
-                  onClick={(e) => {
-                    handleClick(e);
-                    setActiveNav("#news")}}
+                  onClick={() => setActiveNav("#news")}
                   className={
                     activeNav === "#news"
                       ? "nav__link2 active-link"
@@ -166,9 +156,7 @@ export default function Header3() {
               <Link href={`/Categories/TOOLS`} legacyBehavior>
                 <a
                   href="#tools"
-                  onClick={(e) =>{ 
-                    handleClick(e);
-                    setActiveNav("#tools")}}
+                  onClick={() => setActiveNav("#tools")}
                   className={
                     activeNav === "#tools"
                       ? "nav__link2 active-link"

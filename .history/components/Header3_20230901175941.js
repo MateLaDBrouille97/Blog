@@ -58,7 +58,7 @@ export default function Header3() {
     showMenu(true);
   }, []);
 
-  const handleClick = (e) => {
+  const handleClick = (e, index) => {
     setItem({ name: e.target.textContent.toLowerCase() });
     // setActiveNav(index);
   };
@@ -93,7 +93,7 @@ export default function Header3() {
                 <a
                   href="#home"
                   onClick={(e) => {
-                    handleClick(e);
+                    handleClick(e, index);
                     setActiveNav("#home")}}
                   className={
                     activeNav === "#home"
@@ -111,7 +111,7 @@ export default function Header3() {
                 <a
                   href="#usefulHacks"
                   onClick={(e) => {
-                    handleClick(e);
+                    handleClick(e, index);
                     setActiveNav("#usefulHacks")
                   }}
                   className={
@@ -130,7 +130,7 @@ export default function Header3() {
                 <a
                   href="#projects"
                   onClick={(e) =>
-                   { handleClick(e);
+                   { handleClick(e, index);
                     setActiveNav("#projects")
                   }}
                   className={
@@ -149,7 +149,7 @@ export default function Header3() {
                 <a
                   href="#news"
                   onClick={(e) => {
-                    handleClick(e);
+                    handleClick(e, index);
                     setActiveNav("#news")}}
                   className={
                     activeNav === "#news"
@@ -167,7 +167,7 @@ export default function Header3() {
                 <a
                   href="#tools"
                   onClick={(e) =>{ 
-                    handleClick(e);
+                    handleClick(e, index);
                     setActiveNav("#tools")}}
                   className={
                     activeNav === "#tools"
