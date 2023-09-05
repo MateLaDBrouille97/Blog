@@ -186,8 +186,7 @@ function Article({ image, post, post2 }) {
       <section className="section  mt-20 section section4 mx-auto md:px-20 py-16 lg:w-4/6 md:w-5.25/6 ">
         <div className="container-section4 ">
           <div className="cat flex gap-6 pt-2 pb-2 category__postId">
-            <div className={post?.category == "USEFULHACKS"
-                    ?"category__postId3":"category__postId2"}>
+            <div className="category__postId2">
               
             </div>
             <Link
