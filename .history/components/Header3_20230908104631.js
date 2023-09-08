@@ -8,7 +8,7 @@ import LinkShare from "./LinkShare";
 import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
 import BuyMeACoffee from "./BuyMeACoffee";
-import {  usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/ui/theme";
@@ -31,7 +31,7 @@ export default function Header3() {
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
   const pathname = usePathname();
-  // const params = useParams();
+  const params = useParams();
 
   const routes = [
     {
@@ -128,16 +128,16 @@ export default function Header3() {
         </div>
 
         <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6")}
-      // {...props}
+      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
+      {...props}
     >
       {routes.map((route) => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            'text-lg font-medium transition-colors hover:text-primary',
-            route.active ? 'text-black dark:text-white active-work2' : 'text-muted-foreground'
+            'text-sm font-medium transition-colors hover:text-primary',
+            route.active ? 'text-black dark:text-white' : 'text-muted-foreground'
           )}
         >
           {route.label}

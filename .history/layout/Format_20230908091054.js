@@ -6,18 +6,18 @@ import Footer2 from "@/components/Footer2";
 import Header3 from "@/components/Header3";
 import Head from "next/head";
 import ScrollUp from "@/components/ScrollUp";
-import { ThemeProvider } from "@/providers/dark-theme";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export default function Format({ children }) {
   return (
     <>
-    
       <Head>Blog</Head>
-      <Header3 />
-      <main className="main">{children}</main>
-      <Footer2 />
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Header3 />
+        <main className="main">{children}</main>
+        <Footer2 />
+      </ThemeProvider>
       <ScrollUp />
-   
     </>
   );
 }

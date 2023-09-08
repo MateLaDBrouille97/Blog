@@ -323,4 +323,6 @@ export async function getStaticPaths() {
   };
 }
 
-
+// function waitload(sec) {
+//   return new Promise((resolve) => setTimeout(resolve, sec * 1000));
+// }

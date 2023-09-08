@@ -136,8 +136,8 @@ export default function Header3() {
           key={route.href}
           href={route.href}
           className={cn(
-            'text-lg font-medium transition-colors hover:text-primary',
-            route.active ? 'text-black dark:text-white active-work2' : 'text-muted-foreground'
+            'text-sm font-medium transition-colors hover:text-primary',
+            route.active ? 'text-black-900 dark:text-white' : 'text-muted-foreground'
           )}
         >
           {route.label}

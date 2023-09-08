@@ -11,13 +11,13 @@ import { ThemeProvider } from "@/providers/dark-theme";
 export default function Format({ children }) {
   return (
     <>
-    
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Head>Blog</Head>
       <Header3 />
       <main className="main">{children}</main>
       <Footer2 />
       <ScrollUp />
-   
+    </ThemeProvider>
     </>
   );
 }
