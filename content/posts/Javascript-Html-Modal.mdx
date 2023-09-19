@@ -1,0 +1,297 @@
+---
+title: "AI-Influencer Models Can Attract Consumers as Effectively as Humans, New Study FindsUse Javascript , Html to create Modal"
+layout: "Article"
+tags: 
+  -AI 
+  -IT
+  -Project
+excerpt:
+publishedAt:
+---
+<br/>
+Have you ever encountered a pop-up window while browsing the web, prompting you to confirm an action? That's called a modal—a dynamic web page element that overlays the existing content. Modals serve various purposes, such as hiding information temporarily, creating navigation menus, or featuring call-to-action elements.
+<br/>
+For instance, think of Twitter's compose tweet modal when you try to close it. As a web developer, learning to craft modals is a valuable skill. In this tutorial, we'll guide you through creating a simple modal using HTML, CSS, and JavaScript. You can customize it or build your own. We'll even provide a CodePen file for experimentation. It's a straightforward process, so let's get started!
+<br/>
+<br/>
+<br/>
+# ***Add a Markup***
+<br/>
+Let's dive into the HTML setup for our project.
+<br/>
+To begin, create a section element and assign it two classes: "modal" and "hidden." Below this, include a div element with the class "overlay" and set it as hidden. Finally, add a button element with both "btn" and "btn-open" classes.
+<br/>
+
+```js
+<section class="modal hidden"></section>
+<div class="overlay hidden"></div>
+<button class="btn btn-open">Open Modal</button>
+
+```
+<br/>
+The section with the "modal" class will act as our modal container, providing structure. The div with the "overlay" class will function as the backdrop, creating a dark, blurred effect when the modal is active. Our modal trigger will be the button with "btn" and "btn-open" classes, initiating the modal display upon clicking.
+<br/>
+Within the modal itself, insert the necessary content markup, including an "X" button for closing the modal, which will be styled with the "btn-close" class.
+<br/>
+
+```js
+
+<section class="modal hidden">
+  <div class="flex">
+    <img src="user.png" width="50px" height="50px" alt="user" />
+    <button class="btn-close">⨉</button>
+  </div>
+  <div>
+    <h3>Stay in touch</h3>
+    <p>
+      Test de newsletter pour presenter un modal ;)
+    </p>
+  </div>
+
+  <input type="email" id="email" placeholder="brendaneich@js.com" />
+  <button class="btn">Submit</button>
+</section>
+
+<div class="overlay hidden"></div>
+<button class="btn btn-open">Ouvrir le Modal</button>
+
+```
+<br/>
+<br/>
+<br/>
+
+# ***Style the Modal***
+<br/>
+To get started, we'll begin by resetting the default margins and paddings for all elements on the page. After that, we'll center both the modal and the button that opens it.
+<br/>
+
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  position: relative;
+  min-height: 100vh;
+}
+
+```
+<br/>
+The next step involves styling the modal container and its internal elements. While this process can be somewhat lengthy, I'll provide the styling code first and then offer some insights.
+<br/>
+In essence, you've applied styles to the modal element and positioned it using the "absolute" property, taking advantage of the "position: relative" property previously added to the body element.
+<br/>
+Additionally, you've styled the elements inside the modal. While I won't delve deeply into these details, as they aren't crucial for our current focus, they contribute to the overall appearance and functionality of the modal.
+<br/>
+
+
+```css
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 450px;
+  padding: 1.3rem;
+  min-height: 250px;
+  position: absolute;
+  top: 20%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+.modal .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.modal p {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.4rem 0 0.2rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  font-weight: 700;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.btn-open {
+  position: absolute;
+  bottom: 150px;
+}
+
+.btn-close {
+  transform: translate(10px, -20px);
+  padding: 0.5rem 0.7rem;
+  background: #eee;
+  border-radius: 50%;
+}
+
+```
+<br/>
+<br/>
+<br/>
+# ***Add the Overlay***
+<br/>
+To create an overlay, aim for a subtle, dark background with a blur effect that covers the entire page. Given the relative positioning of the body element, you can employ the "position: fixed" property to layer the overlay over it, spanning 100% of both the viewport's width and height.
+<br/>
+
+```css
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+```
+<br/>
+However, you want the overlay to impact only the body, not the modal. To resolve this, assign a higher "z-index" property to the modal container.
+<br/>
+
+```css
+
+.modal {
+  z-index: 2;
+}
+
+```
+<br/>
+You've now successfully established the modal and its accompanying overlay, but the modal shouldn't be visible until the "open-modal" button is clicked. To hide it initially, target the ".hidden" class applied to the modal and overlay elements in your CSS, setting their display property to "none."
+<br/>
+
+```css
+
+.hidden {
+  display: none;
+}
+
+```
+<br/>
+<br/>
+<br/>
+# ***Functionality***
+<br/>
+Before we continue, let's understand how the modal functions. You previously hid the modal and overlay using the "hidden" class. To toggle this class, we'll employ the DOM's classList feature. To begin, select your classes using the DOM's querySelector method and store them in variables for reuse.
+<br/>
+```js
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const openModalBtn = document.querySelector(".btn-open");
+const closeModalBtn = document.querySelector(".btn-close");
+```
+<br/>
+<br/>
+ ### How to Open the Modal
+<br/>
+To display the modal, let's create a function called "openModal." Inside this function, we'll utilize the DOM's classList property, which provides methods like `.remove()` and `.add()`. We'll use these methods to remove the "hidden" class from both the modal and overlay elements.
+<br/>
+
+```js
+
+const openModal = function () {
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+
+openModalBtn.addEventListener("click", openModal);
+
+```
+<br/>
+To link this function to the "open-modal" button (let's call it "openModalBtn"), we'll employ an eventListener. Whenever the button is clicked, the function runs, revealing the modal. So, when you click the "open modal" button, it removes the "hidden" class from the modal element, making the modal visible.
+<br/>
+
+### How to Close the Modal
+
+<br/>
+To implement modal closure, we'll craft a function called "closeModal." Inside, we'll utilize the `.add()` method from the classList property to reintroduce the previously removed "hidden" class.
+<br/>
+```js
+
+const closeModal = function () {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
+```
+<br/>
+Similarly, we'll employ the `.add()` method when clicking the "closeModal" button or the 'x' button. An eventListener will be attached to these buttons to trigger the addition of the "hidden" class, effectively closing the modal.
+<br/>
+```js
+
+closeModalBtn.addEventListener("click", closeModal);
+
+overlay.addEventListener("click", closeModal);
+
+```
+<br/>
+Traditionally, modals close when you click outside the modal or on the webpage's body. To achieve this, add an eventListener to close the modal when clicking on the overlay. In essence, clicking anywhere outside the modal will hide it by adding back the "hidden" class to both the modal and overlay components, effectively closing the modal.
+<br/>
+<br/>
+<br/>
+# ***How to Close the Modal on Key Press***
+<br/>
+In addition to closing the modal via buttons or by clicking the overlay, you can make it even more user-friendly by adding keyboard functionality. Just like Twitter's compose modal, we'll enable the modal to close when you press the "Escape" key.
+<br/>
+```js
+
+document.addEventListener("keydown");
+
+```
+<br/>
+This time, we're not listening for a "click" event, but a "keydown" event. We'll set up a condition to check if the pressed key is "Escape" and if the modal isn't hidden (meaning it's open). If these conditions are met, we'll execute the "closeModal" function, effectively closing the modal.
+<br/>
+```js
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+    modalClose();
+  }
+});
+
+```
+<br/>
+Now, with the modal open, simply press the "Esc" key, and it will gracefully close. With this, you've successfully crafted a modal component using HTML, CSS, and JavaScript that functions exactly as intended.
+
+<br/>
+<br/>
+<br/>
+<br/>

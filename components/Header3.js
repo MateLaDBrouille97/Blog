@@ -8,9 +8,9 @@ import LinkShare from "./LinkShare";
 import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
 import BuyMeACoffee from "./BuyMeACoffee";
-import {  usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme";
 
 export default function Header3() {
@@ -26,8 +26,6 @@ export default function Header3() {
   /* +++++++++++++++++++++++++++++++++++++++++++++++++ */
   //   const { dbUser, image } = useUserContext();
 
-
-
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
   const pathname = usePathname();
@@ -36,17 +34,17 @@ export default function Header3() {
   const routes = [
     {
       href: `/`,
-      label: 'Home',
+      label: "Home",
       active: pathname === `/`,
     },
     {
       href: `/Categories/USEFULHACKS`,
-      label: 'Useful Hacks',
+      label: "Useful Hacks",
       active: pathname === `/Categories/USEFULHACKS`,
     },
     {
       href: `/Categories/PROJECTS`,
-      label: 'Projects',
+      label: "Projects",
       active: pathname === `/Categories/PROJECTS`,
     },
     {
@@ -56,11 +54,10 @@ export default function Header3() {
     },
     {
       href: `/Categories/TOOLS`,
-      label: 'Tools To',
+      label: "Tools To",
       active: pathname === `/Categories/TOOLS`,
     },
-    
-  ]
+  ];
 
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
   const breakpoints = (width) => {
@@ -99,7 +96,7 @@ export default function Header3() {
     showMenu(true);
   }, []);
 
-  const handleClick = (e,index) => {
+  const handleClick = (e, index) => {
     setItem({ name: e.target.textContent.toLowerCase() });
     // setActiveNav(index);
   };
@@ -126,26 +123,25 @@ export default function Header3() {
             </Link>
           </div>
         </div>
-
         <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6")}
-      // {...props}
-    >
-      {routes.map((route) => (
-        <Link
-          key={route.href}
-          href={route.href}
-          className={cn(
-            'text-lg font-medium transition-colors hover:text-primary',
-            route.active ? 'text-black dark:text-white active-work2' : 'text-muted-foreground'
-          )}
+          className={cn("flex items-center space-x-4 lg:space-x-6")}
+          // {...props}
         >
-          {route.label}
-      </Link>
-      ))}
-    </nav>
-
-          
+          {routes.map((route) => (
+            <Link
+              key={route.href}
+              href={route.href}
+              className={cn(
+                "text-lg font-medium transition-colors hover:text-primary",
+                route.active
+                  ? "text-black dark:text-white active-work2"
+                  : "text-muted-foreground"
+              )}
+            >
+              {route.label}
+            </Link>
+          ))}
+        </nav>
         <div className="nav__toggle-share">
           <div
             className={toggle == true ? "nav_toggle" : "noshow"}

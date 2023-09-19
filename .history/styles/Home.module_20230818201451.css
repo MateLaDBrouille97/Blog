@@ -177,7 +177,7 @@
 @media (max-width: 700px) {
 
   .main{
-    max-zoom: 90%;
+    /* max-zoom: 75%; */
   }
   .content {
     padding: 4rem;
