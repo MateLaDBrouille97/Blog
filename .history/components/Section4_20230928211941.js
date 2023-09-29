@@ -240,15 +240,14 @@ export default function Section4() {
             </div>
             <div className="section3__view">
               <Link href={`/Categories/PROJECTS`} legacyBehavior>
-                <a className="font-bold text-xl py-8 text-center section3__view-title mb-20">
+                <a className="font-bold text-xl py-8 text-center section3__view-title mb-10">
                   {" "}
                   View More
                 </a>
               </Link>
             </div>
           </div>
-         <div className="mb-20"></div>
-
+         
         </div>
       </section>
     </>

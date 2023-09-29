@@ -274,17 +274,16 @@
 
     .show-menu{
         bottom:0;
+        left: 0;
         right:0;
-        left:0;
         height: 92%;
 
     }
 
     .nav__list{
-        
         display:flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         gap:2rem;
         padding:10px;
@@ -303,15 +302,12 @@
 
     .toggle-close{
         position: relative;
-        padding:5px;
-        margin:10px;
-        transition: bottom 0.4s ease;
     }
     
     .nav__close{
         position: absolute;
-        left:1.3rem;
-        bottom: 30rem;
+        left:0rem;
+        bottom: 0rem; 
         font-size:3rem;
         cursor:pointer;
         color: var(--title-color);

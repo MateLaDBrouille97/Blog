@@ -274,8 +274,6 @@
 
     .show-menu{
         bottom:0;
-        right:0;
-        left:0;
         height: 92%;
 
     }
@@ -303,15 +301,12 @@
 
     .toggle-close{
         position: relative;
-        padding:5px;
-        margin:10px;
-        transition: bottom 0.4s ease;
     }
     
     .nav__close{
         position: absolute;
         left:1.3rem;
-        bottom: 30rem;
+        bottom: 40rem;
         font-size:3rem;
         cursor:pointer;
         color: var(--title-color);

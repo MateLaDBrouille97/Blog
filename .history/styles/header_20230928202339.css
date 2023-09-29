@@ -274,8 +274,6 @@
 
     .show-menu{
         bottom:0;
-        right:0;
-        left:0;
         height: 92%;
 
     }
@@ -287,8 +285,6 @@
         justify-content: flex-start;
         align-items: center;
         gap:2rem;
-        padding:10px;
-        margin: 20px;
     }
 
     .nav__list2{
@@ -303,19 +299,15 @@
 
     .toggle-close{
         position: relative;
-        padding:5px;
-        margin:10px;
-        transition: bottom 0.4s ease;
     }
     
     .nav__close{
         position: absolute;
-        left:1.3rem;
-        bottom: 30rem;
+        right:1.3rem;
+        bottom: .5rem;
         font-size:3rem;
         cursor:pointer;
         color: var(--title-color);
-        transition: bottom 0.3s ease;
     }
 
     .nav__close:hover{
@@ -328,12 +320,6 @@
         bottom: .5rem;
         font-size: 1.1rem;
         cursor:pointer;
-    }
-
-    .nav__item a{
-        font-size:50px;
-        padding:10px;
-        margin:10px;
     }
 
     .nav__toggle:hover{

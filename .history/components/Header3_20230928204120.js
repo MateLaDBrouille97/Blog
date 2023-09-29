@@ -111,7 +111,7 @@ export default function Header3() {
 
   return (
     <header className={`header ${toggle ? "header-open" : ""}`}>
-      <nav className={cn("nav container-section4 ")}>
+      <nav className={cn("nav container-section4 flex items-center space-x-4 lg:space-x-6")}>
         <div className="nav__logo-container">
           <div className="nav__logo">
             <Link href={`/`} legacyBehavior>
@@ -150,7 +150,7 @@ export default function Header3() {
             ))}
           </ul>
           {!toggle&&
-          <div className="toggle-close">
+          <div className="toggl">
              <Icon
             icon="uil:times"
             className="nav__close"

@@ -274,8 +274,6 @@
 
     .show-menu{
         bottom:0;
-        right:0;
-        left:0;
         height: 92%;
 
     }
@@ -331,7 +329,7 @@
     }
 
     .nav__item a{
-        font-size:50px;
+        font-size:60px;
         padding:10px;
         margin:10px;
     }

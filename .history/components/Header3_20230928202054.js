@@ -111,7 +111,7 @@ export default function Header3() {
 
   return (
     <header className={`header ${toggle ? "header-open" : ""}`}>
-      <nav className={cn("nav container-section4 ")}>
+      <nav className={cn("nav container-section4 flex items-center space-x-4 lg:space-x-6")}>
         <div className="nav__logo-container">
           <div className="nav__logo">
             <Link href={`/`} legacyBehavior>
@@ -128,7 +128,7 @@ export default function Header3() {
           </div>
         </div>
         <div className={!toggle ? "nav__menu show-menu" : "nav__menu"}>
-          <ul className="nav__list md:grid">
+          <ul className="nav__list grid">
             {routes.map((route) => (
               // eslint-disable-next-line react/jsx-key
 
@@ -138,7 +138,7 @@ export default function Header3() {
                   key={route.href}
                   href={route.href}
                   className={cn(
-                    "text-lg font-medium transition-colors  hover:text-primary",
+                    "text-lg font-medium transition-colors hover:text-primary",
                     route.active
                       ? "text-black dark:text-white active-work2 nav__link active-link"
                       : "text-muted-foreground nav__link"
@@ -150,14 +150,13 @@ export default function Header3() {
             ))}
           </ul>
           {!toggle&&
-          <div className="toggle-close">
+          <div>
              <Icon
             icon="uil:times"
             className="nav__close"
             onClick={() => showMenu(!toggle)}
           ></Icon>
-          </div>
-          }
+          </div>}
          
         </div>
 

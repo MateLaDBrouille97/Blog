@@ -105,13 +105,13 @@ export default function Header3() {
     setUser(dbUser);
   }, [dbUser]);
 
-  const handleToggleClick = () => {
-    setToggle(!toggle);
-  };
-
   return (
-    <header className={`header ${toggle ? "header-open" : ""}`}>
-      <nav className={cn("nav container-section4 ")}>
+    <header className="header">
+      <nav
+        className={cn(
+          "flex items-center space-x-1 lg:space-x-2 nav container"
+        )}
+      >
         <div className="nav__logo-container">
           <div className="nav__logo">
             <Link href={`/`} legacyBehavior>
@@ -127,18 +127,17 @@ export default function Header3() {
             </Link>
           </div>
         </div>
-        <div className={!toggle ? "nav__menu show-menu" : "nav__menu"}>
-          <ul className="nav__list md:grid">
-            {routes.map((route) => (
-              // eslint-disable-next-line react/jsx-key
 
-              // eslint-disable-next-line react/jsx-key
+        {routes.map((route) => (
+          // eslint-disable-next-line react/jsx-key
+          <div className={!toggle ? "nav__menu show-menu" : "nav__menu"}>
+            <ul className="nav__list grid">
               <li className="nav__item">
                 <Link
                   key={route.href}
                   href={route.href}
                   className={cn(
-                    "text-lg font-medium transition-colors  hover:text-primary",
+                    "text-lg font-medium transition-colors hover:text-primary",
                     route.active
                       ? "text-black dark:text-white active-work2 nav__link active-link"
                       : "text-muted-foreground nav__link"
@@ -147,19 +146,9 @@ export default function Header3() {
                   <i className="uil uil-estate nav__icon"></i> {route.label}
                 </Link>
               </li>
-            ))}
-          </ul>
-          {!toggle&&
-          <div className="toggle-close">
-             <Icon
-            icon="uil:times"
-            className="nav__close"
-            onClick={() => showMenu(!toggle)}
-          ></Icon>
+            </ul>
           </div>
-          }
-         
-        </div>
+        ))}
 
         <div className="nav__toggle-share">
           <div

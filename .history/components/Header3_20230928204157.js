@@ -150,7 +150,7 @@ export default function Header3() {
             ))}
           </ul>
           {!toggle&&
-          <div className="toggle-close">
+          <div className="toggl">
              <Icon
             icon="uil:times"
             className="nav__close"
