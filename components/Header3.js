@@ -11,7 +11,7 @@ import BuyMeACoffee from "./BuyMeACoffee";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/ui/theme";
+import ThemeToggle from "../components/themeToggle/themeToggle"
 
 export default function Header3() {
   /*==================== Toggle Menu ====================== */
@@ -149,19 +149,19 @@ export default function Header3() {
               </li>
             ))}
           </ul>
-          {!toggle&&
-          <div className="toggle-close">
-             <Icon
-            icon="uil:times"
-            className="nav__close"
-            onClick={() => showMenu(!toggle)}
-          ></Icon>
-          </div>
-          }
-         
+          {!toggle && (
+            <div className="toggle-close">
+              <Icon
+                icon="uil:times"
+                className="nav__close"
+                onClick={() => showMenu(!toggle)}
+              ></Icon>
+            </div>
+          )}
         </div>
 
         <div className="nav__toggle-share">
+        {/* <ThemeToggle /> */}
           <div
             className={toggle == true ? "nav_toggle" : "noshow"}
             onClick={() => showMenu(!toggle)}

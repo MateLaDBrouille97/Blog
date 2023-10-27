@@ -27,10 +27,8 @@ import awsconfig from "../src/aws-exports";
 import "@aws-amplify/ui-react/styles.css";
 import BlogContextProvider from "@/contexts/BlogContext";
 import UserContextProvider from "@/contexts/UserContext";
-
-
-
-
+import ThemeContextProvider from "@/contexts/ThemeContext";
+import ThemeProvider from "../providers/ThemeProvider";
 
 Amplify.configure({
   ...awsconfig,
@@ -41,11 +39,12 @@ export default function App({ Component, pageProps }) {
   return (
     <UserContextProvider>
       <BlogContextProvider>
-        <Component {...pageProps} />
+        <ThemeContextProvider>
+          <ThemeProvider>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </ThemeContextProvider>
       </BlogContextProvider>
     </UserContextProvider>
   );
 }
-
-
-
