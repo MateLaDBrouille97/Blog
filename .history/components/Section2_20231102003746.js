@@ -140,7 +140,7 @@ export default function Section2(blogArt) {
 export async function getStaticProps() {
   try {
     const blogArt = await prismadb.category.findMany({where:{
-      billboardId:"014ae746-08c2-4601-859f-7a8f50bc78ce",
+      billboardId:"014ae746-08c2-4601-859f-7a8f50bc78ce"
     }});
     return {
       props: {
@@ -149,10 +149,10 @@ export async function getStaticProps() {
     };
   } catch (error) {
     console.error("Error fetching data:", error);
-    // return {
-    //   props: {
-    //     blogArt: [],
-    //   },
-    // };
+    return {
+      props: {
+        blogArt: [],
+      },
+    };
   }
 }

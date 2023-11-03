@@ -3,6 +3,8 @@ import { DataStore } from "aws-amplify";
 import { Category,BlogPost} from "../src/models";
 import { useUserContext } from "./UserContext";
 import React from 'react';
+import prismadb from "@/lib/prismadb";
+// import { getProgress } from "@/actions/get-progress";
 
 
 
@@ -10,7 +12,7 @@ const BlogContext = createContext({});
 
 const BlogContextProvider = ({ children }) => {
 
-    const{dbUser}=useUserContext();
+    const {dbUser} = useUserContext();
 
     const[blogUFH,setBlogUFH]=useState([]);
     const[blogP,setBlogP]=useState([]);
@@ -35,6 +37,11 @@ const BlogContextProvider = ({ children }) => {
           // await DataStore.query(BlogPost,p=>p.category.eq("USEFULHACKS")).then(port=>setBlogUFH(port));
           // await DataStore.query(BlogPost,p=>p.category.eq("PROJECTS")).then(port=>setBlogP(port));
           // await DataStore.query(BlogPost,p=>p.category.eq("NEWS")).then(port=>setBlogN(port));
+          
+          
+
+         
+          
         }
         fetchPort();
     },[dbUser,categories])

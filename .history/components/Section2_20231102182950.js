@@ -149,10 +149,10 @@ export async function getStaticProps() {
     };
   } catch (error) {
     console.error("Error fetching data:", error);
-    // return {
-    //   props: {
-    //     blogArt: [],
-    //   },
-    // };
+    return {
+      props: {
+        blogArt: [],
+      },
+    };
   }
 }
