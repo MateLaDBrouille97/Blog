@@ -1,4 +1,5 @@
 import React from "react";
+import { IconName } from "react-icons/im";
 import Link from "next/link";
 import {
   FaFacebook,

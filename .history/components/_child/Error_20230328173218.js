@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import img from "../../public/images/Broken.png";
-import Format from "../../layout/Format";
+import Format from "@/layout/Format";
 
 export default function Error() {
   return (

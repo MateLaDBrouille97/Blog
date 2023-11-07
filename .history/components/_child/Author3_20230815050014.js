@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import im1 from "../../public/ManuelTL2.jpg";
 import Link from "next/link";
-import { useUserContext } from "../../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 
 export default function Author3({ author }) {
   

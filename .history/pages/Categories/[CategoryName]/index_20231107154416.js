@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useBlogContext } from "../../../contexts/BlogContext";
 
 import Error from "../../../components/_child/Error";
-import Post3col from "../../../components/Post3Col";
+import Post3col from "@/components/Post3Col";
 import { gsap } from "gsap";
 import {
   subCategoryNews,
@@ -16,7 +16,7 @@ import {
   subCategoryTools,
 } from "../../../public/subCategoryName";
 
-import PostCol2 from "../../../components/PostCol2";
+import PostCol2 from "@/components/PostCol2";
 import Pagination from "../../../components/Pagination";
 import PostVal from "../../../components/PostVal";
 

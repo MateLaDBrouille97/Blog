@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import SocialIconLink from './SocialIconLink';
 import bmc from "../../public/bmc-button.png";
 import Link from "next/link";
-import { useUserContext } from "../../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 import {
     FacebookShareButton,
     LinkedinShareButton,

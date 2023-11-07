@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useBlogContext } from "../../contexts/BlogContext";
-
+import { useBlogContext } from "@/contexts/BlogContext";
+import Image from "next/image";
 import Link from "next/link";
-
+import { useUserContext } from "@/contexts/UserContext";
+import { User } from "@/src/models";
+import { DataStore } from "aws-amplify";
+import Author from "./Author";
 import PostCol from "../PostCol";
 
 export default function Related({post}) {

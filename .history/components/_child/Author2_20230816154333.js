@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import im1 from "../../public/ManuelTL2.jpg";
 import Link from "next/link";
-import { useUserContext } from "../../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 
-export default function Author3({ author }) {
+export default function Author2({ author }) {
   
   const [image, setImage] = useState();
   const aws = require("aws-sdk");
@@ -30,7 +30,7 @@ export default function Author3({ author }) {
   }, [author]);
 
   return (
-    <div className="author flex py-2">
+    <div className="author flex  py-3">
       {/* <Image
         className="rounded-full "
         alt=""
@@ -38,11 +38,10 @@ export default function Author3({ author }) {
         width={50}
         height={50}
       /> */}
-      <div className="flex flex-col justify-center">
-        
-       <Link href="/" legacyBehavior>
+      <div className="flex flex-col justify-center px-4 ">
+        <Link href="/" legacyBehavior>
           <a className="text-md flex justify-begin font-bold text-gray-800 hover:text-gray-600">
-           {author?.firstName}
+            {author?.firstName}
           </a>
         </Link>
         <span className="text-sm text-gray-500">
