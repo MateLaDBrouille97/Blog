@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import Error from "../../components/_child/Error";
-import { useBlogContext } from "../../contexts/BlogContext";
+import { useBlogContext } from "../contexts/BlogContext";
 import rehypeSlug from "rehype-slug";
 import { MDXRemote } from "next-mdx-remote";
 import rehypeHighlight from "rehype-highlight";
