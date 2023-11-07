@@ -10,15 +10,16 @@ import Post3col from "@/components/Post3Col";
 import { gsap } from "gsap";
 import { useRouter } from "next/router";
 import prismadb from "@/lib/prismadb";
-import getCategories from "@/actions/get-categories";
+// import getCategories from "@/actions/get-categories";
 // import getCategories from "@/actions/get-categories";
 
-export default function Section2(blogArt) {
+export default function Section2() {
   const { data } = useBlogContext();
-
+  
   
   const [dataSort, setDataSort] = useState([]);
   const [dataSort2, setDataSort2] = useState([]);
+  const [dataSort3, setDataSort3] = useState([]);
   // const { isLoading, isError } = fetcher("api/posts");
   // if (isLoading) return <Spinner />;
   // if (isError) return <Error />;
@@ -26,7 +27,7 @@ export default function Section2(blogArt) {
   //Sort from newest to oldest
   const [date, setDate] = useState("");
 
-  console.log(blogArt)
+  // console.log(blogArt)
   // const [date2, setDate2] = useState("");
 
   useEffect(() => {
@@ -46,7 +47,19 @@ export default function Section2(blogArt) {
     
   }, [data,dataSort]);
 
-  
+
+ useEffect(() => {
+    const fetchDataSorted = async () => {
+      const blogArt = await getCategories()
+      // const blogArt = await getCategories()
+      setDataSort3(blogArt)
+      
+    };
+    fetchDataSorted();
+    
+  }, []);
+
+  console.log(dataSort3)
 
   //Router animation
   const router = useRouter();
@@ -137,22 +150,12 @@ export default function Section2(blogArt) {
 }
 
 
-export async function getStaticProps() {
-  try {
-    const blogArt = await prismadb.category.findMany({where:{
-      billboardId:"014ae746-08c2-4601-859f-7a8f50bc78ce",
-    }});
-    return {
-      props: {
-        blogArt,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    // return {
-    //   props: {
-    //     blogArt: [],
-    //   },
-    // };
+async function getCategories() {
+  const response = await fetch("/api/categories");
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
   }
+  const categories = await response.json();
+  return categories;
 }
+

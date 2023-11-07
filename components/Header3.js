@@ -140,7 +140,7 @@ export default function Header3() {
                   className={cn(
                     "text-lg font-medium transition-colors  hover:text-primary",
                     route.active
-                      ? "text-black dark:text-white active-work2 nav__link active-link"
+                      ? "text-black dark:text-gray-300 active-work2 nav__link active-link"
                       : "text-muted-foreground nav__link"
                   )}
                 >

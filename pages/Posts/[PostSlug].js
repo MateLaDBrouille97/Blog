@@ -41,7 +41,7 @@ import "highlight.js/styles/atom-one-dark.css";
 import Youtube from "@/components/Youtube";
 import Para from "@/components/_child/Para";
 import Video from "@/components/Video";
-import Like from "@/components/Like";
+
 import Like2 from "@/components/Like2";
 import Link from "next/link";
 
@@ -57,6 +57,8 @@ export default function Page({ post2 }) {
   const [postImage, setPostImage] = useState();
   const [img, setImg] = useState([]);
   const { dbUser } = useUserContext();
+
+
 
   /* Fetch Image */
   aws.config.update({

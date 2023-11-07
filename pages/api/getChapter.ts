@@ -1,26 +1,17 @@
-import prismadb from "@/lib/prismadb";
-import { Attachment, Chapter } from "@prisma/client";
+import { NextApiRequest, NextApiResponse } from 'next';
+import prismadb from '@/lib/prismadb';
+import { Attachment, Chapter } from '@prisma/client';
 
 interface GetChapterProps {
   userId: string;
   blogarticleId: string;
   chapterId: string;
-};
+}
 
-export const getChapter = async ({
-  userId,
-  blogarticleId,
-  chapterId,
-}: GetChapterProps) => {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    // const purchase = await prismadb.purchase.findUnique({
-    //   where: {
-    //     userId_courseId: {
-    //       userId,
-    //       blogarticleId,
-    //     }
-    //   }
-    // });
+    const { userId, blogarticleId, chapterId } = req.query as unknown as GetChapterProps;
 
     const course = await prismadb.blogarticle.findUnique({
       where: {
@@ -29,39 +20,29 @@ export const getChapter = async ({
       },
       select: {
         price: true,
-      }
+      },
     });
 
     const chapter = await prismadb.chapter.findUnique({
       where: {
         id: chapterId,
         isPublished: true,
-      }
+      },
     });
 
     if (!chapter || !course) {
-      throw new Error("Chapter or course not found");
+      return res.status(404).json({ error: 'Chapter or course not found' });
     }
 
     let muxData = null;
     let attachments: Attachment[] = [];
     let nextChapter: Chapter | null = null;
 
-    // if (purchase) {
-    //   attachments = await db.attachment.findMany({
-    //     where: {
-    //       courseId: courseId
-    //     }
-    //   });
-    // }
-
-    if (chapter.isFree
-        //  || purchase
-         ) {
+    if (chapter.isFree) {
       muxData = await prismadb.muxData.findUnique({
         where: {
           chapterId: chapterId,
-        }
+        },
       });
 
       nextChapter = await prismadb.chapter.findFirst({
@@ -70,42 +51,33 @@ export const getChapter = async ({
           isPublished: true,
           position: {
             gt: chapter?.position,
-          }
+          },
         },
         orderBy: {
-          position: "asc",
-        }
+          position: 'asc',
+        },
       });
     }
 
-    const userProgress = await prisma.userProgress.findUnique({
+    const userProgress = await prismadb.userProgress.findUnique({
       where: {
         userId_chapterId: {
           userId,
           chapterId,
-        }
-      }
+        },
+      },
     });
 
-    return {
+    return res.status(200).json({
       chapter,
       course,
       muxData,
       attachments,
       nextChapter,
       userProgress,
-    //   purchase,
-    };
+    });
   } catch (error) {
-    console.log("[GET_CHAPTER]", error);
-    return {
-      chapter: null,
-      course: null,
-      muxData: null,
-      attachments: [],
-      nextChapter: null,
-      userProgress: null,
-    //   purchase: null,
-    }
+    console.error('[GET_CHAPTER]', error);
+    return res.status(500).json({ error: 'Internal server error' });
   }
-}
+};
