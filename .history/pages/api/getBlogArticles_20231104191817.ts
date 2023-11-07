@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import getProgress from './getProgress';
+import { getProgress } from '@/actions/get-progress';
 import prismadb from '@/lib/prismadb';
 import { Blogarticle, CategoryBlog, SubCategoryBlog, Author } from '@prisma/client';
 
@@ -19,9 +19,8 @@ type GetBlogarticlesQuery = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const { userId, title, categoryId } = req.query as unknown as GetBlogarticlesQuery;
   try {
-    
+    const { userId, title, categoryId } = req.query as unknown as GetBlogarticlesQuery;
 
     const blogarticles = await prismadb.blogarticle.findMany({
       where: {
@@ -51,7 +50,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const blogarticlesWithProgress: BlogarticlesWithProgressWithCategory[] = await Promise.all(
       blogarticles.map(async (blogarticle) => {
-        
         const progressPercentage = await getProgress(userId, blogarticle.id);
         return {
           ...blogarticle,

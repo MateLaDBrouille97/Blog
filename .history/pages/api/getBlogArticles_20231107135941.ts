@@ -19,7 +19,7 @@ type GetBlogarticlesQuery = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const { userId, title, categoryId } = req.query as unknown as GetBlogarticlesQuery;
+const { userId, title, categoryId } = req.query as unknown as GetBlogarticlesQuery;
   try {
     
 
@@ -51,7 +51,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const blogarticlesWithProgress: BlogarticlesWithProgressWithCategory[] = await Promise.all(
       blogarticles.map(async (blogarticle) => {
-        
         const progressPercentage = await getProgress(userId, blogarticle.id);
         return {
           ...blogarticle,

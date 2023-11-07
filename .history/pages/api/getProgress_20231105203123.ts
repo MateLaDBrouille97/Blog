@@ -25,12 +25,12 @@ type GetChapterQuery = {
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default async (req: any, res: any) => {
-  const { userId} = req.query as unknown as GetUserProgressQuery;
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const { userId, chapterId } = req.query as unknown as GetUserProgressQuery;
 
   const { blogarticleId } = req.query as unknown as GetChapterQuery;
 
-  if (!userId || !blogarticleId) {
+  if (!userId || !chapterId) {
     return res.status(400).json({ error: 'userId and blogarticleId are required in the query parameters.' });
   }
 
