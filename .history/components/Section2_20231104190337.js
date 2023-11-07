@@ -1,15 +1,17 @@
-
+// import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import Error from "./_child/Error";
-import { useBlogContext } from "../contexts/BlogContext";
+import { useBlogContext } from "@/contexts/BlogContext";
+// import { useUserContext } from "@/contexts/UserContext";
 
-
-import Post3col from "../components/Post3Col";
+import Post3col from "@/components/Post3Col";
 import { gsap } from "gsap";
 import { useRouter } from "next/router";
-
+import prismadb from "@/lib/prismadb";
+// import getCategories from "@/actions/get-categories";
+// import getCategories from "@/actions/get-categories";
 
 export default function Section2() {
   const { data } = useBlogContext();

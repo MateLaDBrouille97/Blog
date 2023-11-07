@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-import { useBlogContext } from "../contexts/BlogContext";
+import { useBlogContext } from "@/contexts/BlogContext";
 
 import { gsap } from "gsap";
 import { useRouter } from "next/router";

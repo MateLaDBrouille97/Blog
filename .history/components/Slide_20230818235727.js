@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
-import "swiper/css";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import img1 from "../public/images/code.jpg";
 import Author from "./_child/Author";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper";
 import Spinner from "./_child/Spinner";
-
-import { useUserContext } from "../contexts/UserContext";
+import Error from "./_child/Error";
+import fetcher from "@/lib/fetcher";
+import { useBlogContext } from "@/contexts/BlogContext";
+import { useUserContext } from "@/contexts/UserContext";
 import { DataStore } from "aws-amplify";
 import { User } from "@/src/models";
+import Like2 from "./Like2";
 import Like3 from "./Like3";
 
-export default function PostLine({ post }) {
+export default function Slide({ post }) {
   const aws = require("aws-sdk");
   const s3 = new aws.S3();
   const { dbUser } = useUserContext();
@@ -21,11 +28,13 @@ export default function PostLine({ post }) {
 
   useEffect(() => {
     const convertAwsDateToDate = (awsDate) => {
-      const year = awsDate.substring(0, 4);
-      const month = awsDate.substring(5, 7) - 1; // Subtract 1 since months are zero-indexed
-      const day = awsDate.substring(8, 10);
-      const newDate = new Date(year, month, day).toLocaleDateString();
-      setDate(newDate);
+      if (awsDate) {
+        const year = awsDate.substring(0, 4);
+        const month = awsDate.substring(5, 7) - 1; // Subtract 1 since months are zero-indexed
+        const day = awsDate.substring(8, 10);
+        const newDate = new Date(year, month, day).toLocaleDateString();
+        setDate(newDate);
+      }
     };
     convertAwsDateToDate(post?.createdAt);
   }, [post]);
@@ -59,51 +68,54 @@ export default function PostLine({ post }) {
   }, [dbUser]);
 
   return (
-    <div className="grid postLine__container2 ">
-      <div className="images custom-image-wrapper8">
+    <div className="slide__container">
+      <div className="grid md:grid-cols-2 ">
+      <div className="image custom-image-wrapper4 ">
         <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-          <a className="postLine__img2">
+          <a>
             {!postImage ? (
               <Spinner />
             ) : (
-              <Image src={postImage} alt="" width={450} height={450} className="postCol__img custom-image6"/>
+              <Image src={postImage} alt="" width={600} height={800} className="postCol__img custom-image10" />
             )}
           </a>
         </Link>
       </div>
-      <div className="info flex justify-center flex-col py-4 ">
-        <div className="cat flex gap-6 pb-5">
+      <div className="slide-info">
+        <div className="cat flex gap-6 ">
           <Link href={`/Categories/${post?.category=="OPINIONS"||"ANALYSIS"||"GEOPOL"?"NEWS":post?.category}`} legacyBehavior>
             <a className="text-orange-600 hover:text-orange-800">
               {post?.category || "UnKnown"}
             </a>
           </Link>
+
           <Link href="/" legacyBehavior>
             <a className="text-gray-600 hover:text-gray-800">
               {date || "UnKnown"}
             </a>
           </Link>
         </div>
-        <div className="title postLine__title">
+        <div className="title">
           <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-            <a className="text-3xl md:text-4xl font-bold text-gray-800 hover:text-gray-600">
+            <a className="slide__title text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600">
               {post?.title}
             </a>
           </Link>
         </div>
-        <div className="postCol3-description pt-3">
-           <p className="text-gray-500 py-3 pr-3 ">
-          {post?.description}
-        </p>
+        <div className="slide__description">
+          <p className="text-gray-500 py-3 mr-20 ">{post?.description}</p>
+          
         </div>
-       
-        <div>
-            {user ? <Author author={user} /> : <></>}
-            <div className="slide__end-bar">
-              <Like3 id={post?.id} />
-            </div>
+        <div className="slide-author">
+          {user ? <Author author={user} /> : <></>}
+          <div className="slide__end-bar" >
+            <Like3 id={post?.id}/>
           </div>
+        </div>
+        
       </div>
     </div>
+    </div>
+    
   );
 }

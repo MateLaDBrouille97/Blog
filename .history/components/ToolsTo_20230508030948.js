@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import bmc from "../public/blackcat.png";
 

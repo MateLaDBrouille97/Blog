@@ -6,7 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
-import { useBlogContext } from "../contexts/BlogContext";
+import { useBlogContext } from "@/contexts/BlogContext";
 import { useRouter } from "next/router";
 import Slide from "./Slide";
 import { gsap } from "gsap";

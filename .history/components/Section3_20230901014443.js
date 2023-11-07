@@ -5,7 +5,7 @@ import { Pagination } from "swiper";
 import "swiper/css";
 import Link from "next/link";
 
-import { useBlogContext } from "../contexts/BlogContext";
+import { useBlogContext } from "@/contexts/BlogContext";
 
 import PostLine from "./PostLine";
 import { gsap } from "gsap";

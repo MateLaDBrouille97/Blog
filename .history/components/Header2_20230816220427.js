@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import Pic from "../../assets/Mur.jpg";
-import { useUserContext } from "../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";

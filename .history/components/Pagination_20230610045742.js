@@ -3,7 +3,7 @@ import usePagination from "@lucasmogari/react-pagination";
 import cn from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { memo,  } from "react";
+import React, { memo, PropsWithChildren, ReactNode } from "react";
 
 // type Props = {
 //   page: number;

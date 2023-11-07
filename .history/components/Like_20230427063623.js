@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
-import { BlogPost } from "../src/models";
+import { BlogPost } from "@/src/models";
 
 export default function Like({ id }) {
   const [likesCount, setLikesCount] = useState(0);

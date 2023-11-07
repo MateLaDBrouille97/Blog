@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
-import Error from "../../components/_child/Error";
-import { useBlogContext } from "../contexts/BlogContext";
+import Error from "@/components/_child/Error";
+import { useBlogContext } from "@/contexts/BlogContext";
 import rehypeSlug from "rehype-slug";
 import { MDXRemote } from "next-mdx-remote";
 import rehypeHighlight from "rehype-highlight";
@@ -10,15 +10,15 @@ import { serialize } from "next-mdx-remote/serialize";
 // import "highlight.js/styles/atom-one-dark-reasonable.css";
 import "highlight.js/styles/atom-one-dark.css";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import {  getArticleFromSlug, getSlug } from "@/src/utils/mdx";
-import Format from "../../layout/Format";
-import Author from "../../components/_child/Author";
+import { getAllArticles, getArticleFromSlug, getSlug } from "@/src/utils/mdx";
+import Format from "@/layout/Format";
+import Author from "@/components/_child/Author";
 import Image from "next/image";
-import Related from "../../components/_child/Related";
+import Related from "@/components/_child/Related";
 import { DataStore } from "aws-amplify";
-import {  User } from "../../src/models";
-import { useUserContext } from "../../contexts/UserContext";
-import Button from "../../components/_child/Button";
+import { BlogPost, User } from "@/src/models";
+import { useUserContext } from "@/contexts/UserContext";
+import Button from "@/components/_child/Button";
 import { gsap } from "gsap";
 import {
   FacebookShareButton,
@@ -35,13 +35,14 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from "react-share";
-import AuthorDetails from "../../components/_child/AuthorDetail";
+import AuthorDetails from "@/components/_child/AuthorDetail";
 // import "highlight.js/styles/atom-one-dark-reasonable.css";
 import "highlight.js/styles/atom-one-dark.css";
-import Youtube from "../../components/Youtube";
-import Para from "../../components/_child/Para";
-import Video from "../../components/Video";
-import Like2 from "../../components/Like2";
+import Youtube from "@/components/Youtube";
+import Para from "@/components/_child/Para";
+import Video from "@/components/Video";
+
+import Like2 from "@/components/Like2";
 import Link from "next/link";
 
 const components = { Image, Button, Youtube, Para, Video };

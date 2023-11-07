@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useUserContext } from "../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 import { Icon } from "@iconify/react";
 // import Newsletter from "./_child/Newsletter";
 import Link from "next/link";

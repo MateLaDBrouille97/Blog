@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
-import { BlogPost } from "../src/models";
+import { BlogPost } from "@/src/models";
 
-export default function Like({ id }) {
+export default function Like2({ id }) {
   const [likesCount, setLikesCount] = useState(0);
   const [post, setPost] = useState(null);
   // let isLiked = false;
@@ -43,7 +43,7 @@ const likeClick = async () => {
   await updateLikes(newLikesCount);
 };
 
-console.log(isLiked)
+
 
   return (
     <div className="like_container">
@@ -70,7 +70,7 @@ console.log(isLiked)
           />
         </svg>
 
-        <span className="number-of-likes">{likesCount}</span>
+        <span className="number-of-likes2">{likesCount}</span>
       </button>
     </div>
   );

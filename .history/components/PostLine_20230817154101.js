@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+import { Pagination } from "swiper";
 import "swiper/css";
 import Link from "next/link";
 import Image from "next/image";
 import Author from "./_child/Author";
-
+import img1 from "../public/images/code.jpg";
 import Spinner from "./_child/Spinner";
-
-import { useUserContext } from "../contexts/UserContext";
+import Error from "./_child/Error";
+import fetcher from "@/lib/fetcher";
+import { useBlogContext } from "@/contexts/BlogContext";
+import { useUserContext } from "@/contexts/UserContext";
 import { DataStore } from "aws-amplify";
 import { User } from "@/src/models";
 import Like3 from "./Like3";

@@ -1,9 +1,12 @@
-
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-import { useBlogContext } from "../contexts/BlogContext";
-
+import { useBlogContext } from "@/contexts/BlogContext";
+import { useUserContext } from "@/contexts/UserContext";
+import { User } from "@/src/models";
+import { DataStore } from "aws-amplify";
+import PostCol from "./PostCol";
 import { gsap } from "gsap";
 import { useRouter } from "next/router";
 
