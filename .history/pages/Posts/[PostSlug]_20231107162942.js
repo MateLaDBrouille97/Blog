@@ -10,7 +10,7 @@ import { serialize } from "next-mdx-remote/serialize";
 // import "highlight.js/styles/atom-one-dark-reasonable.css";
 import "highlight.js/styles/atom-one-dark.css";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import {  getArticleFromSlug, getSlug } from "../../src/utils/mdx";
+import {  getArticleFromSlug, getSlug } from "@/src/utils/mdx";
 import Format from "../../layout/Format";
 import Author from "../../components/_child/Author";
 import Image from "next/image";

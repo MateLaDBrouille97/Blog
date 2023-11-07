@@ -1,12 +1,12 @@
 
 import React, { useEffect, useState } from "react";
-import Format from "../layout/Format";
-import Author from "../components/_child/Author";
+import Format from "@/layout/Format";
+import Author from "@/components/_child/Author";
 import Image from "next/image";
-import Related from "../components/_child/Related";
+import Related from "@/components/_child/Related";
 import { DataStore } from "aws-amplify";
-import { BlogPost, User } from "../src/models";
-import { useUserContext } from "../contexts/UserContext";
+import { BlogPost, User } from "@/src/models";
+import { useUserContext } from "@/contexts/UserContext";
 
 function Article({ post }) {
   

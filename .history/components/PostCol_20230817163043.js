@@ -1,12 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useUserContext } from "../contexts/UserContext";
-import { User } from "../src/models";
+import img1 from "../public/images/code.jpg";
+import Author from "./_child/Author";
+import Error from "./_child/Error";
+import Spinner from "./_child/Spinner";
+import fetcher from "@/lib/fetcher";
+import { useBlogContext } from "@/contexts/BlogContext";
+import { useUserContext } from "@/contexts/UserContext";
+import { User } from "@/src/models";
 import { DataStore } from "aws-amplify";
-import Author2 from "./_child/Author2";
 
-export default function PostCol32({ post }) {
+export default function PostCol({ post }) {
   const aws = require("aws-sdk");
   const s3 = new aws.S3();
   const { dbUser } = useUserContext();
@@ -55,8 +60,8 @@ export default function PostCol32({ post }) {
 
   return (
     <>
-      <div className="flex  p-2  ">
-        <div className="custom-cont2">
+      <div className="flex gap-9 pl-4">
+        <div className="custom-cont">
           <div className="image flex flex-col justify-start custom-image-wrapper9">
             <Link href={`/Posts/${post?.slug}`} legacyBehavior>
               <a className="postCol__img">
@@ -64,17 +69,17 @@ export default function PostCol32({ post }) {
                   <Image
                     src={postImage || ""}
                     alt=""
-                    width={200}
-                    height={450}
-                    className=" rounded postCol__img custom-image3 img-zoom"
+                    width={250}
+                    height={150}
+                    className=" rounded postCol__img custom-image3"
                   />
                 )}
               </a>
             </Link>
           </div>
         </div>
-        <div className="info flex justify-center flex-col py-4 mx-3">
-          <div className="cat flex gap-3 mb-4 ml-4">
+        <div className="info flex justify-center flex-col py-4">
+          <div className="cat flex gap-3">
             <Link
               href={`/Categories/${
                 post?.category == "OPINIONS" || "ANALYSIS" || "GEOPOL"
@@ -83,31 +88,24 @@ export default function PostCol32({ post }) {
               }`}
               legacyBehavior
             >
-              <a className="text-orange-600 hover:text-orange-800 text-l">
+              <a className="text-orange-600 hover:text-orange-800">
                 {post?.category || "UnKnown"}
               </a>
             </Link>
-            {/* <Link href="/" legacyBehavior>
-              <a className="text-gray-600 hover:text-gray-800 text-l">
+            <Link href="/" legacyBehavior>
+              <a className="text-gray-600 hover:text-gray-800">
                 {date || "UnKnown"}
               </a>
-            </Link> */}
+            </Link>
           </div>
-          <div className="title  ml-4">
+          <div className="title">
             <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-              <a className=" postCol__title text-2xl font-bold text-gray-800 hover:text-gray-600  ">
+              <a className=" postCol__title text-xl font-bold text-gray-800 hover:text-gray-600 ">
                 {post?.title}
               </a>
             </Link>
           </div>
-          {/* <div className="description">
-            <Link href={`/Posts/${post?.slug}`} legacyBehavior>
-              <a className="postCol__description text-m  text-gray-800 hover:text-gray-600 mt-10">
-              {post?.description}
-              </a>
-            </Link>
-          </div> */}
-          {user ? <Author2 author={user} /> : <></>}
+          {user ? <Author author={user} /> : <></>}
         </div>
       </div>
       <div className="flex justify-center items-center">
