@@ -1,9 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
-import { useUserContext } from "../contexts/UserContext";
-import { User } from "../src/models";
+import img1 from "../public/images/code.jpg";
+import Author from "./_child/Author";
+import Error from "./_child/Error";
+import Spinner from "./_child/Spinner";
+import fetcher from "@/lib/fetcher";
+import { useBlogContext } from "@/contexts/BlogContext";
+import { useUserContext } from "@/contexts/UserContext";
+import { User } from "@/src/models";
 import { DataStore } from "aws-amplify";
 
 export default function PostCol2({ post }) {

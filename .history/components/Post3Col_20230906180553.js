@@ -1,11 +1,16 @@
 import Author from "@/components/_child/Author";
+import Related from "@/components/_child/Related";
+import Format from "@/layout/Format";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+
+import { useRouter } from "next/router";
+import { useBlogContext } from "@/contexts/BlogContext";
 import Link from "next/link";
 
-import { useUserContext } from "../contexts/UserContext";
+import { useUserContext } from "@/contexts/UserContext";
 import { DataStore } from "aws-amplify";
-import { User } from "../src/models";
+import { User } from "@/src/models";
 import Spinner from "./_child/Spinner";
 import Like3 from "./Like3";
 

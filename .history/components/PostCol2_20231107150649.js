@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { useUserContext } from "../contexts/UserContext";
-import { User } from "../src/models";
+import { User } from "@/src/models";
 import { DataStore } from "aws-amplify";
 
 export default function PostCol2({ post }) {
