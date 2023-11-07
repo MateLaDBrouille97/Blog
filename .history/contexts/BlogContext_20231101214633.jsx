@@ -3,6 +3,9 @@ import { DataStore } from "aws-amplify";
 import { Category,BlogPost} from "../src/models";
 import { useUserContext } from "./UserContext";
 import React from 'react';
+import prismadb from "@/lib/prismadb";
+// import { getProgress } from "@/actions/get-progress";
+
 
 
 const BlogContext = createContext({});
