@@ -1,24 +1,30 @@
-
+import Author from "@/components/_child/Author";
+import Related from "@/components/_child/Related";
 import Format from "@/layout/Format";
 import Image from "next/image";
 import React, { useEffect, useMemo, useState } from "react";
-import { categoriesName } from "../../../public/blogDataName";
+import { categoriesName } from "@/public/blogDataName";
 import { useRouter } from "next/router";
-import { useBlogContext } from "../../../contexts/BlogContext";
-
-import Error from "../../../components/_child/Error";
-import Post3col from "../../../components/Post3Col";
+import { useBlogContext } from "@/contexts/BlogContext";
+import Link from "next/link";
+import Error from "@/components/_child/Error";
+import { useUserContext } from "@/contexts/UserContext";
+import { DataStore } from "aws-amplify";
+import { User } from "@/src/models";
+import Post3col from "@/components/Post3Col";
 import { gsap } from "gsap";
 import {
   subCategoryNews,
   subCategoryHacks,
   subCategoryProject,
   subCategoryTools,
-} from "../../../public/subCategoryName";
-
-import PostCol2 from "../../../components/PostCol2";
-import Pagination from "../../../components/Pagination";
-import PostVal from "../../../components/PostVal";
+} from "@/public/subCategoryName";
+import ScrollBar from "@/components/_child/Dropdown";
+import Dropdown from "@/components/_child/Dropdown";
+import PostCol from "@/components/PostCol";
+import PostCol2 from "@/components/PostCol2";
+import Pagination from "@/components/Pagination";
+import PostVal from "@/components/PostVal";
 
 export default function CategoryName() {
   const router = useRouter();
