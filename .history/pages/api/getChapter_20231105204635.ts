@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prismadb from "../../lib/prismadb";
+import prismadb from '@/lib/prismadb';
 import { Attachment, Chapter } from '@prisma/client';
 
 interface GetChapterProps {

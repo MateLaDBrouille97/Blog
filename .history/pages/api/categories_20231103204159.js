@@ -1,4 +1,4 @@
-import prismadb from "../../lib/prismadb"; // Import your Prisma client
+import prismadb from "@/lib/prismadb"; // Import your Prisma client
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
