@@ -4,23 +4,25 @@ import { Chapter, Blogarticle, UserProgress } from "@prisma/client"
 
 import { BlogMobileSidebar } from "./blog-mobile-sidebar";
 
-interface CourseNavbarProps {
-  blogarticle: Blogarticle & {
-    chapters: (Chapter & {
-    //   userProgress: UserProgress[] | null;
-    })[];
-  };
-//   progressCount: number;
-};
+// interface CourseNavbarProps {
+//   blogarticle: Blogarticle & {
+//     chapters: (Chapter & {
+//     //   userProgress: UserProgress[] | null;
+//     })[];
+//   };
+// //   progressCount: number;
+// };
 
 export const BlogArticleNavbar = ({
-  blogarticle,
+  blogarticle,selectedChapterId
+  
 //   progressCount,
-}: CourseNavbarProps) => {
+}) => {
   return (
     <div className="p-4 border-b h-full flex items-center bg-white shadow-sm">
       <BlogMobileSidebar
         blogarticle={blogarticle}
+        selectedChapterId={selectedChapterId}
         // progressCount={progressCount}
       />
       {/* <NavbarRoutes />       */}

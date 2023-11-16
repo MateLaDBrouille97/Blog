@@ -20,7 +20,7 @@ export default function Slide({ post }) {
   const s3 = new aws.S3();
   const { dbUser } = useUserContext();
   const [date, setDate] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState([]);
   const [postImage, setPostImage] = useState("");
 
   useEffect(() => {

@@ -11,9 +11,13 @@ interface GetChapterProps {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { userId, blogarticleId, chapterId } = req.query as unknown as GetChapterProps;
+    const { 
+      // userId,
+        blogarticleId,
+        chapterId 
+      } = req.query as unknown as GetChapterProps;
 
-    const course = await prismadb.blogarticle.findUnique({
+    const blogArticle = await prismadb.blogarticle.findUnique({
       where: {
         isPublished: true,
         id: blogarticleId,
@@ -28,9 +32,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         id: chapterId,
         isPublished: true,
       },
+      include:{
+        course:true
+      }
     });
 
-    if (!chapter || !course) {
+    if (!chapter || !blogArticle) {
       return res.status(404).json({ error: 'Chapter or course not found' });
     }
 
@@ -59,22 +66,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-    const userProgress = await prismadb.userProgress.findUnique({
-      where: {
-        userId_chapterId: {
-          userId,
-          chapterId,
-        },
-      },
-    });
+    // const userProgress = await prismadb.userProgress.findUnique({
+    //   where: {
+    //     userId_chapterId: {
+    //       userId,
+    //       chapterId,
+    //     },
+    //   },
+    // });
 
     return res.status(200).json({
       chapter,
-      course,
+      blogArticle,
       muxData,
       attachments,
       nextChapter,
-      userProgress,
+      // userProgress,
     });
   } catch (error) {
     console.error('[GET_CHAPTER]', error);

@@ -21,6 +21,7 @@ import "../styles/scrollup.css";
 import "../styles/scrollBar.css";
 import "../styles/like.css";
 import "../styles/postVal.css";
+import "../styles/BlogArticle.css";
 import { Amplify } from "aws-amplify";
 // import { withAuthenticator } from "@aws-amplify/ui-react";
 import awsconfig from "../src/aws-exports";

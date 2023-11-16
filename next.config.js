@@ -23,7 +23,7 @@ const nextConfig = {
     dirs:'public',
   },
   images: {
-    domains:["portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging.s3.amazonaws.com",]
+    domains:["portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging.s3.amazonaws.com","res.cloudinary.com","utfs.io"]
    },
    env: {
      AWS_EXPORT_FILE: './aws-exports.js',

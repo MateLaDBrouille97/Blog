@@ -21,6 +21,18 @@
     position: relative;
   }
 
+  .like_container2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    top:10px;
+    bottom:-360px;
+    left:1300px;
+    z-index: 2;
+    position: absolute;
+  }
+
 
   .block {
     width: 100px;
@@ -50,20 +62,56 @@
     transform: translate(-50%, -50%);
   }
 
-  @media (max-width: 765px) {
-    .block {
-        width: 90px;
-        margin-top: 5px;
-      }
-  }
+ 
 
+  @media (max-width: 950px) {
+    .like_container2{
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: -50px;
+   top:10px;
+   bottom:-770px;
+   left:1120px;
+   z-index: 2;
+ 
+ }
+ }
 
-  @media (max-width: 575.9px) {
-    .block {
+ @media (max-width: 765px) {
+  .block {
       width: 90px;
       margin-top: 5px;
     }
+}
+
+
+@media (max-width: 575.9px) {
+  .block {
+    width: 90px;
+    margin-top: 5px;
   }
+}
+
+  @media (max-width: 450px) {
+     .like_container2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    top:10px;
+    bottom:-250px;
+    left:1120px;
+    z-index: 2;
+    position: absolute;
+  }
+  }
+
+ 
+ 
+
+
+
   .block .heart-icon {
     user-select: none;
     position: absolute;

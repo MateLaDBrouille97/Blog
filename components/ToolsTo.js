@@ -5,7 +5,7 @@ import bmc from "../public/blackcat.png";
 
 const ToolsTo = ({author}) => {
   const [toggleState, setToggleState] = useState(false);
-  const [user,setUser]=useState('');
+  const [user,setUser]=useState([]);
 
   const toggleTab = (index) => {
     setToggleState(index);

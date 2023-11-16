@@ -57,8 +57,6 @@ export default function Page({ post2 }) {
   const [img, setImg] = useState([]);
   const { dbUser } = useUserContext();
 
-
-
   /* Fetch Image */
   aws.config.update({
     accessKeyId: "AKIAQK7EQ4DINBSQQM5L",
@@ -102,6 +100,8 @@ export default function Page({ post2 }) {
     </div>
   );
 }
+
+
 
 function Article({ image, post, post2 }) {
   const [date, setDate] = useState("");
