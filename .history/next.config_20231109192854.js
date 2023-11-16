@@ -39,8 +39,7 @@ const nextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       'react/jsx-runtime.js': require.resolve('react/jsx-runtime'),
-    },
-    
+    }
 
     config.resolve = {
       ...config.resolve,
@@ -52,14 +51,9 @@ const nextConfig = {
         // 'builtin-modules': false,
         // worker_threads: false,
       },
-    
     }
 
     return config
-  },
-  webpack: (config) => {
-    config.resolve.alias['@'] = __dirname;
-    return config;
   },
   addons: [
     // '@storybook/addon-essentials',

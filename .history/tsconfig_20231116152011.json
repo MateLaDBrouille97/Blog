@@ -26,7 +26,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/BlogArticles/[BlogArticleId]/layout.tsx", "pages/BlogArticles/[BlogArticleId]/page.tsx", "pages/BlogArticles/_components/blog-mobile-sidebar.jsx", "pages/BlogArticles/_components/blogarticle-sidebar.tsx", "pages/BlogArticles/[BlogArticleId]/chapters/[ChapterId]/index.js", "pages/api/getChapter.js", "pages/BlogArticles/[BlogArticleId]/_components/blog-sidebar-item.jsx", "pages/BlogArticles/[BlogArticleId]/_components/blogarticle-sidebar.jsx"  ],
+, "pages/BlogArticles/[BlogArticleId]/layout.tsx", "pages/BlogArticles/[BlogArticleId]/page.tsx", "pages/BlogArticles/_components/blog-mobile-sidebar.jsx", "pages/BlogArticles/_components/blogarticle-sidebar.tsx", "pages/BlogArticles/[BlogArticleId]/chapters/[ChapterId]/page.jsx", "pages/api/getChapter.js", "pages/BlogArticles/[BlogArticleId]/_components/blog-sidebar-item.jsx", "pages/BlogArticles/[BlogArticleId]/_components/blogarticle-sidebar.jsx"  ],
   "exclude": [
     "node_modules"
   ],

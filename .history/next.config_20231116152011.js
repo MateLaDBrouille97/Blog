@@ -52,14 +52,13 @@ const nextConfig = {
         // 'builtin-modules': false,
         // worker_threads: false,
       },
-    
+      webpack: (config) => {
+        config.resolve.alias['@'] = __dirname;
+        return config;
+      },
     }
 
     return config
-  },
-  webpack: (config) => {
-    config.resolve.alias['@'] = __dirname;
-    return config;
   },
   addons: [
     // '@storybook/addon-essentials',

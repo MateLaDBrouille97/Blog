@@ -32,9 +32,6 @@ import Like4 from "../../../components/Like4";
 import RelatedBA from "../../../components/_child/RelatedBA";
 import ChapterIdPage from "./chapters/[ChapterId]/index"
 
-
-
-
 function BlogArticleLayout({ children }) {
   //   const { userId } = auth();
   const router = useRouter();
