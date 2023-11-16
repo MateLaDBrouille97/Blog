@@ -1,5 +1,5 @@
 // import { auth } from "@clerk/nextjs";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { File } from "lucide-react";
 
 import { useEffect, useState } from "react";
@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Separator } from "../../../../../components/ui/separator";
 import { Preview } from "../../../../../components/previews";
 import Image from "next/image";
-import { VideoPlayer } from "./_components/video-player";
+import { VideoPlayer } from "../../../[BlogArticleId]/chapters/[ChapterId]/_components/video-player";
 // import { BlogArticleEnrollButton } from "../../../[BlogArticleId]/chapters/[ChapterId]/_components/blog-enroll-button";
 // import { BlogArticleProgressButton } from "../../../[BlogArticleId]/chapters/[ChapterId]/_components/blog-progress-button";
 import Button from "../../../../../components/_child/Button";

@@ -1,5 +1,5 @@
 // import { auth } from "@clerk/nextjs";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { File } from "lucide-react";
 
 import { useEffect, useState } from "react";

@@ -30,7 +30,7 @@ import Image from "next/image";
 import AuthorDetails from "../../../components/_child/AuthorDetail";
 import Like4 from "../../../components/Like4";
 import RelatedBA from "../../../components/_child/RelatedBA";
-import ChapterIdPage from "./chapters/[ChapterId]/page";
+import ChapterIdPage from "../../../pages/BlogArticles/[BlogArticleId]/chapters/[ChapterId]/page";
 
 function BlogArticleLayout({ children }) {
   //   const { userId } = auth();
@@ -44,7 +44,7 @@ function BlogArticleLayout({ children }) {
   const [category, setCategory] = useState("");
 
 
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
