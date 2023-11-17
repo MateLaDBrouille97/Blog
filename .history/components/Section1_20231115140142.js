@@ -150,7 +150,7 @@ export default function Section1() {
   );
 }
 
-export async function getBlogArticles() {
+async function getBlogArticles() {
   try {
     const response = await fetch("/api/getBlogArticles");
     if (!response.ok) {

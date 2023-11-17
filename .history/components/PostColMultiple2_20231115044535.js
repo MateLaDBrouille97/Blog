@@ -9,6 +9,7 @@ import PostCol32BA from "./PostCol32BA";
 export default function PostColMultiple2({ posts }) {
   const [allposts, setAllPosts] = useState([]);
 
+  console.log(allposts)
 
   useEffect(() => {
     try {
