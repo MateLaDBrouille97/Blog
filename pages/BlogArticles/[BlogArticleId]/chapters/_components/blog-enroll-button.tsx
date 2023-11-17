@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -7,15 +8,15 @@ import toast from "react-hot-toast";
 import { Button } from "../../../../../components/ui/button";
 import { formatPrice } from "../../../../../lib/format";
 
-interface CourseEnrollButtonProps {
-  price: number;
-  blogarticleId: string;
-}
+// interface CourseEnrollButtonProps {
+//   price: number;
+//   blogarticleId: string;
+// }
 
-export const BlogArticleEnrollButton = ({
+export default function BlogArticleEnrollButton ({
   price,
   blogarticleId,
-}: CourseEnrollButtonProps) => {
+}) {
   const [isLoading, setIsLoading] = useState(false);
 
   const onClick = async () => {

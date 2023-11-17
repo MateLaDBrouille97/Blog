@@ -1,11 +1,12 @@
 // import { auth } from "@clerk/nextjs";
+import React from 'react';
 import { Chapter, Blogarticle, UserProgress } from "@prisma/client"
 import { redirect } from "next/navigation";
 
 import prismadb from "../../../../lib/prismadb";
 // import { CourseProgress } from "@/components/course-progress";
 
-import { BlogArticleSidebarItem } from "./blog-sidebar-item";
+import  BlogArticleSidebarItem  from "./blog-sidebar-item";
 
 
 // interface BlogSidebarProps {
@@ -17,7 +18,7 @@ import { BlogArticleSidebarItem } from "./blog-sidebar-item";
 //   // progressCount: number;
 // }
 
-export const BlogArticleSidebar = ({ blogarticle,onSelectChapter }) => {
+export default function BlogArticleSidebar  ({ blogarticle,onSelectChapter }) {
   // You can handle asynchronous operations here, if needed
   // const [progressCount, setProgressCount] = useState<number | null>(null);
 

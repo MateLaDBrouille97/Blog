@@ -1,4 +1,6 @@
+import React from 'react';
 import { Menu } from "lucide-react";
+
 import { Chapter,Blogarticle, UserProgress } from "@prisma/client";
 import { useEffect, useState } from "react";
 import {
@@ -7,23 +9,10 @@ import {
   SheetTrigger
 } from "../../../../components/ui/sheet";
 
-import { BlogArticleSidebar } from "./blogarticle-sidebar";
-// import { CourseSidebar } from "./course-sidebar";
+import BlogArticleSidebar from './blogarticle-sidebar';
 
-// interface CourseMobileSidebarProps {
-//   blogarticle: Blogarticle & {
-//     chapters: (Chapter & {
-//     //   userProgress: UserProgress[] | null;
-//     })[];
-//   };
-// //   progressCount: number;
-// };
 
-export const BlogMobileSidebar = ({ 
-  blogarticle,
-  selectedChapterId
-//   progressCount,
-}) => {
+ function BlogMobileSidebar ({ blogarticle,selectedChapterId})  {
 
   const [selectedChapterIdMobile, setSelectedChapterIdMobile] = useState(null);
 
@@ -51,3 +40,5 @@ export const BlogMobileSidebar = ({
     </Sheet>
   )
 }
+
+export default BlogMobileSidebar;

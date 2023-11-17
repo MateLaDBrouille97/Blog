@@ -1,5 +1,7 @@
 "use client";
 
+
+import React from 'react';
 import axios from "axios";
 import MuxPlayer from "@mux/mux-player-react";
 import { useState } from "react";
@@ -10,17 +12,17 @@ import { Loader2, Lock } from "lucide-react";
 import { cn } from "../../../../../lib/utils";
 import { useConfettiStore } from "../../../../../hooks/use-confetti-store";
 
-interface VideoPlayerProps {
-  playbackId: string;
-  blogarticleId: string;
-  chapterId: string;
-  nextChapterId?: string;
-  isLocked: boolean;
-  completeOnEnd: boolean;
-  title: string;
-};
+// interface VideoPlayerProps {
+//   playbackId: string;
+//   blogarticleId: string;
+//   chapterId: string;
+//   nextChapterId?: string;
+//   isLocked: boolean;
+//   completeOnEnd: boolean;
+//   title: string;
+// };
 
-export const VideoPlayer = ({
+export default function VideoPlayer ({
   playbackId,
   blogarticleId,
   chapterId,
@@ -28,7 +30,7 @@ export const VideoPlayer = ({
   isLocked,
   completeOnEnd,
   title,
-}: VideoPlayerProps) => {
+}) {
   const [isReady, setIsReady] = useState(false);
   const router = useRouter();
   const confetti = useConfettiStore();

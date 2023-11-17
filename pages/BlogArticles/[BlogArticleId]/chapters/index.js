@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import { Separator } from "../../../../components/ui/separator";
 import { Preview } from "../../../../components/previews";
 import Image from "next/image";
-import { VideoPlayer } from "./_components/video-player";
-// import { BlogArticleEnrollButton } from "../../../[BlogArticleId]/chapters/[ChapterId]/_components/blog-enroll-button";
-// import { BlogArticleProgressButton } from "../../../[BlogArticleId]/chapters/[ChapterId]/_components/blog-progress-button";
+import  VideoPlayer  from "./_components/video-player";
+// import { BlogArticleEnrollButton } from "./_components/blog-enroll-button";
+// import { BlogArticleProgressButton } from "./_components/blog-progress-button";
 import Button from "../../../../components/_child/Button";
 
 function ChapterIdPage({ blogarticleId, chapterId }) {

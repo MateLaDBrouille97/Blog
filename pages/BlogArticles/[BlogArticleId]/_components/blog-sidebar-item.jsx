@@ -1,5 +1,5 @@
 "use client";
-
+import React from 'react';
 import { CheckCircle, Lock, PlayCircle,CheckSquareIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -13,7 +13,7 @@ import {cn} from "../../../../lib/utils"
 // //   isLocked: boolean;
 // };
 
-export const BlogArticleSidebarItem = ({
+export default function BlogArticleSidebarItem  ({
   label,
   id,
   onSelectChapter,
@@ -22,7 +22,7 @@ export const BlogArticleSidebarItem = ({
 //   isLocked,
 }
 // : BlogArticleSidebarItemProps
-) => {
+)  {
   const pathname = usePathname();
   const router = useRouter();
 

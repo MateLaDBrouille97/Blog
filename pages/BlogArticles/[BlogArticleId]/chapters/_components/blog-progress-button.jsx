@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import axios from "axios";
 import { CheckCircle, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -9,19 +10,19 @@ import toast from "react-hot-toast";
 import { Button } from "../../../../../components/ui/button";
 import { useConfettiStore } from "../../../../../hooks/use-confetti-store";
 
-interface CourseProgressButtonProps {
-  chapterId: string;
-  blogarticleId: string;
-  isCompleted?: boolean;
-  nextChapterId?: string;
-};
+// interface CourseProgressButtonProps {
+//   chapterId: string;
+//   blogarticleId: string;
+//   isCompleted?: boolean;
+//   nextChapterId?: string;
+// };
 
-export const BlogArticleProgressButton = ({
+export default function BlogArticleProgressButton ({
   chapterId,
   blogarticleId,
   isCompleted,
   nextChapterId
-}: CourseProgressButtonProps) => {
+})  {
   const router = useRouter();
   const confetti = useConfettiStore();
   const [isLoading, setIsLoading] = useState(false);

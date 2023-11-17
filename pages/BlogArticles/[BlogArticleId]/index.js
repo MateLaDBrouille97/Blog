@@ -2,8 +2,8 @@
 import { redirect } from "next/navigation";
 import { User } from "../../../src/models";
 import Error2 from "../../../components/_child/Error2";
-import { BlogArticleSidebar } from "./_components/blogarticle-sidebar";
-import { BlogArticleNavbar } from "./_components/blogarticle-navbar";
+import BlogArticleNavbar from "./_components/blogarticle-navbar"
+import BlogArticleSidebar from "./_components/blogarticle-sidebar";
 import Format from "../../../layout/Format";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
