@@ -19,14 +19,29 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@libs/*": ["libs/*"],
+      "@lib/*": ["lib/*"],
+      "/opt/client": ["lib/prismadb"],
       "@/*": ["./chapters/[ChapterId]/*"]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/BlogArticles/[BlogArticleId]/layout.tsx", "pages/BlogArticles/[BlogArticleId]/page.tsx", "pages/BlogArticles/_components/blog-mobile-sidebar.jsx", "pages/BlogArticles/_components/blogarticle-sidebar.tsx", "pages/BlogArticles/[BlogArticleId]/chapters/index.js", "pages/api/getChapter.js", "pages/BlogArticles/[BlogArticleId]/_components/blog-sidebar-item.jsx", "pages/BlogArticles/[BlogArticleId]/_components/blogarticle-sidebar.jsx", "pages/BlogArticles/[BlogArticleId]/_components/blogarticle-navbar.jsx", "pages/BlogArticles/[BlogArticleId]/chapters/_components/video-player.jsx", "pages/BlogArticles/[BlogArticleId]/chapters/_components/blog-progress-button.jsx"  ],
+    "**/*.tsx",
+ "pages/BlogArticles/[BlogArticleId]/layout.tsx",
+  "pages/BlogArticles/[BlogArticleId]/page.tsx", 
+  "pages/BlogArticles/_components/blog-mobile-sidebar.jsx",
+   "pages/BlogArticles/_components/blogarticle-sidebar.tsx",
+    "pages/BlogArticles/[BlogArticleId]/chapters/index.js",
+     "pages/api/getChapter.js",
+      "pages/BlogArticles/[BlogArticleId]/_components/blog-sidebar-item.jsx",
+       "pages/BlogArticles/[BlogArticleId]/_components/blogarticle-sidebar.jsx",
+       "pages/BlogArticles/[BlogArticleId]/_components/blogarticle-navbar.jsx",
+        "pages/BlogArticles/[BlogArticleId]/chapters/_components/video-player.jsx",
+         "pages/BlogArticles/[BlogArticleId]/chapters/_components/blog-progress-button.jsx",
+         "./src",
+         "./lib" ],
   "exclude": [
     "node_modules"
   ],
