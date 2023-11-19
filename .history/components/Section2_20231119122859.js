@@ -86,9 +86,9 @@ export default function Section2() {
 }
 
 async function getBlogArticles() {
-  const response = await fetch("https://main.d6iszn1o7sirg.amplifyapp.com/api/getBlogArticles",{ next: { revalidate: 0 } });
+  const response = await fetch("https://main.d6iszn1o7sirg.amplifyapp.com/api/getBlogArticles",{ next: { revalidate: 10 } });
   if (!response.ok) {
-    throw new Error("Failed to fetch data in s2");
+    throw new Error("Failed to fetch data");
   }
   const articles = await response.json();
   return articles;

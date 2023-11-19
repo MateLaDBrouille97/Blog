@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-const baseUrl = "http://localhost:3000/";
+const baseUrl = "https://main.d6iszn1o7sirg.amplifyapp.com/";
 
 const response = (...args) => fetch(...args).then((res) => res.json());
 
