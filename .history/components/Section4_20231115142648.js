@@ -41,10 +41,8 @@ export default function Section4() {
         setBlogArticles(blogArt);
       } catch (error) {
         console.error("Error fetching data:", error);
-        throw error; // Rethrow the error to propagate it further
-    }
       }
-    
+    };
 
     fetchDataSorted();
   }, []);
