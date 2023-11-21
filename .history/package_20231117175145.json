@@ -2,13 +2,11 @@
   "name": "blog2",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js", 
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+    "lint": "next lint"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^5.1.0",
