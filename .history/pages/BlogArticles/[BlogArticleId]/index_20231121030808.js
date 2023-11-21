@@ -36,7 +36,7 @@ import ChapterIdPage from "../../ChaptersBA/index"
 
 export async function getServerSideProps({params}) {
   const { BlogArticleId } = params;
-  const response = await fetch(`https://main.d6iszn1o7sirg.amplifyapp.com/api/getBlogArticle?BlogArticleId=${BlogArticleId}`);
+  const response = await fetch(`/api/getBlogArticle?BlogArticleId=${BlogArticleId}`);
   if (!response.ok) {
     throw new Error("Failed to fetch data in category");
   }

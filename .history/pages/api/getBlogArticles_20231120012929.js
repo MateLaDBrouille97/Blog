@@ -17,13 +17,17 @@ import prismadb from "../../lib/prismadb";
 //   categoryId?: string;
 // };
 
-
-
-const getBlogArticles = async (req, res) => {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default async (req, res) => {
+   
   try {
-    const blogarticles = await prismadb?.blogarticle.findMany({
+    const blogarticles = await prismadb.blogarticle.findMany({
       where: {
         isPublished: true,
+        // title: {
+        //   contains: title || '',
+        // },
+        // categoryId: categoryId || undefined,
       },
       include: {
         category: true,
@@ -43,13 +47,25 @@ const getBlogArticles = async (req, res) => {
       },
     });
 
-    res.status(200).json(blogarticles);
+    // const blogarticlesWithProgress: BlogarticlesWithProgressWithCategory[] = await Promise.all(
+    //   blogarticles.map(async (blogarticle) => {
+        
+    //     const progressPercentage = await getProgress(userId, blogarticle.id);
+    //     return {
+    //       ...blogarticle,
+    //       progress: progressPercentage,
+    //     };
+    //   })
+    // );
+  
 
+    res.status(200).json(blogarticles);
+    
+    
   } catch (error) {
     console.error('[GET_BLOGARTICLES]', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
-export default getBlogArticles;
 

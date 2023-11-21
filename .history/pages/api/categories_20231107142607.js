@@ -4,7 +4,7 @@ import prismadb from "../../lib/prismadb"; // Import your Prisma client
 export default async (req, res) => {
   
     try {
-      const categories = await prismadb?.categoryBlog.findMany({
+      const categories = await prismadb.categoryBlog.findMany({
         where: {
           blogId: "53e14296-c624-473b-b844-07e6cf57df84",
         },
