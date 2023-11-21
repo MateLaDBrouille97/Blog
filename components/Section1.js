@@ -12,7 +12,18 @@ import Slide from "./Slide";
 import SlideBA from "./SlideBA";
 
 
-export default function Section1() {
+
+
+function filterArticlesByCategory(articles, category) {
+  return articles.filter((article) => article?.category?.name === category);
+}
+
+function sortAndSlice(blogArray) {
+  return blogArray.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, Math.min(blogArray.length, 2));
+}
+
+
+export default function Section1({blogArt}) {
   SwiperCore.use([Autoplay]);
 
   // const { data, isLoading, isError } = fetcher("api/trending");
@@ -28,7 +39,7 @@ export default function Section1() {
   useEffect(() => {
     const fetchDataSorted = async () => {
       try {
-        const blogArt = await getBlogArticles();
+        // const blogArt = await getBlogArticles();
         setBlogArticle(blogArt);
 
         // Combine and filter categories
@@ -49,7 +60,7 @@ export default function Section1() {
     };
 
     fetchDataSorted();
-  }, []);
+  }, [blogArt]);
 
   const trending = useMemo(() => {
     const mergeAndSort = (category) => {
@@ -150,24 +161,4 @@ export default function Section1() {
   );
 }
 
-export async function getBlogArticles() {
-  try {
-    const response = await fetch("/api/getBlogArticles");
-    if (!response.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const articles = await response.json();
-    return articles;
-  } catch (error) {
-    console.error("Error getting blog articles:", error);
-    throw error; // Rethrow the error to handle it elsewhere if needed
-  }
-}
 
-function filterArticlesByCategory(articles, category) {
-  return articles.filter((article) => article?.category?.name === category);
-}
-
-function sortAndSlice(blogArray) {
-  return blogArray.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, Math.min(blogArray.length, 2));
-}

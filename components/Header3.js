@@ -127,7 +127,7 @@ export default function Header3() {
             </Link>
           </div>
         </div>
-        <div className={!toggle ? "nav__menu show-menu" : "nav__menu"}>
+        <div className={!toggle ? "nav__menu show-menu" : "nav__menu no-menu"}>
           <ul className="nav__list md:grid">
             {routes.map((route) => (
               // eslint-disable-next-line react/jsx-key

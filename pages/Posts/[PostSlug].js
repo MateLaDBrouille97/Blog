@@ -281,6 +281,7 @@ function Article({ image, post, post2 }) {
 export async function getStaticProps({ params }) {
   //fetch the particular file based on the slug
   // await waitload(2);
+  
   const { PostSlug } = params;
   const { content, frontmatter } = await getArticleFromSlug(PostSlug);
 

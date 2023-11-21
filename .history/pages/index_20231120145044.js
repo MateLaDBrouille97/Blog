@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export async function getServerSideProps() {
-  const response = await fetch("https://main.d6iszn1o7sirg.amplifyapp.com/api/getBlogArticles");
+  const response = await fetch("http://localhost:3000/api/getBlogArticles");
   if (!response.ok) {
     throw new Error("Failed to fetch data in Home");
   }

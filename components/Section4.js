@@ -29,15 +29,15 @@ function sortAndSlice(blogArray) {
     .slice(0, Math.min(blogArray.length, 10));
 }
 
-export default function Section4() {
-  const { blogP, blogN, blogO, blogA, blogG, blogUFH } = useBlogContext();
+export default function Section4({blogArt}) {
+  const { blogP, blogN, blogO, blogA, blogG, } = useBlogContext();
 
   const [blogArticles, setBlogArticles] = useState([]);
 
   useEffect(() => {
     const fetchDataSorted = async () => {
       try {
-        const blogArt = await getBlogArticles();
+        
         setBlogArticles(blogArt);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -45,9 +45,8 @@ export default function Section4() {
     }
       }
     
-
     fetchDataSorted();
-  }, []);
+  }, [blogArt]);
 
   const filteredPosts = useMemo(() => {
     const combinedPosts = {

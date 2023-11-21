@@ -12,16 +12,16 @@ import {
 import BlogArticleSidebar from './blogarticle-sidebar';
 
 
- function BlogMobileSidebar ({ blogarticle,selectedChapterId})  {
+ function BlogMobileSidebar ({ blogarticle,selectedChapter})  {
 
-  const [selectedChapterIdMobile, setSelectedChapterIdMobile] = useState(null);
+  const [selectedChapterMobile, setSelectedChapterMobile] = useState(null);
 
   useEffect(() => {
-    setSelectedChapterIdMobile(selectedChapterId);
-  }, [selectedChapterId]);
+    setSelectedChapterMobile(selectedChapter);
+  }, [selectedChapter]);
 
   const handleSelectChapter = () => {
-    setSelectedChapterId(selectedChapterIdMobile);
+    setSelectedChapter(selectedChapterMobile);
   };
 
   return (

@@ -15,7 +15,6 @@ export default function Post3colBA({ postBA }) {
    
     useEffect(() => {
       const fetchUser = async () => {
-        
         await DataStore.query(User, (user) => user.email.eq(postBA?.author?.email)).then(
           (user) => setUser(user[0])
         );

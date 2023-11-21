@@ -1,29 +1,36 @@
 import Link from "next/link";
-import React, { useEffect, useState,useMemo } from "react";
-
-import Error from "./_child/Error";
+import React, { useEffect, useState, useMemo } from "react";
+import prismadb from "../lib/prismadb";
+import Error2 from "./_child/Error2";
 import { useBlogContext } from "../contexts/BlogContext";
 import { gsap } from "gsap";
 import Post3col from "../components/Post3Col";
 import Post3colBA from "../components/Post3ColBA";
 import { useRouter } from "next/router";
 
-export default function Section2() {
+export default function Section2({blogArt}) {
   const { data } = useBlogContext();
-
+ 
+  const [articlesData2, setArticlesData] = useState([]);
   
-
-  const [articlesData, setArticlesData] = useState([]);
-
+ 
   useEffect(() => {
     const fetchDataSorted = async () => {
       try {
-        const blogArt = await getBlogArticles();
+
+       
         const dataTotal = [...blogArt, ...data];
-        const sortedData = dataTotal.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-        const filteredData = sortedData.filter(
-          (item) => (item.isPublished ? item.category.name !== "TOOLS" : item.category !== "TOOLS")
+        // console.log('Data2',dataTotal)
+
+        const sortedData = dataTotal.sort((a, b) =>
+          b.createdAt.localeCompare(a.createdAt)
         );
+        const filteredData = sortedData.filter((item) =>
+          item.isPublished
+            ? item.category.name !== "TOOLS"
+            : item.category !== "TOOLS"
+        );
+
         setArticlesData(filteredData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -32,11 +39,10 @@ export default function Section2() {
     };
 
     fetchDataSorted();
-  }, [data]);
+  }, [blogArt, data]);
 
 
-  //Router animation
-  
+
 
   return (
     <>
@@ -52,10 +58,10 @@ export default function Section2() {
           </div>
 
           {/* grid columns */}
-          {articlesData ? (
+          {articlesData2 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 ">
-              {articlesData &&
-                articlesData
+              {articlesData2 &&
+                articlesData2
                   .slice(0, 9)
                   .map((post, index) =>
                     post.isPublished ? (
@@ -63,12 +69,11 @@ export default function Section2() {
                     ) : (
                       <Post3col post={post} key={post.id} />
                     )
-                   
                   )}
             </div>
           ) : (
             <div className="flex flex-col justify-center item-center">
-              <Error />
+              <Error2 />
             </div>
           )}
           <div className="section3__view">
@@ -85,11 +90,7 @@ export default function Section2() {
   );
 }
 
-async function getBlogArticles() {
-  const response = await fetch("https://main.d6iszn1o7sirg.amplifyapp.com/api/getBlogArticles",{ next: { revalidate: 0 } });
-  if (!response.ok) {
-    throw new Error("Failed to fetch data in s2");
-  }
-  const articles = await response.json();
-  return articles;
-}
+
+
+
+

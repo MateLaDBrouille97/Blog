@@ -46,6 +46,7 @@ export default function BlogArticleSidebar  ({ blogarticle,onSelectChapter }) {
       <div className="flex flex-col w-full">
         {blogarticle.chapters.map((chapter) => (
           <BlogArticleSidebarItem
+            chapterBA={chapter}
             key={chapter.id}
             id={chapter.id}
             label={chapter.title}

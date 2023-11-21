@@ -33,7 +33,7 @@
   "pages/BlogArticles/[BlogArticleId]/page.tsx", 
   "pages/BlogArticles/_components/blog-mobile-sidebar.jsx",
    "pages/BlogArticles/_components/blogarticle-sidebar.tsx",
-    "pages/BlogArticles/[BlogArticleId]/chapters/index.js",
+    "pages/ChaptersBA/index.js",
      "pages/api/getChapter.js",
       "pages/BlogArticles/[BlogArticleId]/_components/blog-sidebar-item.jsx",
        "pages/BlogArticles/[BlogArticleId]/_components/blogarticle-sidebar.jsx",
@@ -41,7 +41,7 @@
         "pages/BlogArticles/[BlogArticleId]/chapters/_components/video-player.jsx",
          "pages/BlogArticles/[BlogArticleId]/chapters/_components/blog-progress-button.jsx",
          "./src",
-         "./lib" ],
+         "./lib", "pages/ChaptersBA/_components/blog-enroll-button.jsx" ],
   "exclude": [
     "node_modules"
   ],

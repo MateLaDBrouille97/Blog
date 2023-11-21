@@ -9,8 +9,8 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Loader2, Lock } from "lucide-react";
 
-import { cn } from "../../../../../lib/utils";
-import { useConfettiStore } from "../../../../../hooks/use-confetti-store";
+import { cn } from "../../../lib/utils";
+import { useConfettiStore } from "../../../hooks/use-confetti-store";
 
 // interface VideoPlayerProps {
 //   playbackId: string;

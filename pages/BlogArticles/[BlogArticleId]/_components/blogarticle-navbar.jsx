@@ -15,12 +15,12 @@ import BlogMobileSidebar from "./blog-mobile-sidebar2";
 // //   progressCount: number;
 // };
 
-export default function BlogArticleNavbar ({ blogarticle,selectedChapterId}) {
+export default function BlogArticleNavbar ({ blogarticle,selectedChapter}) {
   return (
     <div className="p-4 border-b h-full flex items-center bg-white shadow-sm">
       <BlogMobileSidebar
         blogarticle={blogarticle}
-        selectedChapterId={selectedChapterId}
+        selectedChapter={selectedChapter}
         // progressCount={progressCount}
       />
       {/* <NavbarRoutes />       */}

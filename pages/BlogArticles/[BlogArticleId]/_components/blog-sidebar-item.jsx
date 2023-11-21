@@ -17,6 +17,7 @@ export default function BlogArticleSidebarItem  ({
   label,
   id,
   onSelectChapter,
+  chapterBA,
 //   isCompleted,
   blogarticleId,
 //   isLocked,
@@ -32,7 +33,7 @@ export default function BlogArticleSidebarItem  ({
 
   const onClick = () => {
     // Call the onSelectChapter callback with the selected chapter id
-    onSelectChapter(id);
+    onSelectChapter(chapterBA);
   }
 
   

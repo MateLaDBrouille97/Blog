@@ -14,7 +14,7 @@ import PostLineBA from "./PostLineBA";
 import { gsap } from "gsap";
 import { useRouter } from "next/router";
 
-export default function Section3() {
+export default function Section3({blogArt}) {
   const { blogUFH } = useBlogContext();
   // const {  isLoading, isError } = fetcher("api/popular");
   // if (isLoading) return <Spinner />;
@@ -31,7 +31,7 @@ export default function Section3() {
 
   useEffect(() => {
     const fetchDataSorted = async () => {
-      const blogArt = await getBlogArticles();
+    
       const filteredArticles1 = blogArt.filter((article) => {
         return article?.category?.name === "USEFULHACKS";
       });
@@ -40,7 +40,7 @@ export default function Section3() {
       setDataSort(sortedData);
     };
     fetchDataSorted();
-  }, [blogUFH]);
+  }, [blogUFH,blogArt]);
 
   return (
     <>
@@ -96,11 +96,4 @@ export default function Section3() {
   );
 }
 
-async function getBlogArticles() {
-  const response = await fetch("/api/getBlogArticles");
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  const articles = await response.json();
-  return articles;
-}
+

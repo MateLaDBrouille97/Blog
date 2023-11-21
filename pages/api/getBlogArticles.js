@@ -1,7 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import getProgress from './getProgress';
+// import { NextApiRequest, NextApiResponse } from 'next';
+// import getProgress from './getProgress';
 import prismadb from "../../lib/prismadb";
-import { Blogarticle, CategoryBlog, SubCategoryBlog, Author } from '@prisma/client';
+// import { Blogarticle, CategoryBlog, SubCategoryBlog, Author } from '@prisma/client';
 
 // type BlogarticlesWithProgressWithCategory = Blogarticle & {
 //   category: CategoryBlog | null;
@@ -57,12 +57,15 @@ export default async (req, res) => {
     //     };
     //   })
     // );
+  
 
-    // res.status(200).json(blogarticlesWithProgress);
     res.status(200).json(blogarticles);
+    
     
   } catch (error) {
     console.error('[GET_BLOGARTICLES]', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
+
