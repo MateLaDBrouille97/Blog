@@ -29,7 +29,7 @@ const getBlogArticle = async (req, res) => {
     res.status(200).json(blogarticle);
 
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch Article" });
+    res.status(500).json({ error: "Failed to fetch categories" });
   }
 };
 
