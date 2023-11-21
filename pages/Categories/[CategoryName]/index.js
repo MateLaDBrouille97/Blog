@@ -19,9 +19,10 @@ import Pagination from "../../../components/Pagination";
 import PostVal from "../../../components/PostVal";
 import Post3colBA from "../../../components/Post3ColBA";
 import PostCol2BA from "../../../components/PostCol2BA";
+import { API_URL } from "../../../config/index";
 
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3001/api/getBlogArticles");
+  const response = await fetch(`${API_URL}/api/getBlogArticles`);
   if (!response.ok) {
     throw new Error("Failed to fetch data in category");
   }

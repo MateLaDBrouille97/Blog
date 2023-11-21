@@ -1,7 +1,7 @@
 // import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { User } from "../../../src/models";
-import Error2 from "../../../components/_child/Error2";
+// import Error2 from "../../../components/_child/Error2";
 import BlogArticleNavbar from "./_components/blogarticle-navbar"
 import BlogArticleSidebar from "./_components/blogarticle-sidebar";
 import Format from "../../../layout/Format";
@@ -31,12 +31,12 @@ import AuthorDetails from "../../../components/_child/AuthorDetail";
 import Like4 from "../../../components/Like4";
 import RelatedBA from "../../../components/_child/RelatedBA";
 import ChapterIdPage from "../../ChaptersBA/index"
-
+import { API_URL } from "../../../config/index";
 
 
 export async function getServerSideProps({params}) {
   const { BlogArticleId } = params;
-  const response = await fetch(`http://localhost:3001/api/getBlogArticle?BlogArticleId=${BlogArticleId}`);
+  const response = await fetch(`${API_URL}/api/getBlogArticle?BlogArticleId=${BlogArticleId}`);
   if (!response.ok) {
     throw new Error("Failed to fetch data in category");
   }

@@ -29,38 +29,32 @@ const nextConfig = {
      AWS_EXPORT_FILE: './aws-exports.js',
    },
    webpack5: true,
+  
    webpack: (config, { isServer }) => {
-     if (!isServer) {
-       config.resolve.fallback = { fs: false };
-     }
-     return config;
-   },
-   webpack: (config) => {
+
+    if (!isServer) {
+      config.resolve.fallback = { fs: false };
+    }
+
     config.resolve.alias = {
       ...config.resolve.alias,
       'react/jsx-runtime.js': require.resolve('react/jsx-runtime'),
-    },
-    
-
+      '@': __dirname,
+    };
     config.resolve = {
       ...config.resolve,
-
       fallback: {
         ...config.resolve.fallback,
         child_process: false,
         fs: false,
-        // 'builtin-modules': false,
-        // worker_threads: false,
       },
-    
-    }
-
-    return config
-  },
-  webpack: (config) => {
-    config.resolve.alias['@'] = __dirname;
+    };
     return config;
   },
+  
+
+
+  
   addons: [
     // '@storybook/addon-essentials',
     // '@storybook/addon-links',
@@ -68,7 +62,15 @@ const nextConfig = {
   ]
 }
 
+
+
 // module.exports = nextConfig
 module.exports = withMDX(
   withVideos({
-    ...nextConfig}))
+    ...nextConfig,
+    server: {
+      port: process.env.PORT || 3000, // Use the PORT environment variable if available, otherwise use port 3000
+      host: '0.0.0.0', // Listen on all available network interfaces
+    },
+  
+  }))

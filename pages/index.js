@@ -7,15 +7,14 @@ import Section2 from "../components/Section2";
 import Section3 from "../components/Section3";
 import Section4 from "../components/Section4";
 import Section0 from "../components/Section0";
-
+import { API_URL } from "../config/index";
 
 
 const inter = Inter({ subsets: ["latin"] });
 
 
-
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3001/api/getBlogArticles");
+  const response = await fetch(`${API_URL}/api/getBlogArticles`);
   if (!response.ok) {
     throw new Error("Failed to fetch data in Home");
   }
