@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-
+import { Chapter, Blogarticle, UserProgress } from "@prisma/client"
 import BlogMobileSidebar from "./blog-mobile-sidebar2";
 
 // import { NavbarRoutes } from "@/components/navbar-routes";

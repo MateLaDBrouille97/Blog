@@ -1,9 +1,9 @@
 // import { auth } from "@clerk/nextjs";
 import React from 'react';
-
+import { Chapter, Blogarticle, UserProgress } from "@prisma/client"
 import { redirect } from "next/navigation";
 
-
+import prismadb from "../../../../lib/prismadb";
 // import { CourseProgress } from "@/components/course-progress";
 
 import  BlogArticleSidebarItem  from "./blog-sidebar-item";

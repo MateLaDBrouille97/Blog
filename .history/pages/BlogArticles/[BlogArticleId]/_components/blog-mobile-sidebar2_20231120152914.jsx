@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from "lucide-react";
 
-
+import { Chapter,Blogarticle, UserProgress } from "@prisma/client";
 import { useEffect, useState } from "react";
 import {
   Sheet,

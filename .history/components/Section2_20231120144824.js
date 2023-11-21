@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState, useMemo } from "react";
-
+import prismadb from "../lib/prismadb";
 import Error2 from "./_child/Error2";
 import { useBlogContext } from "../contexts/BlogContext";
 import { gsap } from "gsap";

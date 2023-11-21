@@ -21,7 +21,7 @@ import Post3colBA from "../../../components/Post3ColBA";
 import PostCol2BA from "../../../components/PostCol2BA";
 
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3001/api/getBlogArticles");
+  const response = await fetch("https://main.d6iszn1o7sirg.amplifyapp.com/api/getBlogArticles");
   if (!response.ok) {
     throw new Error("Failed to fetch data in category");
   }
