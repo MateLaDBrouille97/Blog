@@ -74,7 +74,7 @@ export default function Page({ post2 }) {
         .then((i) => setPostImage(i));
     };
     fetchImage();
-  }, [dbUser, router.isReady, post1]);
+  }, [dbUser, router.isReady, post1, img, s3]);
 
   useMemo(() => {
     const postsD = async () => {

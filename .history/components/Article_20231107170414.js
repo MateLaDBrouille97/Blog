@@ -35,7 +35,7 @@ function Article({ post }) {
         );
       };
       fetchUser();
-    }, [post?.userID]);
+    }, []);
   
     /* Fetch Image */
     aws.config.update({
