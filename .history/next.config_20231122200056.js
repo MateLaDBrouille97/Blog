@@ -47,4 +47,4 @@ const nextConfig = {
 module.exports = withPlugins([
   [withMDX, {}],
   [withVideos, { dirs: 'public' }],
-], ...nextConfig);
+], nextConfig);
