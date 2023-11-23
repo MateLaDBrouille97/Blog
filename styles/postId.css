@@ -109,7 +109,7 @@
 .postLine__title{
     display:flex;
     flex-direction: row;
-    justify-content:start;
+    justify-content:flex-start;
     padding-bottom: 3px;
     border-bottom: solid 3px rgb(213, 211, 211);
 }

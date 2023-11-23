@@ -52,7 +52,7 @@ export default function Page({ post2 }) {
   const { data } = useBlogContext();
   const [post1, setPost] = useState([]);
   const aws = require("aws-sdk");
-  const s3 = new aws.S3();
+  
   const [postImage, setPostImage] = useState();
   const [img, setImg] = useState([]);
   const { dbUser } = useUserContext();
@@ -64,6 +64,7 @@ export default function Page({ post2 }) {
   });
 
   useEffect(() => {
+    const s3 = new aws.S3();
     const fetchImage = async () => {
       const params = {
         Bucket: "portfolioml26151fd83d4a40cb89e358a0b8c234d582358-staging",
@@ -74,9 +75,10 @@ export default function Page({ post2 }) {
         .then((i) => setPostImage(i));
     };
     fetchImage();
-  }, [dbUser, router.isReady, post1, img, s3]);
+  }, [dbUser, router.isReady, post1, img, aws.S3]);
 
   useMemo(() => {
+    
     const postsD = async () => {
       if (!router.isReady) return;
       // const posts2 = await getPost();
@@ -126,57 +128,10 @@ function Article({ image, post, post2 }) {
       );
     };
     fetchUser();
-  }, []);
+  }, [post?.userID]);
 
   //Router animation
-  const router = useRouter();
-  const [isActive, setIsActive] = useState(false);
-  useEffect(() => {
-    let timer;
-    const aniStart = async () => {
-      timer = setTimeout(() => {
-        setIsActive(true);
-        const tl = gsap.timeline();
-        tl.to(".cover-strip", {
-          yPercent: 100,
-          duration: 0.8,
-          ease: "Expo.easeInOut",
-          stagger: 0.1,
-        });
-      }, 300);
-    };
-    const aniEnd = () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-      const tl = gsap.timeline();
-      if (isActive) {
-        tl.to(".cover-strip", {
-          yPercent: 200,
-          duration: 0.8,
-          ease: "Expo.easeInOut",
-          stagger: -0.1,
-        });
-        setIsActive(false);
-      }
 
-      tl.set(".cover-strip", { yPercent: 0 });
-      clearTimeout(timer);
-    };
-
-    router.events.on("routeChangeStart", aniStart);
-    router.events.on("routeChangeComplete", aniEnd);
-    router.events.on("routeChangeError", aniEnd);
-
-    return () => {
-      router.events.off("routeChangeStart", aniStart);
-      router.events.off("routeChangeComplete", aniEnd);
-      router.events.off("routeChangeError", aniEnd);
-      if (timer) {
-        clearTimeout(timer);
-      }
-    };
-  }, [router]);
 
   const backgroundImageStyle = {
     backgroundImage: `url(${image})`,
