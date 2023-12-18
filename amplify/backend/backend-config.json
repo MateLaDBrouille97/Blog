@@ -1,6 +1,6 @@
 {
   "api": {
-    "PortfolioML": {
+    "PORTFOLIOMANULAB": {
       "dependsOn": [],
       "output": {
         "authConfig": {
@@ -23,7 +23,7 @@
     }
   },
   "auth": {
-    "PortfolioML": {
+    "PORTFOLIOMANULAB": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -57,7 +57,7 @@
     }
   },
   "storage": {
-    "s38b7b04fc": {
+    "s3portfoliomanulabstorage878e1395": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"

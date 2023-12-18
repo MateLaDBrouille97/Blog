@@ -1,0 +1,133 @@
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  image: String
+}
+
+enum SubCategoryType {
+  AI
+  ANALYZE
+  WEB
+  APP
+  IMAGE_VIDEO
+  OTHER
+  MARKETING
+  COPYWRITING
+  RESEARCH_TOOLS
+  PRODUCTIVITY
+  ASSISTANTS
+}
+
+enum CategoryType {
+  USEFULHACKS
+  PROJECTS
+  NEWS
+  OPINIONS
+  TOOLS
+  ANALYSIS
+  GEOPOL
+}
+
+type BlogPost @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  slug: String
+  image: String
+  category: CategoryType
+  subcategory: SubCategoryType
+  description: String
+  title: String
+  subtitle: String
+  href: String
+  userID: ID! @index(name: "byUser")
+}
+
+type Service @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstName: String
+  lastName: String
+  description: String
+  serviceData: [String]
+  userID: ID! @index(name: "byUser")
+}
+
+enum QualifType {
+  EDUCATION
+  EXPERIENCE
+}
+
+type Qualification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  institute: String
+  calendarBegin: AWSDate
+  calendarEnd: AWSDate
+  type: QualifType
+  userID: ID! @index(name: "byUser")
+}
+
+enum PortfolioType {
+  WEB
+  APP
+  DATA_ANALYSIS
+  AI
+}
+
+type PortfolioPost @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  description: String
+  image: String
+  technologies: [String]
+  addressPost: String
+  type: PortfolioType
+  userID: ID! @index(name: "byUser")
+}
+
+enum SkillType {
+  BACKEND
+  FRONTEND
+  DATABASE
+}
+
+enum SkillLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+type Skill @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  level: SkillLevel
+  type: SkillType
+  userID: ID! @index(name: "byUser")
+  href: String
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstName: String
+  lastName: String
+  image: String
+  avatar: String
+  CV: String
+  descriptionLong: String
+  description: String
+  experience: Int
+  projectNumber: Int
+  support: Int
+  titles: [String]
+  email: AWSEmail
+  phone: AWSPhone
+  github: String
+  buyMeACoffee: String
+  facebook: String
+  twitter: String
+  instagram: String
+  Qualifications: [Qualification] @hasMany(indexName: "byUser", fields: ["id"])
+  Skills: [Skill] @hasMany(indexName: "byUser", fields: ["id"])
+  PortfolioPosts: [PortfolioPost] @hasMany(indexName: "byUser", fields: ["id"])
+  Services: [Service] @hasMany(indexName: "byUser", fields: ["id"])
+  BlogPosts: [BlogPost] @hasMany(indexName: "byUser", fields: ["id"])
+}
+ 

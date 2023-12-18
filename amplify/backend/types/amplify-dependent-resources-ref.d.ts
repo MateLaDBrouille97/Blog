@@ -1,13 +1,13 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "PortfolioML": {
+    "PORTFOLIOMANULAB": {
       "GraphQLAPIEndpointOutput": "string",
       "GraphQLAPIIdOutput": "string",
       "GraphQLAPIKeyOutput": "string"
     }
   },
   "auth": {
-    "PortfolioML": {
+    "PORTFOLIOMANULAB": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "IdentityPoolId": "string",
@@ -18,7 +18,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "s38b7b04fc": {
+    "s3portfoliomanulabstorage878e1395": {
       "BucketName": "string",
       "Region": "string"
     }

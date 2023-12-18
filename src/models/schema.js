@@ -76,6 +76,45 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "slug": {
+                    "name": "slug",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "image": {
+                    "name": "image",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "category": {
+                    "name": "category",
+                    "isArray": false,
+                    "type": {
+                        "enum": "CategoryType"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "subcategory": {
+                    "name": "subcategory",
+                    "isArray": false,
+                    "type": {
+                        "enum": "SubCategoryType"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "title": {
                     "name": "title",
                     "isArray": false,
@@ -90,15 +129,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "description": {
-                    "name": "description",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "image": {
-                    "name": "image",
+                "href": {
+                    "name": "href",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -109,45 +141,6 @@ export const schema = {
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
-                    "attributes": []
-                },
-                "category": {
-                    "name": "category",
-                    "isArray": false,
-                    "type": {
-                        "enum": "BlogCategory"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "slug": {
-                    "name": "slug",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "subCategory": {
-                    "name": "subCategory",
-                    "isArray": false,
-                    "type": {
-                        "enum": "SubCategory"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "likeCount": {
-                    "name": "likeCount",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "href": {
-                    "name": "href",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -169,95 +162,6 @@ export const schema = {
             },
             "syncable": true,
             "pluralName": "BlogPosts",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byUser",
-                        "fields": [
-                            "userID"
-                        ]
-                    }
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "Link": {
-            "name": "Link",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "title": {
-                    "name": "title",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "href": {
-                    "name": "href",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "image": {
-                    "name": "image",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "userID": {
-                    "name": "userID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "Links",
             "attributes": [
                 {
                     "type": "model",
@@ -321,13 +225,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "userID": {
-                    "name": "userID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
                 "serviceData": {
                     "name": "serviceData",
                     "isArray": true,
@@ -335,6 +232,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": [],
                     "isArrayNullable": true
+                },
+                "userID": {
+                    "name": "userID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -397,24 +301,31 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "institute": {
+                    "name": "institute",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "calendarBegin": {
                     "name": "calendarBegin",
                     "isArray": false,
-                    "type": "String",
+                    "type": "AWSDate",
                     "isRequired": false,
                     "attributes": []
                 },
                 "calendarEnd": {
                     "name": "calendarEnd",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "institut": {
-                    "name": "institut",
-                    "isArray": false,
-                    "type": "String",
+                    "type": "AWSDate",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -422,7 +333,7 @@ export const schema = {
                     "name": "type",
                     "isArray": false,
                     "type": {
-                        "enum": "QualificationType"
+                        "enum": "QualifType"
                     },
                     "isRequired": false,
                     "attributes": []
@@ -432,13 +343,6 @@ export const schema = {
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
-                    "attributes": []
-                },
-                "name": {
-                    "name": "name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -460,106 +364,6 @@ export const schema = {
             },
             "syncable": true,
             "pluralName": "Qualifications",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byUser",
-                        "fields": [
-                            "userID"
-                        ]
-                    }
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "Skill": {
-            "name": "Skill",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "level": {
-                    "name": "level",
-                    "isArray": false,
-                    "type": {
-                        "enum": "LevelSkill"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "name": {
-                    "name": "name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "userID": {
-                    "name": "userID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "type": {
-                    "name": "type",
-                    "isArray": false,
-                    "type": {
-                        "enum": "SkillType"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "href": {
-                    "name": "href",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "Skills",
             "attributes": [
                 {
                     "type": "model",
@@ -623,6 +427,21 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "technologies": {
+                    "name": "technologies",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "addressPost": {
+                    "name": "addressPost",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "type": {
                     "name": "type",
                     "isArray": false,
@@ -639,16 +458,101 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "technologies": {
-                    "name": "technologies",
-                    "isArray": true,
-                    "type": "String",
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
                     "isRequired": false,
                     "attributes": [],
-                    "isArrayNullable": true
+                    "isReadOnly": true
                 },
-                "addressPost": {
-                    "name": "addressPost",
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "PortfolioPosts",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byUser",
+                        "fields": [
+                            "userID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Skill": {
+            "name": "Skill",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "level": {
+                    "name": "level",
+                    "isArray": false,
+                    "type": {
+                        "enum": "SkillLevel"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "type": {
+                    "name": "type",
+                    "isArray": false,
+                    "type": {
+                        "enum": "SkillType"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "userID": {
+                    "name": "userID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "href": {
+                    "name": "href",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -672,7 +576,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "PortfolioPosts",
+            "pluralName": "Skills",
             "attributes": [
                 {
                     "type": "model",
@@ -729,6 +633,70 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "image": {
+                    "name": "image",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "avatar": {
+                    "name": "avatar",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "CV": {
+                    "name": "CV",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "descriptionLong": {
+                    "name": "descriptionLong",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "experience": {
+                    "name": "experience",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "projectNumber": {
+                    "name": "projectNumber",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "support": {
+                    "name": "support",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "titles": {
+                    "name": "titles",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
                 "email": {
                     "name": "email",
                     "isArray": false,
@@ -743,27 +711,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "instagram": {
-                    "name": "instagram",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "description": {
-                    "name": "description",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "image": {
-                    "name": "image",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "github": {
                     "name": "github",
                     "isArray": false,
@@ -771,25 +718,31 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "title": {
-                    "name": "title",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "experience": {
-                    "name": "experience",
+                "buyMeACoffee": {
+                    "name": "buyMeACoffee",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "projectNumber": {
-                    "name": "projectNumber",
+                "facebook": {
+                    "name": "facebook",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "twitter": {
+                    "name": "twitter",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "instagram": {
+                    "name": "instagram",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -825,8 +778,8 @@ export const schema = {
                         ]
                     }
                 },
-                "Portfolios": {
-                    "name": "Portfolios",
+                "PortfolioPosts": {
+                    "name": "PortfolioPosts",
                     "isArray": true,
                     "type": {
                         "model": "PortfolioPost"
@@ -857,57 +810,6 @@ export const schema = {
                         ]
                     }
                 },
-                "sub": {
-                    "name": "sub",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "support": {
-                    "name": "support",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "descriptionLong": {
-                    "name": "descriptionLong",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "CV": {
-                    "name": "CV",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "Links": {
-                    "name": "Links",
-                    "isArray": true,
-                    "type": {
-                        "model": "Link"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": [
-                            "userID"
-                        ]
-                    }
-                },
-                "avatar": {
-                    "name": "avatar",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "BlogPosts": {
                     "name": "BlogPosts",
                     "isArray": true,
@@ -923,41 +825,6 @@ export const schema = {
                             "userID"
                         ]
                     }
-                },
-                "facebook": {
-                    "name": "facebook",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "twitter": {
-                    "name": "twitter",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "telegram": {
-                    "name": "telegram",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "linkedIn": {
-                    "name": "linkedIn",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "buyMeACoffee": {
-                    "name": "buyMeACoffee",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -1003,24 +870,24 @@ export const schema = {
         }
     },
     "enums": {
-        "SubCategory": {
-            "name": "SubCategory",
+        "SubCategoryType": {
+            "name": "SubCategoryType",
             "values": [
-                "PRODUCTIVITY",
-                "ASSISTANTS",
-                "RESEARCH_TOOLS",
-                "COPYWRITING",
-                "APP",
-                "WEB",
                 "AI",
                 "ANALYZE",
+                "WEB",
+                "APP",
                 "IMAGE_VIDEO",
+                "OTHER",
                 "MARKETING",
-                "OTHER"
+                "COPYWRITING",
+                "RESEARCH_TOOLS",
+                "PRODUCTIVITY",
+                "ASSISTANTS"
             ]
         },
-        "BlogCategory": {
-            "name": "BlogCategory",
+        "CategoryType": {
+            "name": "CategoryType",
             "values": [
                 "USEFULHACKS",
                 "PROJECTS",
@@ -1031,6 +898,22 @@ export const schema = {
                 "GEOPOL"
             ]
         },
+        "QualifType": {
+            "name": "QualifType",
+            "values": [
+                "EDUCATION",
+                "EXPERIENCE"
+            ]
+        },
+        "PortfolioType": {
+            "name": "PortfolioType",
+            "values": [
+                "WEB",
+                "APP",
+                "DATA_ANALYSIS",
+                "AI"
+            ]
+        },
         "SkillType": {
             "name": "SkillType",
             "values": [
@@ -1039,32 +922,16 @@ export const schema = {
                 "DATABASE"
             ]
         },
-        "QualificationType": {
-            "name": "QualificationType",
+        "SkillLevel": {
+            "name": "SkillLevel",
             "values": [
-                "EDUCATION",
-                "EXPERIENCE"
-            ]
-        },
-        "LevelSkill": {
-            "name": "LevelSkill",
-            "values": [
-                "BASIC",
+                "BEGINNER",
                 "INTERMEDIATE",
                 "ADVANCED"
-            ]
-        },
-        "PortfolioType": {
-            "name": "PortfolioType",
-            "values": [
-                "WEB",
-                "APP",
-                "SCIENCE",
-                "AI"
             ]
         }
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "5305c9aea4ba8ba8f95d0771e6b0f608"
+    "version": "d08561586961a798e37671dc19729dc7"
 };
