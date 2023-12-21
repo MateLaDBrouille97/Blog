@@ -5,8 +5,6 @@ import AuthorBA from "./_child/AuthorBA";
 import React, { useEffect, useState, useMemo } from "react";
 import { ArrowRight } from "lucide-react";
 
-
-
 const PostsCardBA = ({ post, index }) => {
   const [user, setUser] = useState([]);
 
@@ -52,11 +50,17 @@ const PostsCardBA = ({ post, index }) => {
             </Link>
           </h3>
 
-          <h2>{post?.title?.substring(0, 29) +
-                (post?.title?.length >29? "..." : "")}</h2>
+          <h2>
+            {post?.title?.substring(0, 29) +
+              (post?.title?.length > 29 ? "..." : "")}
+          </h2>
 
           <Link href={`/BlogArticles/${post?.id}`} legacyBehavior>
             <p className="description-element">
+              <p2 style={{margin:"0 0 10px 0px"}}>
+                by {post?.author?.firstName} <span style={{margin:"0 10px 0 0"}}></span>
+                {post?.createdAt ? `${formatDate(post?.createdAt)}` : "UnKnown"}
+              </p2>
               {post?.description?.substring(0, 150) +
                 (post?.description?.length > 150 ? "..." : "")}
             </p>

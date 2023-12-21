@@ -20,6 +20,8 @@ import PostVal from "../../../components/PostVal";
 import Post3colBA from "../../../components/Post3ColBA";
 import PostCol2BA from "../../../components/PostCol2BA";
 import { API_URL } from "../../../config/index";
+import PostsCardBA from "../../../components/PostsCardBA";
+import PostsCard from "../../../components/PostsCard";
 
 export async function getServerSideProps() {
   const response = await fetch(`${API_URL}/api/getBlogArticles`);
@@ -569,6 +571,19 @@ function Category({ category, posts }) {
         <div className="section__cat container-section4">
           <div className="post__article-blog3" style={backgroundImageStyle} />
           <div className="  py-10 flex flex-row justify-center mt-20 content">
+            
+            <h1
+              className={`font-bold flex flex-col justify-center text-4xl text-center pb-5 category__news ${
+                category?.name === "TOOLS" ? "text-white" : ""
+              }`}
+            >
+              {category?.name == "NEWS"
+                ? "TECHIE'S SOCIETY"
+                : category?.name == "TOOLS"
+                ? "TOOLS TO"
+                : category?.name}
+            </h1>
+            <span className="m-4"></span>
             <div className="image pr-10 flex justify-center ">
             
               
@@ -585,17 +600,6 @@ function Category({ category, posts }) {
               )}
             
             </div>
-            <h1
-              className={`font-bold flex flex-col justify-center text-4xl text-center pb-5 category__news ${
-                category?.name === "TOOLS" ? "text-white" : ""
-              }`}
-            >
-              {category?.name == "NEWS"
-                ? "TECHIE'S SOCIETY"
-                : category?.name == "TOOLS"
-                ? "TOOLS TO"
-                : category?.name}
-            </h1>
           </div>
           <div className="flex justify-center pb-8 mt-10 mb-20 section1__posts">
             <h1 className="font-bold text-4xl py-8 text-center section1__posts-title">
@@ -690,16 +694,17 @@ function Category({ category, posts }) {
           ) : (
             <>
               {dataSort ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14 mb-10 p-10">
+                  
                   {dataSort &&
                     dataSort
                       .slice(0, 9)
                       .map((post, index) => (
                         <React.Fragment key={post.id}>
                           {post.isPublished ? (
-                            <Post3colBA postBA={post} key={post.id} />
+                            <PostsCardBA post={post} key={post.id} />
                           ) : (
-                            <Post3col post={post} key={post.id} />
+                            <PostsCard post={post} key={post.id} />
                           )}
                         </React.Fragment>
                       ))}

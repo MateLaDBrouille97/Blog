@@ -5,8 +5,10 @@ import Error2 from "./_child/Error2";
 import { useBlogContext } from "../contexts/BlogContext";
 import { gsap } from "gsap";
 import Post3col from "../components/Post3Col";
+import PostsCardBA from "../components/PostsCardBA"
 import Post3colBA from "../components/Post3ColBA";
 import { useRouter } from "next/router";
+import PostsCard from "./PostsCard";
 
 export default function Section2({blogArt}) {
   const { data } = useBlogContext();
@@ -59,15 +61,15 @@ export default function Section2({blogArt}) {
 
           {/* grid columns */}
           {articlesData2 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 ">
+            <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ">
               {articlesData2 &&
                 articlesData2
                   .slice(0, 9)
                   .map((post, index) =>
                     post.isPublished ? (
-                      <Post3colBA postBA={post} key={post.id} />
+                      <PostsCardBA post={post} key={post.id} />
                     ) : (
-                      <Post3col post={post} key={post.id} />
+                      <PostsCard post={post} key={post.id} />
                     )
                   )}
             </div>
@@ -76,7 +78,7 @@ export default function Section2({blogArt}) {
               <Error2 />
             </div>
           )}
-          <div className="section3__view">
+          <div className="section3__view m-10 p-4">
             <Link href={`/Categories/POSTS`} legacyBehavior>
               <a className="font-bold text-xl py-8 text-center section3__view-title">
                 {" "}

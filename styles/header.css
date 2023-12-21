@@ -259,7 +259,7 @@
 
     .nav__menu{
         position: fixed;
-        bottom:-100%;
+        bottom:-200%;
         left:0;
         right: 0;
         width:100%;
@@ -282,7 +282,7 @@
 
     .no-menu{
         display:none;
-        bottom:-1000px;
+        bottom:-2000px;
     }
 
     .nav__list{
@@ -295,6 +295,8 @@
         padding:10px;
         margin: 20px;
     }
+
+  
 
     .nav__list2{
         display:grid;
@@ -316,8 +318,8 @@
     .nav__close{
         position: absolute;
         left:1.3rem;
-        bottom: 30rem;
-        font-size:3rem;
+        top: -82rem;
+        font-size:7rem;
         cursor:pointer;
         color: var(--title-color);
         transition: bottom 0.3s ease;
@@ -336,9 +338,9 @@
     }
 
     .nav__item a{
-        font-size:50px;
-        padding:10px;
-        margin:10px;
+        font-size:120px;
+        padding:20px;
+        margin:80px;
     }
 
     .nav__toggle:hover{

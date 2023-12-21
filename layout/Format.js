@@ -14,6 +14,7 @@ export default function Format({ children }) {
       <Head>Blog</Head>
       <Header3 />
       <main className="main">{children}</main>
+      
       <Footer2 />
       <ScrollUp />
    

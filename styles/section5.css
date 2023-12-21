@@ -167,3 +167,13 @@
 }
 
 }
+
+
+@media screen and (max-width: 450px) {
+
+    .topLeft__container{
+        padding:10px;
+        margin:10px;
+        zoom: 1.05;
+    }
+}

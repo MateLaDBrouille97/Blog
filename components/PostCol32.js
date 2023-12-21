@@ -93,7 +93,8 @@ export default function PostCol32({ post }) {
           <div className="title  ml-4">
             <Link href={`/Posts/${post?.slug}`} legacyBehavior>
               <a className=" postCol__title text-4xl font-bold text-gray-800 hover:text-gray-600  ">
-                {post?.title}
+              {post?.title?.substring(0, 29) +
+              (post?.title?.length > 29 ? "..." : "")}
               </a>
             </Link>
           </div>

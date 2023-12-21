@@ -9,6 +9,8 @@ import Section4 from "../components/Section4";
 import Section0 from "../components/Section0";
 // import Parallax1 from "../components/Parallax1";
 import { API_URL } from "../config/index";
+// import SectionIntro from "../components/SectionIntro";
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,16 +29,18 @@ export default function Home({articles}) {
 
   
   return (
+    <>
     
         <Format>
           <Section0 />
-          
           <Section1 blogArt={articles}/>
           <Section2 blogArt={articles}/>
           <Section3 blogArt={articles}/>
           <Section4 blogArt={articles}/>  
         </Format>
      
+    </>
+    
   );
 }
 

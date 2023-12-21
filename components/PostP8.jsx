@@ -92,7 +92,8 @@ export default function PostP8({ post }) {
               <div className="title mb-2  text">
                 <Link href={`/Posts/${post?.slug}`} legacyBehavior>
                   <a className=" postCol__title text-l font-bold text-gray-800 hover:text-gray-600  ">
-                    {post?.title}
+                  {post?.title?.substring(0, 29) +
+              (post?.title?.length > 29 ? "..." : "")}
                   </a>
                 </Link>
                 <hr className=" line-under" />

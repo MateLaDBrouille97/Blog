@@ -1,3 +1,14 @@
+html{
+  scroll-behavior: initial;
+}
+
+html,
+body{
+  width: 100%;
+  min-height:100%;
+}
+
+
 .main {
   display: flex;
   flex-direction: column;
@@ -5,7 +16,11 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  min-width: 100%;
 }
+
+
+
 
 .description {
   display: inherit;
@@ -283,4 +298,44 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+
+/* Your existing styles */
+
+@media screen and (max-width: 992px) {
+  section {
+    margin: 0 auto; /* Center the section horizontally */
+    max-width: 100vw; /* Ensure the section doesn't exceed the viewport width */
+  }
+}
+
+@media screen and (max-width: 470px) {
+  section {
+    margin: 0 auto; /* Center the section horizontally */
+    max-width: 100vw; /* Ensure the section doesn't exceed the viewport width */
+  }
+}
+
+/* lenis */
+
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

@@ -23,6 +23,14 @@ import "../styles/like.css";
 import "../styles/postVal.css";
 import "../styles/BlogArticle.css";
 import "../styles/section1bis.scss";
+import "../styles/about.scss";
+import "../styles/featured.scss";
+import "../styles/gallery.scss";
+import "../styles/header.scss";
+import '../styles/sectionHeader.scss';
+import "../styles/home.scss";
+import "../styles/cursor.scss";
+
 import { Amplify } from "aws-amplify";
 // import { withAuthenticator } from "@aws-amplify/ui-react";
 import awsconfig from "../src/aws-exports";
@@ -31,6 +39,8 @@ import BlogContextProvider from "../contexts/BlogContext";
 import UserContextProvider from "../contexts/UserContext";
 import ThemeContextProvider from "../contexts/ThemeContext";
 import ThemeProvider from "../providers/ThemeProvider";
+// import SmoothScrolling from "../components/SmoothScrolling";
+import CustomCursor from "../components/CustomCursor";
 
 Amplify.configure({
   ...awsconfig,
@@ -43,7 +53,9 @@ export default function App({ Component, pageProps }) {
       <BlogContextProvider>
         <ThemeContextProvider>
           <ThemeProvider>
-            <Component {...pageProps} />
+          <CustomCursor />
+              <Component {...pageProps} />
+            
           </ThemeProvider>
         </ThemeContextProvider>
       </BlogContextProvider>

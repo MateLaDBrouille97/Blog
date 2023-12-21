@@ -142,7 +142,7 @@ export default function Section1({blogArt}) {
               }}
               breakpoints={{
                 576: {
-                  slidesPerView: 1,
+                  slidesPerView: 2,
                 },
                 768: {
                   slidesPerView: 2,
