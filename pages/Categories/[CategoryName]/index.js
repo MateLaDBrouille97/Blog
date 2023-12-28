@@ -1,6 +1,6 @@
 import Format from "../../../layout/Format";
 import Image from "next/image";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState,useRef } from "react";
 import { categoriesName } from "../../../public/blogDataName";
 import { useRouter } from "next/router";
 import { useBlogContext } from "../../../contexts/BlogContext";
@@ -23,6 +23,7 @@ import { API_URL } from "../../../config/index";
 import PostsCardBA from "../../../components/PostsCardBA";
 import PostsCard from "../../../components/PostsCard";
 
+
 export async function getServerSideProps() {
   const response = await fetch(`${API_URL}/api/getBlogArticles`);
   if (!response.ok) {
@@ -31,6 +32,7 @@ export async function getServerSideProps() {
   const blogArt = await response.json();
   return { props: { blogArt } }
 }
+
 
 export default function CategoryName({blogArt}) {
   const router = useRouter();
@@ -224,6 +226,34 @@ function Category({ category, posts }) {
   const pageData = itemCount?.slice(skip, endIndex);
 
   //------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------
+
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
+
+  
+  useEffect(() => {
+    // Animation for text
+    gsap.fromTo(
+      textRef.current,
+      { x: "-100%", opacity: 0 },
+      { x: "0%", opacity: 1, duration: 1, ease: "power2.inOut" }
+    );
+
+    // Animation for text2
+    gsap.fromTo(
+      imageRef.current,
+      { x: "-100%", opacity: 0 },
+      { x: "0%", opacity: 1, duration: 1, ease: "power2.inOut", delay: 0.5 }
+    );
+
+    
+  }, []);
+  
+
+  //------------------------------------------------------------------------------------
+
 
   //------------------------------------------------------------------------------------
   useMemo(() => {
@@ -573,6 +603,7 @@ function Category({ category, posts }) {
           <div className="  py-10 flex flex-row justify-center mt-20 content">
             
             <h1
+              ref={textRef}
               className={`font-bold flex flex-col justify-center text-4xl text-center pb-5 category__news ${
                 category?.name === "TOOLS" ? "text-white" : ""
               }`}
@@ -584,9 +615,10 @@ function Category({ category, posts }) {
                 : category?.name}
             </h1>
             <span className="m-4"></span>
-            <div className="image pr-10 flex justify-center ">
-            
-              
+            <div
+             ref={imageRef}
+             className="image pr-10 flex justify-center ">
+
               {!category?.image ? (
                 <Spinner />
               ) : (

@@ -394,7 +394,9 @@ enum ENTITY_TYPE {
   BOARD
   LIST
   CARD
+  WHITEBOARD
 }
+
 
 model AuditLog {
   id          String  @id @default(uuid())
