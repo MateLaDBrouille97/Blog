@@ -1,14 +1,14 @@
 
 .homeHeader{
     position: relative;
-    width: 100vw;
+    width: 120vw;
     height: 100vh;
     display: flex;
     justify-content: center;
 }
 
 .backgroundImage{
-    width: 100vw;
+    width: 120vw;
     height: 170vh;
     position: absolute;
     
@@ -163,15 +163,6 @@ Description
   }
   
   @media screen and (max-width: 470px) {
-
-    .homeHeader{
-      
-        width: 140vw;
-        height: 100vh;
-    
-    }
-
-
     .backgroundImage {
       height: 110vh;
       width:300vw;

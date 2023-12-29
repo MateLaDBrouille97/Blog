@@ -163,15 +163,6 @@ Description
   }
   
   @media screen and (max-width: 470px) {
-
-    .homeHeader{
-      
-        width: 140vw;
-        height: 100vh;
-    
-    }
-
-
     .backgroundImage {
       height: 110vh;
       width:300vw;
