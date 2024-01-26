@@ -4,6 +4,7 @@ import React from "react";
 // import Footer from "../components/Footer";
 import Footer2 from "../components/Footer2";
 import Header3 from "../components/Header3";
+import Header2 from "../components/HeaderAnim";
 import Head from "next/head";
 import ScrollUp from "../components/ScrollUp";
 // import { ThemeProvider } from "@/providers/dark-theme";
@@ -12,12 +13,10 @@ export default function Format({ children }) {
   return (
     <>
       <Head>Blog</Head>
-      <Header3 />
+      <Header3/>
       <main className="main">{children}</main>
-      
       <Footer2 />
       <ScrollUp />
-   
     </>
   );
 }

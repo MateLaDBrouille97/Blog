@@ -54,7 +54,7 @@ export default function Section4({blogArt}) {
       NEWS: filterArticlesByCategory(blogArticles, "NEWS"),
       GEOPOL: filterArticlesByCategory(blogArticles, "GEOPOL"),
       OPINIONS: filterArticlesByCategory(blogArticles, "OPINIONS"),
-      PROJECTS: filterArticlesByCategory(blogArticles, "PROJECTS"),
+      // PROJECTS: filterArticlesByCategory(blogArticles, "PROJECTS"),
     };
 
     return combinedPosts;
@@ -94,7 +94,7 @@ export default function Section4({blogArt}) {
     { title: "GeoPol", category: "GEOPOL" },
     { title: "News", category: "NEWS" },
     { title: "Opinions", category: "OPINIONS" },
-    { title: "Projects", category: "PROJECTS" },
+    // { title: "Projects", category: "PROJECTS" },
   ];
 
   return (

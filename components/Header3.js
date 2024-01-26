@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "../lib/utils";
 
-
 export default function Header3() {
   /*==================== Toggle Menu ====================== */
 
@@ -33,20 +32,20 @@ export default function Header3() {
 
   const routes = [
     {
-      href: `/`,
+      href: `/Home`,
       label: "Home",
-      active: pathname === `/`,
+      active: pathname === `/Home`,
     },
     {
       href: `/Categories/USEFULHACKS`,
       label: "Useful Hacks",
       active: pathname === `/Categories/USEFULHACKS`,
     },
-    {
-      href: `/Categories/PROJECTS`,
-      label: "Projects",
-      active: pathname === `/Categories/PROJECTS`,
-    },
+    // {
+    //   href: `/Categories/PROJECTS`,
+    //   label: "Projects",
+    //   active: pathname === `/Categories/PROJECTS`,
+    // },
     {
       href: `/Categories/NEWS`,
       label: "Techie's Society",
@@ -57,6 +56,11 @@ export default function Header3() {
       label: "Tools To",
       active: pathname === `/Categories/TOOLS`,
     },
+    // {
+    //   href: `/`,
+    //   label: "About",
+    //   active: pathname === `/`,
+    // },
   ];
 
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -129,6 +133,11 @@ export default function Header3() {
         </div>
         <div className={!toggle ? "nav__menu show-menu" : "nav__menu no-menu"}>
           <ul className="nav__list md:grid">
+            <div className="navigation-container">
+              <div className="navigation-container-title">Navigation</div>
+              <div className="stripe"></div>
+            </div>
+
             {routes.map((route) => (
               // eslint-disable-next-line react/jsx-key
 
@@ -161,7 +170,7 @@ export default function Header3() {
         </div>
 
         <div className="nav__toggle-share">
-        {/* <ThemeToggle /> */}
+          {/* <ThemeToggle /> */}
           <div
             className={toggle == true ? "nav_toggle" : "noshow"}
             onClick={() => showMenu(!toggle)}

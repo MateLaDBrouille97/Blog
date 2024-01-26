@@ -30,6 +30,18 @@ import "../styles/header.scss";
 import '../styles/sectionHeader.scss';
 import "../styles/home.scss";
 import "../styles/cursor.scss";
+import "../styles/curve.scss";
+import "../styles/footer.scss";
+import "../styles/header2.scss";
+import "../styles/landing.scss";
+import "../styles/link2.scss";
+import "../styles/navItems.scss";
+import "../styles/zoomparallax.scss";
+import "../styles/otomata.css";
+
+import "../styles/paragraph.scss";
+
+
 
 import { Amplify } from "aws-amplify";
 // import { withAuthenticator } from "@aws-amplify/ui-react";
@@ -54,8 +66,7 @@ export default function App({ Component, pageProps }) {
         <ThemeContextProvider>
           <ThemeProvider>
           <CustomCursor />
-              <Component {...pageProps} />
-            
+              <Component {...pageProps} /> 
           </ThemeProvider>
         </ThemeContextProvider>
       </BlogContextProvider>

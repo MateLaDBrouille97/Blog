@@ -1,0 +1,151 @@
+@mixin respond($breakpoint) {
+  @if($breakpoint == medium)  {
+    @media (max-width: 690px) { @content }
+  }
+  @if($breakpoint == small)  {
+    @media (max-width: 450px) { @content }
+  }
+}
+
+
+.landing {
+  position: relative;
+  display: flex;
+  height: 1150px;
+  overflow: hidden;
+
+
+  @include respond(medium) {
+    height: 1100px;
+  }
+
+  @include respond(small) {
+    height: 850px;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  .sliderContainer {
+    position: absolute;
+    top: calc(980px - 170px);
+
+    @include respond(small) {
+      top: calc(690px - 170px);
+    }
+  }
+
+  .slider {
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .slider p {
+    position: relative;
+    margin: 0px;
+    color: white;
+    font-size: 230px;
+    font-weight: 500;
+    padding-right: 50px;
+  }
+
+  .slider p:nth-of-type(2) {
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+
+  .description {
+    position: absolute;
+    top: 400px;
+    left: 150px;
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+
+
+    @include respond(medium) {
+      position: absolute;
+      top: 400px;
+      left: 500px;
+    }
+  
+    @include respond(small) {
+      position: absolute;
+    
+      top: 400px;
+      left: 500px;
+    }
+   
+
+    p {
+      margin: 5px;
+      margin-bottom: 10px;
+    }
+
+    svg {
+      transform: scale(2);
+      margin-bottom: 100px;
+    }
+
+    .position_landing {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+
+
+// @media screen and (max-width: 700px) {
+//   .landing {
+//     height: 90vh;
+
+//     .sliderContainer {
+//       position: absolute;
+//       // width:100vw;
+//       top: calc(80vh - 200px);
+//     }
+//     .description {
+//       top: 400px;
+//       left: 300px;
+
+//       .position_landing {
+//         position: absolute;
+//         top: 100px;
+//         left: 0px;
+//       }
+//     }
+//   }
+// }
+
+
+
+// $layout-breakpoint-small: 450px;
+
+// @media (max-width: $layout-breakpoint-small) {
+//   .landing {
+//     height: 90vh;
+
+//     .sliderContainer {
+//       position: absolute;
+//       // width:100vw;
+//       top: calc(80vh - 200px);
+//     }
+//     .description {
+//       top: 400px;
+//       left: 300px;
+
+//       .position_landing {
+//         position: absolute;
+//         top: 100px;
+//         left: 0px;
+//       }
+//     }
+//   }
+// }

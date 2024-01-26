@@ -10,7 +10,11 @@ import Section0 from "../components/Section0";
 // import Parallax1 from "../components/Parallax1";
 import { API_URL } from "../config/index";
 // import SectionIntro from "../components/SectionIntro";
-
+import Zoomparallax from "../components/ZoomParallax";
+import Otomata from "../components/Otomata";
+import OtoDescription from "../components/OtoDescription";
+import Lenis from '@studio-freight/lenis'
+import { useRef,useEffect } from 'react';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,16 +31,25 @@ export async function getServerSideProps() {
 
 export default function Home({articles}) {
 
+
+//   useEffect( () => {
+//     const lenis = new Lenis()
+   
+//     function raf(time) {
+//         lenis.raf(time)
+//         requestAnimationFrame(raf)
+//     }
+
+//     requestAnimationFrame(raf)
+// },[])
   
   return (
     <>
     
         <Format>
-          <Section0 />
-          <Section1 blogArt={articles}/>
-          <Section2 blogArt={articles}/>
-          <Section3 blogArt={articles}/>
-          <Section4 blogArt={articles}/>  
+           <Zoomparallax/>
+           <Otomata/>
+           <OtoDescription/>
         </Format>
      
     </>
