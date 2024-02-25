@@ -174,6 +174,7 @@ type EagerQualification = {
   readonly calendarEnd?: string | null;
   readonly type?: QualifType | keyof typeof QualifType | null;
   readonly userID: string;
+  readonly position?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -190,6 +191,7 @@ type LazyQualification = {
   readonly calendarEnd?: string | null;
   readonly type?: QualifType | keyof typeof QualifType | null;
   readonly userID: string;
+  readonly position?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -213,6 +215,11 @@ type EagerPortfolioPost = {
   readonly addressPost?: string | null;
   readonly type?: PortfolioType | keyof typeof PortfolioType | null;
   readonly userID: string;
+  readonly problem?: string | null;
+  readonly solution?: string | null;
+  readonly features?: (string | null)[] | null;
+  readonly links?: (string | null)[] | null;
+  readonly year?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -230,6 +237,11 @@ type LazyPortfolioPost = {
   readonly addressPost?: string | null;
   readonly type?: PortfolioType | keyof typeof PortfolioType | null;
   readonly userID: string;
+  readonly problem?: string | null;
+  readonly solution?: string | null;
+  readonly features?: (string | null)[] | null;
+  readonly links?: (string | null)[] | null;
+  readonly year?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

@@ -63,6 +63,7 @@ type Qualification @model @auth(rules: [{allow: public}]) {
   calendarEnd: AWSDate
   type: QualifType
   userID: ID! @index(name: "byUser")
+  position: String
 }
 
 enum PortfolioType {
@@ -81,6 +82,11 @@ type PortfolioPost @model @auth(rules: [{allow: public}]) {
   addressPost: String
   type: PortfolioType
   userID: ID! @index(name: "byUser")
+  problem: String
+  solution: String
+  features: [String]
+  links: [String]
+  year: Int
 }
 
 enum SkillType {

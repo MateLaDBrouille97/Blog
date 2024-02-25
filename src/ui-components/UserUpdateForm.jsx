@@ -18,9 +18,8 @@ import {
   TextField,
   useTheme,
 } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { User } from "../models";
-import { fetchByPath, validateField } from "./utils";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 function ArrayField({
   items = [],
@@ -34,6 +33,7 @@ function ArrayField({
   defaultFieldValue,
   lengthLimit,
   getBadgeText,
+  runValidationTasks,
   errorMessage,
 }) {
   const labelElement = <Text>{label}</Text>;
@@ -57,6 +57,7 @@ function ArrayField({
     setSelectedBadgeIndex(undefined);
   };
   const addItem = async () => {
+    const { hasError } = runValidationTasks();
     if (
       currentFieldValue !== undefined &&
       currentFieldValue !== null &&
@@ -166,12 +167,7 @@ function ArrayField({
               }}
             ></Button>
           )}
-          <Button
-            size="small"
-            variation="link"
-            isDisabled={hasError}
-            onClick={addItem}
-          >
+          <Button size="small" variation="link" onClick={addItem}>
             {selectedBadgeIndex !== undefined ? "Save" : "Add"}
           </Button>
         </Flex>
@@ -195,55 +191,49 @@ export default function UserUpdateForm(props) {
   const initialValues = {
     firstName: "",
     lastName: "",
-    email: "",
-    phone: "",
-    instagram: "",
-    description: "",
     image: "",
-    github: "",
-    title: [],
+    avatar: "",
+    CV: "",
+    descriptionLong: "",
+    description: "",
     experience: "",
     projectNumber: "",
-    sub: "",
     support: "",
-    descriptionLong: "",
-    CV: "",
-    avatar: "",
+    titles: [],
+    email: "",
+    phone: "",
+    github: "",
+    buyMeACoffee: "",
     facebook: "",
     twitter: "",
-    telegram: "",
-    linkedIn: "",
-    buyMeACoffee: "",
+    instagram: "",
   };
   const [firstName, setFirstName] = React.useState(initialValues.firstName);
   const [lastName, setLastName] = React.useState(initialValues.lastName);
-  const [email, setEmail] = React.useState(initialValues.email);
-  const [phone, setPhone] = React.useState(initialValues.phone);
-  const [instagram, setInstagram] = React.useState(initialValues.instagram);
+  const [image, setImage] = React.useState(initialValues.image);
+  const [avatar, setAvatar] = React.useState(initialValues.avatar);
+  const [CV, setCV] = React.useState(initialValues.CV);
+  const [descriptionLong, setDescriptionLong] = React.useState(
+    initialValues.descriptionLong
+  );
   const [description, setDescription] = React.useState(
     initialValues.description
   );
-  const [image, setImage] = React.useState(initialValues.image);
-  const [github, setGithub] = React.useState(initialValues.github);
-  const [title, setTitle] = React.useState(initialValues.title);
   const [experience, setExperience] = React.useState(initialValues.experience);
   const [projectNumber, setProjectNumber] = React.useState(
     initialValues.projectNumber
   );
-  const [sub, setSub] = React.useState(initialValues.sub);
   const [support, setSupport] = React.useState(initialValues.support);
-  const [descriptionLong, setDescriptionLong] = React.useState(
-    initialValues.descriptionLong
-  );
-  const [CV, setCV] = React.useState(initialValues.CV);
-  const [avatar, setAvatar] = React.useState(initialValues.avatar);
-  const [facebook, setFacebook] = React.useState(initialValues.facebook);
-  const [twitter, setTwitter] = React.useState(initialValues.twitter);
-  const [telegram, setTelegram] = React.useState(initialValues.telegram);
-  const [linkedIn, setLinkedIn] = React.useState(initialValues.linkedIn);
+  const [titles, setTitles] = React.useState(initialValues.titles);
+  const [email, setEmail] = React.useState(initialValues.email);
+  const [phone, setPhone] = React.useState(initialValues.phone);
+  const [github, setGithub] = React.useState(initialValues.github);
   const [buyMeACoffee, setBuyMeACoffee] = React.useState(
     initialValues.buyMeACoffee
   );
+  const [facebook, setFacebook] = React.useState(initialValues.facebook);
+  const [twitter, setTwitter] = React.useState(initialValues.twitter);
+  const [instagram, setInstagram] = React.useState(initialValues.instagram);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = userRecord
@@ -251,26 +241,23 @@ export default function UserUpdateForm(props) {
       : initialValues;
     setFirstName(cleanValues.firstName);
     setLastName(cleanValues.lastName);
-    setEmail(cleanValues.email);
-    setPhone(cleanValues.phone);
-    setInstagram(cleanValues.instagram);
-    setDescription(cleanValues.description);
     setImage(cleanValues.image);
-    setGithub(cleanValues.github);
-    setTitle(cleanValues.title ?? []);
-    setCurrentTitleValue("");
+    setAvatar(cleanValues.avatar);
+    setCV(cleanValues.CV);
+    setDescriptionLong(cleanValues.descriptionLong);
+    setDescription(cleanValues.description);
     setExperience(cleanValues.experience);
     setProjectNumber(cleanValues.projectNumber);
-    setSub(cleanValues.sub);
     setSupport(cleanValues.support);
-    setDescriptionLong(cleanValues.descriptionLong);
-    setCV(cleanValues.CV);
-    setAvatar(cleanValues.avatar);
+    setTitles(cleanValues.titles ?? []);
+    setCurrentTitlesValue("");
+    setEmail(cleanValues.email);
+    setPhone(cleanValues.phone);
+    setGithub(cleanValues.github);
+    setBuyMeACoffee(cleanValues.buyMeACoffee);
     setFacebook(cleanValues.facebook);
     setTwitter(cleanValues.twitter);
-    setTelegram(cleanValues.telegram);
-    setLinkedIn(cleanValues.linkedIn);
-    setBuyMeACoffee(cleanValues.buyMeACoffee);
+    setInstagram(cleanValues.instagram);
     setErrors({});
   };
   const [userRecord, setUserRecord] = React.useState(userModelProp);
@@ -284,30 +271,27 @@ export default function UserUpdateForm(props) {
     queryData();
   }, [idProp, userModelProp]);
   React.useEffect(resetStateValues, [userRecord]);
-  const [currentTitleValue, setCurrentTitleValue] = React.useState("");
-  const titleRef = React.createRef();
+  const [currentTitlesValue, setCurrentTitlesValue] = React.useState("");
+  const titlesRef = React.createRef();
   const validations = {
     firstName: [],
     lastName: [],
-    email: [{ type: "Email" }],
-    phone: [{ type: "Phone" }],
-    instagram: [],
-    description: [],
     image: [],
-    github: [],
-    title: [],
+    avatar: [],
+    CV: [],
+    descriptionLong: [],
+    description: [],
     experience: [],
     projectNumber: [],
-    sub: [],
     support: [],
-    descriptionLong: [],
-    CV: [],
-    avatar: [],
+    titles: [],
+    email: [{ type: "Email" }],
+    phone: [{ type: "Phone" }],
+    github: [],
+    buyMeACoffee: [],
     facebook: [],
     twitter: [],
-    telegram: [],
-    linkedIn: [],
-    buyMeACoffee: [],
+    instagram: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -337,25 +321,22 @@ export default function UserUpdateForm(props) {
         let modelFields = {
           firstName,
           lastName,
-          email,
-          phone,
-          instagram,
-          description,
           image,
-          github,
-          title,
+          avatar,
+          CV,
+          descriptionLong,
+          description,
           experience,
           projectNumber,
-          sub,
           support,
-          descriptionLong,
-          CV,
-          avatar,
+          titles,
+          email,
+          phone,
+          github,
+          buyMeACoffee,
           facebook,
           twitter,
-          telegram,
-          linkedIn,
-          buyMeACoffee,
+          instagram,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -413,25 +394,22 @@ export default function UserUpdateForm(props) {
             const modelFields = {
               firstName: value,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
             value = result?.firstName ?? value;
@@ -457,25 +435,22 @@ export default function UserUpdateForm(props) {
             const modelFields = {
               firstName,
               lastName: value,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
             value = result?.lastName ?? value;
@@ -491,183 +466,6 @@ export default function UserUpdateForm(props) {
         {...getOverrideProps(overrides, "lastName")}
       ></TextField>
       <TextField
-        label="Email"
-        isRequired={false}
-        isReadOnly={false}
-        value={email}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              firstName,
-              lastName,
-              email: value,
-              phone,
-              instagram,
-              description,
-              image,
-              github,
-              title,
-              experience,
-              projectNumber,
-              sub,
-              support,
-              descriptionLong,
-              CV,
-              avatar,
-              facebook,
-              twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
-            };
-            const result = onChange(modelFields);
-            value = result?.email ?? value;
-          }
-          if (errors.email?.hasError) {
-            runValidationTasks("email", value);
-          }
-          setEmail(value);
-        }}
-        onBlur={() => runValidationTasks("email", email)}
-        errorMessage={errors.email?.errorMessage}
-        hasError={errors.email?.hasError}
-        {...getOverrideProps(overrides, "email")}
-      ></TextField>
-      <TextField
-        label="Phone"
-        isRequired={false}
-        isReadOnly={false}
-        type="tel"
-        value={phone}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              firstName,
-              lastName,
-              email,
-              phone: value,
-              instagram,
-              description,
-              image,
-              github,
-              title,
-              experience,
-              projectNumber,
-              sub,
-              support,
-              descriptionLong,
-              CV,
-              avatar,
-              facebook,
-              twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
-            };
-            const result = onChange(modelFields);
-            value = result?.phone ?? value;
-          }
-          if (errors.phone?.hasError) {
-            runValidationTasks("phone", value);
-          }
-          setPhone(value);
-        }}
-        onBlur={() => runValidationTasks("phone", phone)}
-        errorMessage={errors.phone?.errorMessage}
-        hasError={errors.phone?.hasError}
-        {...getOverrideProps(overrides, "phone")}
-      ></TextField>
-      <TextField
-        label="Instagram"
-        isRequired={false}
-        isReadOnly={false}
-        value={instagram}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              firstName,
-              lastName,
-              email,
-              phone,
-              instagram: value,
-              description,
-              image,
-              github,
-              title,
-              experience,
-              projectNumber,
-              sub,
-              support,
-              descriptionLong,
-              CV,
-              avatar,
-              facebook,
-              twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
-            };
-            const result = onChange(modelFields);
-            value = result?.instagram ?? value;
-          }
-          if (errors.instagram?.hasError) {
-            runValidationTasks("instagram", value);
-          }
-          setInstagram(value);
-        }}
-        onBlur={() => runValidationTasks("instagram", instagram)}
-        errorMessage={errors.instagram?.errorMessage}
-        hasError={errors.instagram?.hasError}
-        {...getOverrideProps(overrides, "instagram")}
-      ></TextField>
-      <TextField
-        label="Description"
-        isRequired={false}
-        isReadOnly={false}
-        value={description}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              firstName,
-              lastName,
-              email,
-              phone,
-              instagram,
-              description: value,
-              image,
-              github,
-              title,
-              experience,
-              projectNumber,
-              sub,
-              support,
-              descriptionLong,
-              CV,
-              avatar,
-              facebook,
-              twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
-            };
-            const result = onChange(modelFields);
-            value = result?.description ?? value;
-          }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
-          }
-          setDescription(value);
-        }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
         label="Image"
         isRequired={false}
         isReadOnly={false}
@@ -678,25 +476,22 @@ export default function UserUpdateForm(props) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image: value,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
             value = result?.image ?? value;
@@ -712,111 +507,169 @@ export default function UserUpdateForm(props) {
         {...getOverrideProps(overrides, "image")}
       ></TextField>
       <TextField
-        label="Github"
+        label="Avatar"
         isRequired={false}
         isReadOnly={false}
-        value={github}
+        value={avatar}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github: value,
-              title,
+              avatar: value,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
-            value = result?.github ?? value;
+            value = result?.avatar ?? value;
           }
-          if (errors.github?.hasError) {
-            runValidationTasks("github", value);
+          if (errors.avatar?.hasError) {
+            runValidationTasks("avatar", value);
           }
-          setGithub(value);
+          setAvatar(value);
         }}
-        onBlur={() => runValidationTasks("github", github)}
-        errorMessage={errors.github?.errorMessage}
-        hasError={errors.github?.hasError}
-        {...getOverrideProps(overrides, "github")}
+        onBlur={() => runValidationTasks("avatar", avatar)}
+        errorMessage={errors.avatar?.errorMessage}
+        hasError={errors.avatar?.hasError}
+        {...getOverrideProps(overrides, "avatar")}
       ></TextField>
-      <ArrayField
-        onChange={async (items) => {
-          let values = items;
+      <TextField
+        label="Cv"
+        isRequired={false}
+        isReadOnly={false}
+        value={CV}
+        onChange={(e) => {
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title: values,
+              avatar,
+              CV: value,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
-            values = result?.title ?? values;
+            value = result?.CV ?? value;
           }
-          setTitle(values);
-          setCurrentTitleValue("");
+          if (errors.CV?.hasError) {
+            runValidationTasks("CV", value);
+          }
+          setCV(value);
         }}
-        currentFieldValue={currentTitleValue}
-        label={"Title"}
-        items={title}
-        hasError={errors?.title?.hasError}
-        errorMessage={errors?.title?.errorMessage}
-        setFieldValue={setCurrentTitleValue}
-        inputFieldRef={titleRef}
-        defaultFieldValue={""}
-      >
-        <TextField
-          label="Title"
-          isRequired={false}
-          isReadOnly={false}
-          value={currentTitleValue}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (errors.title?.hasError) {
-              runValidationTasks("title", value);
-            }
-            setCurrentTitleValue(value);
-          }}
-          onBlur={() => runValidationTasks("title", currentTitleValue)}
-          errorMessage={errors.title?.errorMessage}
-          hasError={errors.title?.hasError}
-          ref={titleRef}
-          labelHidden={true}
-          {...getOverrideProps(overrides, "title")}
-        ></TextField>
-      </ArrayField>
+        onBlur={() => runValidationTasks("CV", CV)}
+        errorMessage={errors.CV?.errorMessage}
+        hasError={errors.CV?.hasError}
+        {...getOverrideProps(overrides, "CV")}
+      ></TextField>
+      <TextField
+        label="Description long"
+        isRequired={false}
+        isReadOnly={false}
+        value={descriptionLong}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              image,
+              avatar,
+              CV,
+              descriptionLong: value,
+              description,
+              experience,
+              projectNumber,
+              support,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
+              facebook,
+              twitter,
+              instagram,
+            };
+            const result = onChange(modelFields);
+            value = result?.descriptionLong ?? value;
+          }
+          if (errors.descriptionLong?.hasError) {
+            runValidationTasks("descriptionLong", value);
+          }
+          setDescriptionLong(value);
+        }}
+        onBlur={() => runValidationTasks("descriptionLong", descriptionLong)}
+        errorMessage={errors.descriptionLong?.errorMessage}
+        hasError={errors.descriptionLong?.hasError}
+        {...getOverrideProps(overrides, "descriptionLong")}
+      ></TextField>
+      <TextField
+        label="Description"
+        isRequired={false}
+        isReadOnly={false}
+        value={description}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              image,
+              avatar,
+              CV,
+              descriptionLong,
+              description: value,
+              experience,
+              projectNumber,
+              support,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
+              facebook,
+              twitter,
+              instagram,
+            };
+            const result = onChange(modelFields);
+            value = result?.description ?? value;
+          }
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
+          }
+          setDescription(value);
+        }}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
+      ></TextField>
       <TextField
         label="Experience"
         isRequired={false}
@@ -832,25 +685,22 @@ export default function UserUpdateForm(props) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience: value,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
             value = result?.experience ?? value;
@@ -880,25 +730,22 @@ export default function UserUpdateForm(props) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber: value,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
             value = result?.projectNumber ?? value;
@@ -914,79 +761,36 @@ export default function UserUpdateForm(props) {
         {...getOverrideProps(overrides, "projectNumber")}
       ></TextField>
       <TextField
-        label="Sub"
-        isRequired={false}
-        isReadOnly={false}
-        value={sub}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              firstName,
-              lastName,
-              email,
-              phone,
-              instagram,
-              description,
-              image,
-              github,
-              title,
-              experience,
-              projectNumber,
-              sub: value,
-              support,
-              descriptionLong,
-              CV,
-              avatar,
-              facebook,
-              twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
-            };
-            const result = onChange(modelFields);
-            value = result?.sub ?? value;
-          }
-          if (errors.sub?.hasError) {
-            runValidationTasks("sub", value);
-          }
-          setSub(value);
-        }}
-        onBlur={() => runValidationTasks("sub", sub)}
-        errorMessage={errors.sub?.errorMessage}
-        hasError={errors.sub?.hasError}
-        {...getOverrideProps(overrides, "sub")}
-      ></TextField>
-      <TextField
         label="Support"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={support}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support: value,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
             value = result?.support ?? value;
@@ -1001,137 +805,232 @@ export default function UserUpdateForm(props) {
         hasError={errors.support?.hasError}
         {...getOverrideProps(overrides, "support")}
       ></TextField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              image,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
+              experience,
+              projectNumber,
+              support,
+              titles: values,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
+              facebook,
+              twitter,
+              instagram,
+            };
+            const result = onChange(modelFields);
+            values = result?.titles ?? values;
+          }
+          setTitles(values);
+          setCurrentTitlesValue("");
+        }}
+        currentFieldValue={currentTitlesValue}
+        label={"Titles"}
+        items={titles}
+        hasError={errors?.titles?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("titles", currentTitlesValue)
+        }
+        errorMessage={errors?.titles?.errorMessage}
+        setFieldValue={setCurrentTitlesValue}
+        inputFieldRef={titlesRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Titles"
+          isRequired={false}
+          isReadOnly={false}
+          value={currentTitlesValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.titles?.hasError) {
+              runValidationTasks("titles", value);
+            }
+            setCurrentTitlesValue(value);
+          }}
+          onBlur={() => runValidationTasks("titles", currentTitlesValue)}
+          errorMessage={errors.titles?.errorMessage}
+          hasError={errors.titles?.hasError}
+          ref={titlesRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "titles")}
+        ></TextField>
+      </ArrayField>
       <TextField
-        label="Description long"
+        label="Email"
         isRequired={false}
         isReadOnly={false}
-        value={descriptionLong}
+        value={email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong: value,
-              CV,
-              avatar,
+              titles,
+              email: value,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
-            value = result?.descriptionLong ?? value;
+            value = result?.email ?? value;
           }
-          if (errors.descriptionLong?.hasError) {
-            runValidationTasks("descriptionLong", value);
+          if (errors.email?.hasError) {
+            runValidationTasks("email", value);
           }
-          setDescriptionLong(value);
+          setEmail(value);
         }}
-        onBlur={() => runValidationTasks("descriptionLong", descriptionLong)}
-        errorMessage={errors.descriptionLong?.errorMessage}
-        hasError={errors.descriptionLong?.hasError}
-        {...getOverrideProps(overrides, "descriptionLong")}
+        onBlur={() => runValidationTasks("email", email)}
+        errorMessage={errors.email?.errorMessage}
+        hasError={errors.email?.hasError}
+        {...getOverrideProps(overrides, "email")}
       ></TextField>
       <TextField
-        label="Cv"
+        label="Phone"
         isRequired={false}
         isReadOnly={false}
-        value={CV}
+        type="tel"
+        value={phone}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV: value,
-              avatar,
+              titles,
+              email,
+              phone: value,
+              github,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
-            value = result?.CV ?? value;
+            value = result?.phone ?? value;
           }
-          if (errors.CV?.hasError) {
-            runValidationTasks("CV", value);
+          if (errors.phone?.hasError) {
+            runValidationTasks("phone", value);
           }
-          setCV(value);
+          setPhone(value);
         }}
-        onBlur={() => runValidationTasks("CV", CV)}
-        errorMessage={errors.CV?.errorMessage}
-        hasError={errors.CV?.hasError}
-        {...getOverrideProps(overrides, "CV")}
+        onBlur={() => runValidationTasks("phone", phone)}
+        errorMessage={errors.phone?.errorMessage}
+        hasError={errors.phone?.hasError}
+        {...getOverrideProps(overrides, "phone")}
       ></TextField>
       <TextField
-        label="Avatar"
+        label="Github"
         isRequired={false}
         isReadOnly={false}
-        value={avatar}
+        value={github}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar: value,
+              titles,
+              email,
+              phone,
+              github: value,
+              buyMeACoffee,
               facebook,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
-            value = result?.avatar ?? value;
+            value = result?.github ?? value;
           }
-          if (errors.avatar?.hasError) {
-            runValidationTasks("avatar", value);
+          if (errors.github?.hasError) {
+            runValidationTasks("github", value);
           }
-          setAvatar(value);
+          setGithub(value);
         }}
-        onBlur={() => runValidationTasks("avatar", avatar)}
-        errorMessage={errors.avatar?.errorMessage}
-        hasError={errors.avatar?.hasError}
-        {...getOverrideProps(overrides, "avatar")}
+        onBlur={() => runValidationTasks("github", github)}
+        errorMessage={errors.github?.errorMessage}
+        hasError={errors.github?.hasError}
+        {...getOverrideProps(overrides, "github")}
+      ></TextField>
+      <TextField
+        label="Buy me a coffee"
+        isRequired={false}
+        isReadOnly={false}
+        value={buyMeACoffee}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              firstName,
+              lastName,
+              image,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
+              experience,
+              projectNumber,
+              support,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee: value,
+              facebook,
+              twitter,
+              instagram,
+            };
+            const result = onChange(modelFields);
+            value = result?.buyMeACoffee ?? value;
+          }
+          if (errors.buyMeACoffee?.hasError) {
+            runValidationTasks("buyMeACoffee", value);
+          }
+          setBuyMeACoffee(value);
+        }}
+        onBlur={() => runValidationTasks("buyMeACoffee", buyMeACoffee)}
+        errorMessage={errors.buyMeACoffee?.errorMessage}
+        hasError={errors.buyMeACoffee?.hasError}
+        {...getOverrideProps(overrides, "buyMeACoffee")}
       ></TextField>
       <TextField
         label="Facebook"
@@ -1144,25 +1043,22 @@ export default function UserUpdateForm(props) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook: value,
               twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
             value = result?.facebook ?? value;
@@ -1188,25 +1084,22 @@ export default function UserUpdateForm(props) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
+              titles,
+              email,
+              phone,
+              github,
+              buyMeACoffee,
               facebook,
               twitter: value,
-              telegram,
-              linkedIn,
-              buyMeACoffee,
+              instagram,
             };
             const result = onChange(modelFields);
             value = result?.twitter ?? value;
@@ -1222,136 +1115,45 @@ export default function UserUpdateForm(props) {
         {...getOverrideProps(overrides, "twitter")}
       ></TextField>
       <TextField
-        label="Telegram"
+        label="Instagram"
         isRequired={false}
         isReadOnly={false}
-        value={telegram}
+        value={instagram}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               firstName,
               lastName,
-              email,
-              phone,
-              instagram,
-              description,
               image,
-              github,
-              title,
+              avatar,
+              CV,
+              descriptionLong,
+              description,
               experience,
               projectNumber,
-              sub,
               support,
-              descriptionLong,
-              CV,
-              avatar,
-              facebook,
-              twitter,
-              telegram: value,
-              linkedIn,
+              titles,
+              email,
+              phone,
+              github,
               buyMeACoffee,
-            };
-            const result = onChange(modelFields);
-            value = result?.telegram ?? value;
-          }
-          if (errors.telegram?.hasError) {
-            runValidationTasks("telegram", value);
-          }
-          setTelegram(value);
-        }}
-        onBlur={() => runValidationTasks("telegram", telegram)}
-        errorMessage={errors.telegram?.errorMessage}
-        hasError={errors.telegram?.hasError}
-        {...getOverrideProps(overrides, "telegram")}
-      ></TextField>
-      <TextField
-        label="Linked in"
-        isRequired={false}
-        isReadOnly={false}
-        value={linkedIn}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              firstName,
-              lastName,
-              email,
-              phone,
-              instagram,
-              description,
-              image,
-              github,
-              title,
-              experience,
-              projectNumber,
-              sub,
-              support,
-              descriptionLong,
-              CV,
-              avatar,
               facebook,
               twitter,
-              telegram,
-              linkedIn: value,
-              buyMeACoffee,
+              instagram: value,
             };
             const result = onChange(modelFields);
-            value = result?.linkedIn ?? value;
+            value = result?.instagram ?? value;
           }
-          if (errors.linkedIn?.hasError) {
-            runValidationTasks("linkedIn", value);
+          if (errors.instagram?.hasError) {
+            runValidationTasks("instagram", value);
           }
-          setLinkedIn(value);
+          setInstagram(value);
         }}
-        onBlur={() => runValidationTasks("linkedIn", linkedIn)}
-        errorMessage={errors.linkedIn?.errorMessage}
-        hasError={errors.linkedIn?.hasError}
-        {...getOverrideProps(overrides, "linkedIn")}
-      ></TextField>
-      <TextField
-        label="Buy me a coffee"
-        isRequired={false}
-        isReadOnly={false}
-        value={buyMeACoffee}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              firstName,
-              lastName,
-              email,
-              phone,
-              instagram,
-              description,
-              image,
-              github,
-              title,
-              experience,
-              projectNumber,
-              sub,
-              support,
-              descriptionLong,
-              CV,
-              avatar,
-              facebook,
-              twitter,
-              telegram,
-              linkedIn,
-              buyMeACoffee: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.buyMeACoffee ?? value;
-          }
-          if (errors.buyMeACoffee?.hasError) {
-            runValidationTasks("buyMeACoffee", value);
-          }
-          setBuyMeACoffee(value);
-        }}
-        onBlur={() => runValidationTasks("buyMeACoffee", buyMeACoffee)}
-        errorMessage={errors.buyMeACoffee?.errorMessage}
-        hasError={errors.buyMeACoffee?.hasError}
-        {...getOverrideProps(overrides, "buyMeACoffee")}
+        onBlur={() => runValidationTasks("instagram", instagram)}
+        errorMessage={errors.instagram?.errorMessage}
+        hasError={errors.instagram?.hasError}
+        {...getOverrideProps(overrides, "instagram")}
       ></TextField>
       <Flex
         justifyContent="space-between"
