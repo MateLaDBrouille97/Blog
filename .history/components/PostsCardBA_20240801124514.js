@@ -22,17 +22,17 @@ const PostsCardBA = ({ post, index }) => {
 
   return (
     <main2 className="flex justify-center items-start">
-      <div className="card image-hover-effect">
+      <div className="card">
         {post?.imageUrl && (
           <Image
             src={post?.imageUrl}
             height={900}
             width={900}
             alt="blog image"
-            className="rounded-sm hover:blur-xl "
+            className="rounded-sm "
           />
         )}
-        <div className="card-content ">
+        <div className="card-content">
           <h3>
             <Link
               href={`/Categories/${

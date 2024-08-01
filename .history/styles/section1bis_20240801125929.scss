@@ -29,29 +29,8 @@ $color-primary-white: bisque;
     top: 0;
     left: 0;
     opacity: 0.9;
-    transition: opacity 0.2s ease-in, backdrop-filter 0.3s ease-in;
+    transition: opacity 0.2s ease-out;
   }
-
-  // .image-hover-effect {
-  //   position: relative;
-  //   display: inline-block;
-  //   overflow: hidden; /* Ensure the overlay doesn't exceed the image bounds */
-  // }
-  
-  // .image-hover-effect::after {
-  //   content: '';
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  //   background-color: rgba(0, 0, 0, 0); /* Initial transparent background */
-  //   transition: background-color 0.3s ease-in;
-  // }
-  
-  // .image-hover-effect:hover::after {
-  //   background-color: rgba(0, 0, 0, 0.855); /* Dark overlay on hover */
-  // }
 
 
   h2 {
@@ -94,11 +73,13 @@ $color-primary-white: bisque;
     justify-content: flex-start;
     align-items: flex-start;
     
-    &.description-element{
-      color:  rgba(245, 173, 97, 0.829);
-    }
+    
     
   }
+
+  
+
+  
 
 
   a {
@@ -108,13 +89,13 @@ $color-primary-white: bisque;
     &.find-out-more {
       display: flex;
       align-items: center;
-      color:  rgba(180, 119, 8, 0.953);
+      color:  rgba(203, 138, 17, 0.688);
     }
     &.color-top{
-        color:  rgba(180, 119, 8, 0.953);
+        color: rgba(210, 138, 4, 0.733);
     }
     &.material-symbols-outlined{
-   color:  rgba(180, 119, 8, 0.953);
+   color:  rgba(203, 138, 17, 0.688);
     }
   }
 
@@ -137,16 +118,9 @@ $color-primary-white: bisque;
 
   &:hover img {
     transition: opacity 0.3s ease-in;
-    opacity: 1;
-  
-    // backdrop-filter: blur(5px);
-    // background-color: rgba(255, 255, 255, 0.4);
-    // // backdrop-filter: blur(5px);
-    // background-color: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+   
   }
-
-
-
 }
 
 .material-symbols-outlined {

@@ -95,7 +95,7 @@ $color-primary-white: bisque;
     align-items: flex-start;
     
     &.description-element{
-      color:  rgba(245, 173, 97, 0.829);
+      color:  rgba(20, 137, 227, 0.829);
     }
     
   }
@@ -108,13 +108,12 @@ $color-primary-white: bisque;
     &.find-out-more {
       display: flex;
       align-items: center;
-      color:  rgba(180, 119, 8, 0.953);
+      color:  rgb(8, 107, 238);
     }
     &.color-top{
-        color:  rgba(180, 119, 8, 0.953);
-    }
+        color: rgb(8, 107, 238);
     &.material-symbols-outlined{
-   color:  rgba(180, 119, 8, 0.953);
+   color:  rgb(8, 107, 238);
     }
   }
 
@@ -162,4 +161,6 @@ $color-primary-white: bisque;
   .grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+}
+
 }

@@ -4,7 +4,7 @@ import React,{useEffect,useState} from "react";
 // import Footer from "../components/Footer";
 import Footer2 from "../components/Footer2";
 import Header3 from "../components/Header3";
-import Header2 from "../components/HeaderAnim";
+import Header4 from "../components/HeaderAnim";
 import Head from "next/head";
 import ScrollUp from "../components/ScrollUp";
 // import { ThemeProvider } from "@/providers/dark-theme";

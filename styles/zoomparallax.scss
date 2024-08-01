@@ -22,6 +22,10 @@
                 position: relative;
                 width: 25vw;
                 height: 25vh;
+                // @media screen and (max-width:500px){
+                //     width: 60vw;
+                //     height: 60vh;  
+                // }
                 img{
                     object-fit: cover;
                 }
@@ -32,6 +36,7 @@
                     left: 5vw;
                     width: 35vw;
                     height: 30vh;
+                   
                 }
             }
             &:nth-of-type(3){

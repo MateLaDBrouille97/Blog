@@ -24,7 +24,7 @@ export default function Index() {
   const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
   const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
   const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
-  const scale10 = useTransform(scrollYProgress, [0, 1], [1, 3]);
+  const scale10 = useTransform(scrollYProgress, [0, 1], [1, 10]);
 
   const pictures = [
     {

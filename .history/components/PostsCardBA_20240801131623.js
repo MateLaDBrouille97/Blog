@@ -29,7 +29,7 @@ const PostsCardBA = ({ post, index }) => {
             height={900}
             width={900}
             alt="blog image"
-            className="rounded-sm hover:blur-xl "
+            className="rounded-sm hover:blur-lg hover:backgr"
           />
         )}
         <div className="card-content ">
