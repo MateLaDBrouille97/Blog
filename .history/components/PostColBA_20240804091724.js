@@ -76,8 +76,8 @@ export default function PostColBA({ postBA }) {
             <div className="flex justify-center items-center my-4 py-2 mx-20">
             <Link href={`/BlogArticles/${postBA?.id}`} legacyBehavior>
               <a className=" postCol__title text-l font-serif text-gray-800 hover:text-gray-600 ">
-                {postBA?.description.substring(0, 100) +
-                  (postBA?.description?.length > 100 ? "..." : "")}
+                {postBA?.description.substring(0, 200) +
+                  (postBA?.description?.length > 200 ? "..." : "")}
               </a>
             </Link>
           </div>

@@ -50,7 +50,7 @@ export default function RelatedBA({ post, articles }) {
   return (
     <section className="section section4 mx-auto md:px-20 py-16 w-5.5/6">
       <div className="container-section4">
-        <div className="flex pb-8 mt-4 mb-20 section1__posts">
+        <div className="flex pb-8 mt-10 mb-20 section1__posts">
           <Link
             href={
               post?.isPublished

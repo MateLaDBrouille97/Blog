@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState,useMemo } from "react";
 
 import Author from "./_child/Author";
 
@@ -9,13 +9,16 @@ import { User } from "../src/models";
 import { DataStore } from "aws-amplify";
 
 export default function PostColBA({ postBA }) {
+  
   const [user, setUser] = useState([]);
+ 
 
   useEffect(() => {
     const fetchUser = async () => {
-      await DataStore.query(User, (user) =>
-        user.email.eq(postBA?.author?.email)
-      ).then((user) => setUser(user[0]));
+      
+      await DataStore.query(User, (user) => user.email.eq(postBA?.author?.email)).then(
+        (user) => setUser(user[0])
+      );
     };
     fetchUser();
   }, [postBA?.author]);
@@ -27,9 +30,9 @@ export default function PostColBA({ postBA }) {
           <div className="image flex flex-col justify-start custom-image-wrapper9">
             <Link href={`/BlogArticles/${postBA?.id}`} legacyBehavior>
               <a className="postCol__img">
-                {postBA?.imageUrl && (
+                {postBA?.imageUrl  && (
                   <Image
-                    src={postBA?.imageUrl || ""}
+                    src={postBA?.imageUrl  || ""}
                     alt=""
                     width={250}
                     height={150}
@@ -60,30 +63,21 @@ export default function PostColBA({ postBA }) {
               </a>
             </Link>
           </div>
-          <div className="flex flex-row justify-start items-center">
-            <div className="">
-              <div className="title">
-                <Link href={`/BlogArticles/${postBA?.id}`} legacyBehavior>
-                  <a className=" postCol__title text-xl font-bold text-gray-800 hover:text-gray-600 ">
-                    {postBA?.title}
-                  </a>
-                </Link>
-              </div>
-              {user ? <Author author={user} /> : <></>}
-            </div>
-
-
-            <div className="flex justify-center items-center my-4 py-2 mx-20">
+          <div className="title">
             <Link href={`/BlogArticles/${postBA?.id}`} legacyBehavior>
-              <a className=" postCol__title text-l font-serif text-gray-800 hover:text-gray-600 ">
-                {postBA?.description.substring(0, 100) +
-                  (postBA?.description?.length > 100 ? "..." : "")}
+              <a className=" postCol__title text-xl font-bold text-gray-800 hover:text-gray-600 ">
+              {postBA?.title}
               </a>
             </Link>
           </div>
+          {user ? <Author author={user} /> : <></>}
+          <div className="my-4 py-2">
+          <Link href={`/BlogArticles/${postBA?.id}`} legacyBehavior>
+              <a className=" postCol__title text-l font-serif text-gray-800 hover:text-gray-600 ">
+              {postBA?.description}
+              </a>
+            </Link>
           </div>
-
-          
         </div>
       </div>
       <div className="flex justify-center items-center">

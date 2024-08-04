@@ -60,8 +60,8 @@ export default function PostColBA({ postBA }) {
               </a>
             </Link>
           </div>
-          <div className="flex flex-row justify-start items-center">
-            <div className="">
+          <div>
+            <div>
               <div className="title">
                 <Link href={`/BlogArticles/${postBA?.id}`} legacyBehavior>
                   <a className=" postCol__title text-xl font-bold text-gray-800 hover:text-gray-600 ">
@@ -76,8 +76,8 @@ export default function PostColBA({ postBA }) {
             <div className="flex justify-center items-center my-4 py-2 mx-20">
             <Link href={`/BlogArticles/${postBA?.id}`} legacyBehavior>
               <a className=" postCol__title text-l font-serif text-gray-800 hover:text-gray-600 ">
-                {postBA?.description.substring(0, 100) +
-                  (postBA?.description?.length > 100 ? "..." : "")}
+                {postBA?.description.substring(0, 300) +
+                  (postBA?.description?.length > 300 ? "..." : "")}
               </a>
             </Link>
           </div>

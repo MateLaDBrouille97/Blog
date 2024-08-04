@@ -48,9 +48,9 @@ export default function RelatedBA({ post, articles }) {
  
 
   return (
-    <section className="section section4 mx-auto md:px-20 py-16 w-5.5/6">
+    <section className="section section4 mx-auto md:px-20 py-8 w-5.5/6">
       <div className="container-section4">
-        <div className="flex pb-8 mt-4 mb-20 section1__posts">
+        <div className="flex pb-8 mt-10 mb-20 section1__posts">
           <Link
             href={
               post?.isPublished
@@ -60,7 +60,7 @@ export default function RelatedBA({ post, articles }) {
             legacyBehavior
           >
             <a className="related__title">
-              <h1 className="font-bold text-4xl py-4 text-begin section1__posts-title">
+              <h1 className="font-bold text-4xl py-8 text-begin section1__posts-title">
                 Related
               </h1>
             </a>

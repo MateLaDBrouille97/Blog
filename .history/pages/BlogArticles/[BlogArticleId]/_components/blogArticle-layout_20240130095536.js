@@ -177,7 +177,7 @@ function BlogArticle({ blogArt, articles }) {
                   )}
                   {/* progressCount={progressCount} */}
                 </div>
-                {/* <Like4 id={blogArticle?.id} /> */}
+                <Like4 id={blogArticle?.id} />
                 <div className="flex flex-row">
                   <div className="hidden md:flex h-full w-80 flex-col inset-y-0 ">
                     {blogArticle && (
