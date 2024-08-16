@@ -9,7 +9,7 @@
 }
 
 .footer__container{
-    padding: 2rem 0 6rem;
+    /* padding: 2rem 0 6rem; */
     
     
 }
@@ -117,6 +117,147 @@
     text-align: center;
     font-size: var(--smaller-font-size);
 }
+
+
+/* Footer avec 4 colonnes */
+
+
+
+footer.footer {
+    background-color: #f3f4f6; /* bg-gray-100 */
+    padding-top: 2rem; /* py-8 */
+    padding-bottom: 1.5rem; /* py-8 */
+    margin-top: 2.5rem; /* mt-10 */
+  }
+  
+  footer.footer.dark {
+    background-color: #fafcff; /* dark:bg-gray-800 */
+  }
+  
+  .footer__container {
+    max-width: 1280px; /* container */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+  }
+  
+  @media (min-width: 768px) {
+    .footer__container {
+      padding-left: 1.5rem; /* md:px-6 */
+      padding-right: 1.5rem; /* md:px-6 */
+    }
+  }
+  
+  .grid-container {
+    display: grid; /* grid */
+    gap: 2rem; /* gap-8 */
+  }
+  
+  @media (min-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(4, minmax(0, 1fr)); /* md:grid-cols-4 */
+    }
+  }
+  
+  .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem; /* space-y-4 */
+  }
+  
+  .flex {
+    display: flex; /* flex */
+  }
+  
+  .items-center {
+    align-items: center; /* items-center */
+  }
+  
+  .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0.5rem; /* space-x-2 */
+  }
+  
+  .h-6 {
+    height: 1.5rem; /* h-6 */
+  }
+  
+  .w-6 {
+    width: 1.5rem; /* w-6 */
+  }
+  
+  .text-md {
+    font-size: 1rem; /* text-md */
+  }
+  
+  .font-semibold {
+    font-weight: 600; /* font-semibold */
+  }
+  
+  .text-gray-500 {
+    color: #6b7280; /* text-gray-500 */
+  }
+  
+  .dark .text-gray-400 {
+    color: #9ca3af; /* dark:text-gray-400 */
+  }
+  
+  .text-sm {
+    font-size: 0.875rem; /* text-sm */
+  }
+  
+  .flex-space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 1rem; /* space-x-4 */
+  }
+  
+  .hover\:text-gray-700:hover {
+    color: #374151; /* hover:text-gray-700 */
+  }
+  
+  .dark:hover\:text-gray-300:hover {
+    color: #d1d5db; /* dark:hover:text-gray-300 */
+  }
+  
+  .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.5rem; /* space-y-2 */
+  }
+  
+  .flex-1 {
+    flex: 1; /* flex-1 */
+  }
+  
+  .text-green-500 {
+    color: #10b981; /* text-green-500 */
+  }
+  
+  .text-red-500 {
+    color: #ef4444; /* text-red-500 */
+  }
+  
+  .px-1 {
+    padding-left: 0.25rem; /* px-1 */
+    padding-right: 0.25rem; /* px-1 */
+  }
+  
+  .div-custom {
+    margin-top: 2rem; /* mt-8 */
+    border-top: 1px solid #e5e7eb; /* border-t and border-gray-200 */
+    padding-top: 1rem; /* pt-4 */
+    text-align: center; /* text-center */
+    font-size: 0.75rem; /* text-xs */
+    color: #6b7280; /* text-gray-500 */
+  }
+  
+  .div-custom.dark {
+    border-color: #374151; /* dark:border-gray-700 */
+    color: #9ca3af; /* dark:text-gray-400 */
+  }
+  
+
+
+
+
+
+
+
 
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */

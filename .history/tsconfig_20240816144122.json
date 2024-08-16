@@ -1,0 +1,65 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@libs/*": [
+        "libs/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "/opt/client": [
+        "lib/prismadb"
+      ],
+      "@/*": [
+        "./chapters/[ChapterId]/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "app/(platform)/BlogArticles/[BlogArticleId]/layout.tsx",
+    "app/(platform)/BlogArticles/[BlogArticleId]/page.tsx",
+    "app/(platform)/BlogArticles/_components/blog-mobile-sidebar.jsx",
+    "app/(platform)/BlogArticles/_components/blogarticle-sidebar.tsx",
+    "app/(platform)s/ChaptersBA/index.js",
+    "app/api/getChapter.js",
+    "app/(platform)/BlogArticles/[BlogArticleId]/_components/blog-sidebar-item.jsx",
+    "app/(platform)/BlogArticles/[BlogArticleId]/_components/blogarticle-sidebar.jsx",
+    "app/(platform)/BlogArticles/[BlogArticleId]/_components/blogarticle-navbar.jsx",
+    "app/(platform)/BlogArticles/[BlogArticleId]/chapters/_components/video-player.jsx",
+    "app/(platform)/BlogArticles/[BlogArticleId]/chapters/_components/blog-progress-button.jsx",
+    "./src",
+    "./lib",
+    "app/(platform)/ChapterBAML/_components/blog-enroll-button.jsx",
+    "app/(platform)/layout.tsx",
+    ".next/types/**/*.ts"
+,   "app/(platform)/Categories/[CategoryName]/page.js", "app/(platform)/ChapterBAML/chapter.tsx", "app/(platform)/BlogArticles/[BlogArticleId]/_components/blogArticle-layout.jsx", ".next/types/app/(platform)/ChaptersBA/chapter.tsx"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

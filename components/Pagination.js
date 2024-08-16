@@ -1,8 +1,10 @@
+"use client"
+
 // components/Pagination.tsx
 import usePagination from "@lucasmogari/react-pagination";
 import cn from "classnames";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { memo,  } from "react";
 
 // type Props = {

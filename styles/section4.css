@@ -224,6 +224,14 @@
   align-items: center;
 }
 
+.section6 {
+  /* margin-bottom: 20px; */
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .container-section4{
   
   width: 1140px;

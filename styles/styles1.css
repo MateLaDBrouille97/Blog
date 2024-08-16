@@ -137,6 +137,10 @@ img {
   padding: 3rem 0 1rem;
 }
 
+.section1 {
+  /* padding: 3rem 0 1rem; */
+}
+
 .section__title {
   font-size: var(--h1-font-size);
   color: var(--title-color);
@@ -161,6 +165,10 @@ img {
 }
 
 .section{
+  width: 1278px;
+}
+
+.section1{
   width: 1278px;
 }
 
@@ -216,9 +224,13 @@ img {
 @media screen and (max-width: 992px) {
 
   .section {
-    padding: 3rem 0 1rem;
+    padding: 3rem 0 2rem;
   }
 
+  
+  .section1 {
+    padding: 1rem 0 1rem;
+  }
   
   .container {
     /* width: 900px; */
@@ -247,7 +259,11 @@ img {
   }
 
   .section {
-    padding: 2rem 0 4rem;
+    padding: 6rem 0 4rem;
+  }
+
+  .section1 {
+    padding: 4rem 0 4rem;
   }
 
   .section__subtitle {

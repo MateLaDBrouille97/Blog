@@ -122,7 +122,7 @@ export default function Section1({blogArt}) {
 
 
   const bg = {
-    background: "url('//marek-piwnicki-WiZOyYqzUss-unsplash.jpg')",
+    background: "url('//lukas-lehotsky-ixcHGhae2mg-unsplash.jpg')",
   };
   return (
     <>

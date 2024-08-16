@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 
 // import useThemeContext from "../contexts/ThemeContext";
 import { ThemeContext, useThemeContext } from "../contexts/ThemeContext";

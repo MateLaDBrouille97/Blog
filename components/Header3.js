@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useEffect } from "react";
 // import Pic from "../../assets/Mur.jpg";
 // import { useUserContext } from "../contexts/UserContext";
@@ -5,10 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import LinkShare from "./LinkShare";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import image from "../public/images/otomat logo-black-on-white.png";
 import BuyMeACoffee from "./BuyMeACoffee";
-import { usePathname } from "next/navigation";
+import { usePathname,useRouter } from "next/navigation";
 
 import { cn } from "../lib/utils";
 
@@ -105,7 +107,7 @@ export default function Header3({user2}) {
     // setActiveNav(index);
   };
 
-  console.log(user2)
+  
 
   useEffect(() => {
     setUser(user2);
@@ -116,7 +118,7 @@ export default function Header3({user2}) {
   };
 
   return (
-    <header className={`header ${toggle ? "header-open" : ""}`}>
+    <header className={`header1 section1 section6 mx-auto   w-9/10  ${toggle ? "header-open" : ""}`}>
       <nav className={cn("nav container-section4 ")}>
         <div className="nav__logo-container">
           <div className="nav__logo">
@@ -146,7 +148,7 @@ export default function Header3({user2}) {
               // eslint-disable-next-line react/jsx-key
               <li className="nav__item">
                 <Link
-                  key={route.href}
+                  key={route.label}
                   href={route.href}
                   className={cn(
                     "text-lg font-medium transition-colors  hover:text-primary",
@@ -183,7 +185,7 @@ export default function Header3({user2}) {
             ></Icon>
           </div>
           <div className="nav__toggle-share-socials">
-            <BuyMeACoffee author={user2} />
+            <BuyMeACoffee />
             <LinkShare className="share" />
           </div>
         </div>

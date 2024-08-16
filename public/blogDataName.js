@@ -27,11 +27,21 @@ export const categoriesName = [
   {
     id: 6,
     name: "OPINIONS",
-    image: "/images/Searching.png",
+    image: "/ana-flavia-kR5VQr3-L9w-unsplash.jpg",
   },
   {
     id: 7,
     name: "TOOLS",
     image: "/cat2.jpg",
+  },
+  {
+    id: 8,
+    name: "GEOPOLITICS",
+    image: "/planet.jpg",
+  },
+  {
+    id: 9,
+    name: "ANALYSIS",
+    image: "/isaac-smith-6EnTPvPPL6I-unsplash.jpg",
   },
 ];
